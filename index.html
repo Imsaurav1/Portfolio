@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/form.css">
 
 
 
@@ -661,6 +662,43 @@
 	          </div>
           </div>
 
+		<div class="container">
+				<br>
+				<br>
+	
+				<div class="col-md-12 justify-content-center">
+					
+					<form id="contactForm">
+						<div class="form-group">
+							<div class="inputfield">
+								<input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+							</div>
+							<div class="inputfield">
+								<input type="email" id="email" name="email" placeholder="Email Address" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="inputfield">
+								<input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+							</div>
+							<div class="inputfield">
+								<input type="text" id="subject" name="subject" placeholder="Subject" required>
+							</div>
+						</div>
+						<div class="inputfield2" >
+							<textarea id="message" name="message" placeholder="Your Message" required></textarea>
+						</div>
+						
+						<button type="submit" class="btn btn-primary py-3 px-5">Send Message</button>
+							
+						</div>
+						<!-- <button type="submit">Send Message</button> -->
+					</form>
+				
+				</div>
+
+		</div>
+
 		  <div class="container">
 			<br>
 			<br>
@@ -704,7 +742,9 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/form.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
