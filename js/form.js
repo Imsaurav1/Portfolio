@@ -25,7 +25,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         
         To: 'bt21eee036@gmail.com',
         From: 'bt21eee036@gmail.com',
-        Subject: ' ${subject}',
+        Subject: ${subject},
         Body: `<b>Name:</b> ${fullName} <br>
                <b>Email:</b> ${email} <br>
                <b>Phone:</b> ${phone} <br>
