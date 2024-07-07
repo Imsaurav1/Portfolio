@@ -24,7 +24,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         SecureToken: "4ee943e8-147e-4b82-9af3-4cdc3ea5944c",
         
         To: 'skjha9th@gmail.com',
-        From: email,
+        From: 'skjha9th@gmail.com',
         Subject: subject,
         Body: `<b>Name:</b> ${fullName} <br>
                <b>Email:</b> ${email} <br>
