@@ -21,7 +21,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     }
 
     Email.send({
-        SecureToken: "f2b9c068-5ec1-47ca-988e-003722c39766",
+        SecureToken: "c1229a51-8137-4094-950b-e8aead1beb92",
         
         To: 'bt21eee036@gmail.com',
         From: email,
