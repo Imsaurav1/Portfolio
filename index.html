@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+	  <link rel="stylesheet" href="css/commnet.css">
 	<link rel="stylesheet" href="css/form.css">
 
 
@@ -701,28 +702,72 @@
 
 		</div>
 
-		  <div class="container">
-			<br>
-			<br>
-			<div class="row justify-content-center">
+   </div>
+ </section>
+
+
+	  <section class="ftco-section comment-section ftco-no-pb" id="comment-section">
+	<div class="container">
+  
+	  <div class="row justify-content-center mb-5 pb-3">
+		<div class="col-md-7 heading-section text-center ftco-animate">
+		  <h1 class="big big-2">Comments</h1>
+		  <h2 class="mb-4">Leave a Comment</h2>
+		  <p>Feel free to leave your thoughts, feedback, or questions below!</p>
+		</div>
+	  </div>
+  
+	  <!-- Comment Form -->
+	  <div class="row">
+		<div class="col-md-12">
+		  <form id="commentForm">
+			<div class="form-group">
+			  <div class="inputfield">
+				<input type="text" id="name" placeholder="Your Name" required>
+			  </div>
+			  <div class="inputfield">
+				<textarea id="comment" placeholder="Your Comment" required></textarea>
+			  </div>
+			</div>
+			<button type="submit" class="btn btn-primary py-3 px-5">Submit Comment</button>
+		  </form>
+		</div>
+	  </div>
+  
+	  <!-- Display Comments -->
+	  <div class="row mt-5">
+		<div class="col-md-12">
+		  <h3 class="mb-4">All Comments</h3>
+		  <div id="commentList">
+			<!-- Comments will be dynamically loaded here -->
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="container">
+		<div class="col-md-7 ftco-animate text-center fadeInUp ftco-animated"></div>
+		<br>
+		<br>
+		
+			<div class="row d-flex contact-info mb-5">
 				<div class="col-md-7 ftco-animate text-center">
 					<h2>Have a<span> Question?  </span> <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
 				</div>
 			</div>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.youtube.com/@saurabh_jha_nituk" target="_blank" ><span class="icon-youtube"></span></a></li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/imsaurav1/" target="_blank" ><span class="icon-linkedin"></span></a></li>  
-					  <li class="ftco-animate"><a href="https://x.com/I_m_saurav____" target="_blank" ><span class="icon-twitter"></span></a></li>
-					  <li class="ftco-animate"><a href="https://www.facebook.com/thesauravking/" target="_blank" ><span class="icon-facebook"></span></a></li>
-				      <li class="ftco-animate"><a href="https://www.instagram.com/i_m_saurav____/" target="_blank" ><span class="icon-instagram"></span></a></li>
-					  <li class="ftco-animate"><a href="https://t.me/sauravjha1234" target="_blank" ><span class="icon-telegram"></span></a></li>
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
+			<br>
+				<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+				  <li class="ftco-animate normal-txt">Find me on  </li>
+				  <li class="ftco-animate"><a href="https://www.youtube.com/@saurabh_jha_nituk"><span class="icon-youtube"></span></a></li>
+				  <li class="ftco-animate"><a href="https://www.linkedin.com/in/imsaurav1/"><span class="icon-linkedin"></span></a></li>  
+				  <li class="ftco-animate"><a href="https://x.com/I_m_saurav____"><span class="icon-twitter"></span></a></li>
+				  <li class="ftco-animate"><a href="https://www.facebook.com/thesauravking/"><span class="icon-facebook"></span></a></li>
+				  <li class="ftco-animate"><a href="https://www.instagram.com/i_m_saurav____/"><span class="icon-instagram"></span></a></li>
+				  <li class="ftco-animate"><a href="https://t.me/sauravjha1234"><span class="icon-telegram"></span></a></li>
+				</ul>
+			<br>
+	</div>
+	</div>
+  </section>
 
 
  
@@ -759,6 +804,7 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
+  <script src="js/coments.js"></script>
   
   <script src="js/main.js"></script>
     
