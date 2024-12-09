@@ -273,29 +273,81 @@
                         <div class="code-container">
                             <pre><code class="language-cpp">
         // Example of a simple inverter control loop in C++
-        #include <iostream>
-        
-        void inverterControl() {
-            // Initialize variables
-            int phaseA = 0;
-            int phaseB = 0;
-            int phaseC = 0;
-        
-            // Control loop
-            while (true) {
-                phaseA = calculatePhaseA();
-                phaseB = calculatePhaseB();
-                phaseC = calculatePhaseC();
-        
-                // Output the phases
-                outputPhase(phaseA, phaseB, phaseC);
-            }
-        }
-        
-        int main() {
-            inverterControl();
-            return 0;
-        }
+        // Define Arduino pins for inverter switches
+#define SU_PLUS 3  // Upper switch for phase U
+#define SU_MINUS 9 // Lower switch for phase U
+#define SV_PLUS 5  // Upper switch for phase V
+#define SV_MINUS 10 // Lower switch for phase V
+#define SW_PLUS 6  // Upper switch for phase W
+#define SW_MINUS 11 // Lower switch for phase W
+
+// #define FREQUENCY 50
+// #define PERIOD_US (1000000 / FREQUENCY) // 20ms in microseconds
+
+// // Switching angles in degrees
+// float a1 = 8.7426;
+// float a2 = 24.3975;
+// float a3 = 27.7622;
+
+// // Convert angles to microseconds
+// unsigned long angleToTime(float angle) {
+//   return (unsigned long)((angle / 360.0) * PERIOD_US);
+// }
+
+// // Timing points for switching
+// unsigned long t1 = angleToTime(a1);
+// unsigned long t2 = angleToTime(a2);
+// unsigned long t3 = angleToTime(a3);
+
+void pulseout(int a, int b){
+  digitalWrite(a, HIGH);
+  delayMicroseconds(900);
+  digitalWrite(a, LOW);
+  delayMicroseconds(10);
+  digitalWrite(b, HIGH);
+  delayMicroseconds(500);
+  digitalWrite(b, LOW);
+  delayMicroseconds(10);
+  digitalWrite(a, HIGH);
+  delayMicroseconds(500);
+  digitalWrite(b, LOW);
+  delayMicroseconds(10);
+  digitalWrite(b, HIGH);
+  delayMicroseconds(800);
+  digitalWrite(b, LOW);
+  delayMicroseconds(10);
+  digitalWrite(a, HIGH);
+  delayMicroseconds(150);
+  digitalWrite(a, LOW);
+  delayMicroseconds(10);
+}
+
+void setup() {
+  // Set pins as outputs
+  pinMode(SU_PLUS, OUTPUT);
+  pinMode(SU_MINUS, OUTPUT);
+  pinMode(SV_PLUS, OUTPUT);
+  pinMode(SV_MINUS, OUTPUT);
+  pinMode(SW_PLUS, OUTPUT);
+  pinMode(SW_MINUS, OUTPUT);
+
+  // Initialize all switches to LOW
+  digitalWrite(SU_PLUS, LOW);
+  digitalWrite(SU_MINUS, LOW);
+  digitalWrite(SV_PLUS, LOW);
+  digitalWrite(SV_MINUS, LOW);
+  digitalWrite(SW_PLUS, LOW);
+  digitalWrite(SW_MINUS, LOW);
+}
+
+void loop() {
+  pulseout(SU_PLUS, SU_MINUS);
+  pulseout(SV_PLUS, SV_MINUS);
+  pulseout(SW_PLUS, SW_MINUS);
+  pulseout(SU_MINUS, SU_PLUS);
+  pulseout(SV_MINUS, SV_PLUS);
+  pulseout(SW_MINUS, SW_PLUS);
+}
                             </code></pre>
                         </div>
         
