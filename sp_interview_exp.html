@@ -152,7 +152,17 @@
                 <div class="col-md-12 ftco-animate">
                   <div class="blog-entry p-4" style="background: #1e262d; border-radius: 10px;">
                     <h3 class="mb-3">Infosys Specialist Programmer 2025 Interview Experience</h3>
-			  <p>Last updated on: {{ site.time | date: '%B %d, %Y %H:%M:%S' }}</p>
+			 <p id="last-updated" style="font-size: 0.9rem; color: #555;"></p>
+			<script>
+			  fetch(window.location.href)
+			    .then(res => {
+			      const lastModified = res.headers.get("Last-Modified");
+			      if (lastModified) {
+				document.getElementById("last-updated").textContent =
+				  "Last updated on: " + new Date(lastModified).toLocaleString();
+			      }
+			    });
+			</script>
 
                     <p>
                       I was shortlisted for the Specialist Programmer role at Infosys through campus placements. The process involved an initial online assessment covering Data Structures, Algorithms, and Problem Solving, followed by two technical interviews and one HR round.
