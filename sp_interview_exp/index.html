@@ -219,10 +219,10 @@
                     <p>
 
                     </p>
-                    <h2>Question</h2>
+                    <h4>Question</h4>
                         <p>Write an SQL query to retrieve the names of all companies that have more than 5 employees. Each company name should appear only once in the result.</p>
 
-                        <h2>Sample Table: <code>employees</code></h2>
+                        <h4>Sample Table: <code>employees</code></h4>
                         <table>
                           <thead>
                             <tr>
@@ -248,7 +248,7 @@
                           </tbody>
                         </table>
 
-                        <h2>SQL Query</h2>
+                        <h4>SQL Query</h4>
                         <pre><code>
                       SELECT DISTINCT company_name
                       FROM employees
@@ -260,13 +260,13 @@
                       );
                         </code></pre>
 
-                        <h2>Explanation</h2>
+                        <h4>Explanation</h4>
                         <ul>
                           <li>The inner query selects <b>company_id</b>s that have more than 5 employees.</li>
                           <li>The outer query selects the <b>distinct</b> company names corresponding to those IDs.</li>
                         </ul>
 
-                        <h2>Expected Output</h2>
+                        <h4>Expected Output</h4>
                         <table>
                           <thead>
                             <tr>
