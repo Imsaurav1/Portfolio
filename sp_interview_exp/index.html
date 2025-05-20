@@ -188,6 +188,74 @@
                     
 		   <h2><a href="https://www.geeksforgeeks.org/problems/check-if-there-exists-a-subsequence-with-sum-k/">Second Question Link</a></h2>
 
+		<h4>
+                      3rd Question: SQL
+                    </h4>
+
+                    <p> After the DSA questions, he asked me about SQL. He asked me to write a query. and Give a Question, the question was someting like this.  </p>
+                    <p>
+
+                    </p>
+                    <h2>Question</h2>
+                        <p>Write an SQL query to retrieve the names of all companies that have more than 5 employees. Each company name should appear only once in the result.</p>
+
+                        <h2>Sample Table: <code>employees</code></h2>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>employee_id</th>
+                              <th>employee_name</th>
+                              <th>company_id</th>
+                              <th>company_name</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>1</td><td>Alice</td><td>101</td><td>Google</td></tr>
+                            <tr><td>2</td><td>Bob</td><td>101</td><td>Google</td></tr>
+                            <tr><td>3</td><td>Charlie</td><td>101</td><td>Google</td></tr>
+                            <tr><td>4</td><td>David</td><td>101</td><td>Google</td></tr>
+                            <tr><td>5</td><td>Eve</td><td>101</td><td>Google</td></tr>
+                            <tr><td>6</td><td>Frank</td><td>101</td><td>Google</td></tr>
+                            <tr><td>7</td><td>Grace</td><td>102</td><td>Microsoft</td></tr>
+                            <tr><td>8</td><td>Heidi</td><td>102</td><td>Microsoft</td></tr>
+                            <tr><td>9</td><td>Ivan</td><td>103</td><td>Amazon</td></tr>
+                            <tr><td>10</td><td>Judy</td><td>103</td><td>Amazon</td></tr>
+                            <tr><td>11</td><td>Ken</td><td>103</td><td>Amazon</td></tr>
+                            <tr><td>12</td><td>Leo</td><td>104</td><td>OpenAI</td></tr>
+                          </tbody>
+                        </table>
+
+                        <h2>SQL Query</h2>
+                        <pre><code>
+                      SELECT DISTINCT company_name
+                      FROM employees
+                      WHERE company_id IN (
+                          SELECT company_id
+                          FROM employees
+                          GROUP BY company_id
+                          HAVING COUNT(*) > 5
+                      );
+                        </code></pre>
+
+                        <h2>Explanation</h2>
+                        <ul>
+                          <li>The inner query selects <b>company_id</b>s that have more than 5 employees.</li>
+                          <li>The outer query selects the <b>distinct</b> company names corresponding to those IDs.</li>
+                        </ul>
+
+                        <h2>Expected Output</h2>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>company_name</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Google</td>
+                            </tr>
+                          </tbody>
+                        </table>
 			  
                     <p>
                       I was shortlisted for the Specialist Programmer role at Infosys through campus placements. The process involved an initial online assessment covering Data Structures, Algorithms, and Problem Solving, followed by two technical interviews and one HR round.
