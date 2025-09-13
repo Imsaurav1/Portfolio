@@ -6,6 +6,7 @@ const registerForm = document.getElementById("registerForm");
 const loginTab = document.getElementById("loginTab");
 const registerTab = document.getElementById("registerTab");
 const exclusiveSection = document.getElementById("exclusive-section");
+const exclusiveSection1 = document.getElementById("cv-section");
 
 // Open popup
 function openAuthPopup() {
@@ -18,6 +19,7 @@ function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("tokenExpiry");
   exclusiveSection.style.display = "none";
+  exclusiveSection1.style.display = "none";
   loginBtn.textContent = "Login";
   loginBtn.removeEventListener("click", logout);
   loginBtn.addEventListener("click", openAuthPopup);
@@ -26,6 +28,7 @@ function logout() {
 // Show exclusive content and switch login button to logout
 function showExclusiveContent() {
   exclusiveSection.style.display = "block";
+  exclusiveSection1.style.display = "block";
   loginBtn.textContent = "Logout";
   loginBtn.removeEventListener("click", openAuthPopup);
   loginBtn.addEventListener("click", logout);
@@ -137,3 +140,4 @@ setInterval(() => {
     logout();
   }
 }, 60 * 1000); // check every 1 min
+
