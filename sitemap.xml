@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://www.saurabhjha.site/</loc>
+    <loc>https://www.saurabhjha.live/</loc>
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <!-- Blog Pages -->
   <url>
-    <loc>https://www.saurabhjha.site/sp_interview_exp</loc>
+    <loc>https://www.saurabhjha.live/sp_interview_exp</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -17,12 +17,18 @@
 
   <url>
     <loc>
-  https://www.saurabhjha.site/Three_phase_inverter</loc>
+  https://www.saurabhjha.live/Three_phase_inverter</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
 
-  
+    <url>
+    <loc>
+  https://www.saurabhjha.live/Infosys_joining_onboarding_exp</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 
   <!-- Add more blog URLs here -->
   <!--
