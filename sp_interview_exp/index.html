@@ -143,6 +143,58 @@
     }
 
 
+			.popup {
+		  display: none; 
+		  position: fixed; 
+		  top: 0; left: 0; 
+		  width: 100%; height: 100%; 
+		  background: rgba(0,0,0,0.6); 
+		  justify-content: center; align-items: center;
+		}
+		.popup-content {
+		  background: #545454; 
+		  padding: 20px; 
+		  border-radius: 8px; 
+		  width: 350px;
+		  text-align: center;
+		  position: relative;
+		}
+		.close {
+		  position: absolute; 
+		  top: 10px; right: 15px; 
+		  font-size: 20px; 
+		  cursor: pointer;
+		}
+		.tabs {
+		  display: flex;
+		  justify-content: center;
+		  margin-bottom: 20px;
+		}
+		.tab {
+		  flex: 1;
+		  padding: 10px;
+		  cursor: pointer;
+		  border: none;
+		  background: #f1f1f1;
+		}
+		.tab.active {
+		  background: #ffbd39;
+		  color: #fff;
+		}
+		.btn-success {
+		    color: #fff;
+		    background-color: #ffbd39;
+		    border-color: #545454;
+		}
+		.form {
+		  display: none;
+		}
+		.form.active {
+		  display: block;
+		}
+
+
+
 </style>
 
 	  <script>
@@ -176,9 +228,11 @@
                   <li class="nav-item"><a href="/#about-section" class="nav-link"><span>About</span></a></li>
                   <li class="nav-item"><a href="/#resume-section" class="nav-link"><span>Resume</span></a></li>
                   <li class="nav-item"><a href="/#project-section" class="nav-link"><span>Projects</span></a></li>
-		  <li class="nav-item"><a href="/#blog-section" class="nav-link"><span>Blog</span></a></li>
+		          <li class="nav-item"><a href="/#blog-section" class="nav-link"><span>Blog</span></a></li>
                   <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
                   <li class="nav-item"><a href="/Games.html" class="nav-link"><span>Games</span></a></li>
+				  <li class="nav-item"><a href="#" class="nav-link" id="loginBtn">Login</a></li>
+					
                 </ul>
               </div>
             </div>
@@ -501,6 +555,53 @@
       </div>
     </section>
 
+<section id="exclusive-section" style="display:none;">
+  <!-- Exclusive content here -->
+   <p>Hi My Name is Saurabh jha</p>
+</section>
+
+
+	  
+	<!-- Login/Register Popup -->
+<div id="authPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" id="closePopup">&times;</span>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button id="loginTab" class="tab active">Login</button>
+      <button id="registerTab" class="tab">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form active">
+      <h2 class="mb-4">Login</h2>
+      <div class="form-group">
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="loginPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary py-2 px-4">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="form">
+	  <h3>Register</h3>
+      <div class="form-group">
+        <input type="text" id="registerName" placeholder="Full Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="registerEmail" placeholder="Email Address" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="registerPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-success py-2 px-4">Sign Up</button>
+    </form>
+  </div>
+</div>
+ 
 
 
 
@@ -522,9 +623,12 @@
   <script src=" js/jquery.animateNumber.min.js"></script>
   <script src=" js/scrollax.min.js"></script>
   <script src="js/coments.js"></script>
+		<script src="js/loginscripts.js"></script>
 	    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558"
      crossorigin="anonymous"></script>
+		
   
   <script src=" js/main.js"></script>
     </body>
 </head>
+
