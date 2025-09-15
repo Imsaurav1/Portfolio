@@ -7,7 +7,7 @@ const loginTab = document.getElementById("loginTab");
 const registerTab = document.getElementById("registerTab");
 const exclusiveSection = document.getElementById("exclusive-section");
 const exclusiveSection1 = document.getElementById("cv-section");
-const exclusivesection12 = document.getElementById("exclusive-section12");
+const exclusivesection12 = document.getElementById("exclusive-section2");
 
 // Open popup
 function openAuthPopup() {
@@ -143,6 +143,7 @@ setInterval(() => {
     logout();
   }
 }, 60 * 1000); // check every 1 min
+
 
 
 
