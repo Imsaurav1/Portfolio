@@ -29,12 +29,20 @@ function logout() {
 
 // Show exclusive content and switch login button to logout
 function showExclusiveContent() {
-  exclusiveSection.style.display = "block";
-  exclusiveSection1.style.display = "block";
-  exclusivesection12.style.display = "block";
-  loginBtn.textContent = "Logout";
-  loginBtn.removeEventListener("click", openAuthPopup);
-  loginBtn.addEventListener("click", logout);
+  const exclusiveSection = document.getElementById("exclusiveSection");
+  const exclusiveSection1 = document.getElementById("exclusiveSection1");
+  const exclusiveSection12 = document.getElementById("exclusiveSection12");
+  const loginBtn = document.getElementById("loginBtn");
+
+  if (exclusiveSection) exclusiveSection.style.display = "block";
+  if (exclusiveSection1) exclusiveSection1.style.display = "block";
+  if (exclusiveSection12) exclusiveSection12.style.display = "block";
+
+  if (loginBtn) {
+    loginBtn.textContent = "Logout";
+    loginBtn.removeEventListener("click", openAuthPopup);
+    loginBtn.addEventListener("click", logout);
+  }
 }
 
 // Check login on page load
@@ -143,6 +151,7 @@ setInterval(() => {
     logout();
   }
 }, 60 * 1000); // check every 1 min
+
 
 
 
