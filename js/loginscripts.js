@@ -19,13 +19,23 @@ function openAuthPopup() {
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("tokenExpiry");
-  exclusiveSection.style.display = "none";
-  exclusiveSection1.style.display = "none";
-  exclusivesection12.style.display = "none";
-  loginBtn.textContent = "Login";
-  loginBtn.removeEventListener("click", logout);
-  loginBtn.addEventListener("click", openAuthPopup);
+
+  const exclusiveSection = document.getElementById("exclusiveSection");
+  const exclusiveSection1 = document.getElementById("exclusiveSection1");
+  const exclusiveSection12 = document.getElementById("exclusiveSection12");
+  const loginBtn = document.getElementById("loginBtn");
+
+  if (exclusiveSection) exclusiveSection.style.display = "none";
+  if (exclusiveSection1) exclusiveSection1.style.display = "none";
+  if (exclusiveSection12) exclusiveSection12.style.display = "none";
+
+  if (loginBtn) {
+    loginBtn.textContent = "Login";
+    loginBtn.removeEventListener("click", logout);
+    loginBtn.addEventListener("click", openAuthPopup);
+  }
 }
+
 
 // Show exclusive content and switch login button to logout
 function showExclusiveContent() {
@@ -151,6 +161,7 @@ setInterval(() => {
     logout();
   }
 }, 60 * 1000); // check every 1 min
+
 
 
 
