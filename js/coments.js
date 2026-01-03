@@ -1,12 +1,7 @@
-// ===============================
-// Page identity (WINDOW BASED)
-// ===============================
-const pageUrl = window.location.pathname; // 👈 MAIN KEY
+const pageUrl = window.location.pathname;
 const pageTitle = document.title;
 
-// ===============================
-// Submit Comment
-// ===============================
+// Submit comment
 document.getElementById('commentForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -32,15 +27,13 @@ document.getElementById('commentForm').addEventListener('submit', function (e) {
       loadComments();
       document.getElementById('commentForm').reset();
     })
-    .catch(err => console.error('Submit error:', err));
+    .catch(err => console.error(err));
 });
 
-// ===============================
-// Load ONLY THIS PAGE'S COMMENTS
-// ===============================
+// Load comments (by pageTitle)
 function loadComments() {
   fetch(
-    `https://commnets.onrender.com/comments?pageUrl=${encodeURIComponent(pageUrl)}`
+    `https://commnets.onrender.com/comments?pageTitle=${encodeURIComponent(pageTitle)}`
   )
     .then(res => res.json())
     .then(comments => {
@@ -70,8 +63,7 @@ function loadComments() {
         list.appendChild(div);
       });
     })
-    .catch(err => console.error('Load error:', err));
+    .catch(err => console.error(err));
 }
 
-// ===============================
 window.onload = loadComments;
