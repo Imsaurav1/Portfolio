@@ -101,7 +101,7 @@ loginForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("loginPassword").value; // ✅ fixed id
 
   try {
-    const res = await fetch("https://login-backend-bude.onrender.com/api/login", {
+    const res = await fetch("https://login-backend-61b8.onrender.com/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -134,7 +134,7 @@ registerForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("registerPassword").value;
 
   try {
-    const res = await fetch("https://login-backend-bude.onrender.com/api/register", {
+    const res = await fetch("https://login-backend-61b8.onrender.com/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
@@ -161,6 +161,7 @@ setInterval(() => {
     logout();
   }
 }, 60 * 1000); // check every 1 min
+
 
 
 
