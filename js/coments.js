@@ -1,60 +1,77 @@
-// Submit comment
+// ===============================
+// Page identity (WINDOW BASED)
+// ===============================
+const pageUrl = window.location.pathname; // 👈 MAIN KEY
+const pageTitle = document.title;
+
+// ===============================
+// Submit Comment
+// ===============================
 document.getElementById('commentForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-  
-    const name = document.getElementById('name').value;
-    const comment = document.getElementById('comment').value;
-  
-    if (!name || !comment) {
-      alert('Please fill out both fields');
-      return;
-    }
-  
-    const commentData = {
-      name: name,
-      comment: comment,
-    };
-  
-    fetch('https://commnets.onrender.com/comments', { // Update with your backend API
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(commentData),
-    })
-    .then(response => response.json())
-    .then(data => {
-      loadComments(); // Reload comments after submission
-      document.getElementById('commentForm').reset();  // Clear the form
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  });
-  
-  // Load comments
-  function loadComments() {
-    fetch('https://commnets.onrender.com/comments') // Fetch comments from your backend
-      .then(response => response.json())
-      .then(comments => {
-        const commentList = document.getElementById('commentList');
-        commentList.innerHTML = ''; // Clear previous comments
-  
-        comments.forEach(comment => {
-          const commentDiv = document.createElement('div');
-          commentDiv.classList.add('comment');
-          commentDiv.innerHTML = `
-            <h4>${comment.name}</h4>
-            <p>${comment.comment}</p>
-          `;
-          commentList.appendChild(commentDiv);
-        });
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const comment = document.getElementById('comment').value.trim();
+
+  if (!name || !comment) {
+    alert('Please fill all fields');
+    return;
   }
-  
-  // Load comments on page load
-  window.onload = loadComments;
-  
+
+  fetch('https://commnets.onrender.com/comments', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      comment,
+      pageUrl,
+      pageTitle
+    })
+  })
+    .then(() => {
+      loadComments();
+      document.getElementById('commentForm').reset();
+    })
+    .catch(err => console.error('Submit error:', err));
+});
+
+// ===============================
+// Load ONLY THIS PAGE'S COMMENTS
+// ===============================
+function loadComments() {
+  fetch(
+    `https://commnets.onrender.com/comments?pageUrl=${encodeURIComponent(pageUrl)}`
+  )
+    .then(res => res.json())
+    .then(comments => {
+      const list = document.getElementById('commentList');
+      list.innerHTML = '';
+
+      if (!comments.length) {
+        list.innerHTML = '<p>No comments yet.</p>';
+        return;
+      }
+
+      comments.forEach(c => {
+        let time = 'Just now';
+
+        if (c.createdAt) {
+          const d = new Date(c.createdAt);
+          if (!isNaN(d)) time = d.toLocaleString();
+        }
+
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `
+          <h4>${c.name}</h4>
+          <p>${c.comment}</p>
+          <small>🕒 ${time}</small>
+        `;
+        list.appendChild(div);
+      });
+    })
+    .catch(err => console.error('Load error:', err));
+}
+
+// ===============================
+window.onload = loadComments;
