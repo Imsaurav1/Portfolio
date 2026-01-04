@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="topbar">
+  <h2>Admin Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h3>Add Study Material</h3>
+    <input id="title" placeholder="Title">
+    <input id="imageUrl" placeholder="Image URL">
+    <input id="pdfUrl" placeholder="PDF URL">
+    <textarea id="description" placeholder="Description"></textarea>
+    <button onclick="addMaterial()">Add</button>
+  </div>
+
+  <div class="card">
+    <h3>All Study Materials</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>PDF</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="materialTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
