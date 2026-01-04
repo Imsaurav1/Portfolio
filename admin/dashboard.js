@@ -1,29 +1,47 @@
-const API = "https://studymaterial-1heb.onrender.com/api/study-materials";
+const API = "https://studymaterial-1heb.onrender.com/api/materials";
 const token = localStorage.getItem("adminToken");
 
+/* 🔐 Auth Guard */
 if (!token) {
   window.location.href = "login.html";
 }
 
-// Load data
-fetch(API)
-  .then(res => res.json())
-  .then(data => {
-    const table = document.getElementById("materialTable");
-    data.forEach(item => {
-      table.innerHTML += `
-        <tr>
-          <td>${item.title}</td>
-          <td><a href="${item.pdfUrl}" target="_blank">View</a></td>
-          <td>
-            <button onclick="deleteMaterial('${item._id}')">Delete</button>
-          </td>
-        </tr>
-      `;
-    });
-  });
+/* 📥 Load all materials */
+function loadMaterials() {
+  fetch(API, {
+    headers: {
+      "Authorization": "Bearer " + token
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const table = document.getElementById("materialTable");
+      table.innerHTML = "";
 
+      data.forEach(item => {
+        table.innerHTML += `
+          <tr>
+            <td>${item.title}</td>
+            <td>${item.date || "-"}</td>
+            <td><a href="${item.pdfUrl}" target="_blank">View</a></td>
+            <td>
+              <button class="action-btn edit" onclick="editMaterial('${item._id}', '${item.title}')">Edit</button>
+              <button class="action-btn delete" onclick="deleteMaterial('${item._id}')">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+    })
+    .catch(err => console.error("Load error:", err));
+}
+
+/* ➕ Add material */
 function addMaterial() {
+  if (!title.value || !pdfUrl.value) {
+    alert("Title and PDF URL are required");
+    return;
+  }
+
   fetch(API, {
     method: "POST",
     headers: {
@@ -32,23 +50,65 @@ function addMaterial() {
     },
     body: JSON.stringify({
       title: title.value,
-      imageUrl: imageUrl.value,
+      date: date.value,
+      description: description.value,
       pdfUrl: pdfUrl.value,
-      description: description.value
+      imageUrl: imgUrl.value
     })
-  }).then(() => location.reload());
+  })
+    .then(res => res.json())
+    .then(() => {
+      alert("Material Added Successfully");
+      clearForm();
+      loadMaterials();
+    })
+    .catch(err => console.error("Add error:", err));
 }
 
+/* 🗑 Delete material */
 function deleteMaterial(id) {
+  if (!confirm("Are you sure you want to delete this material?")) return;
+
   fetch(`${API}/${id}`, {
     method: "DELETE",
     headers: {
       "Authorization": "Bearer " + token
     }
-  }).then(() => location.reload());
+  })
+    .then(() => loadMaterials())
+    .catch(err => console.error("Delete error:", err));
 }
 
+/* ✏️ Edit material (title only – simple & safe) */
+function editMaterial(id, oldTitle) {
+  const newTitle = prompt("Enter new title", oldTitle);
+  if (!newTitle || newTitle === oldTitle) return;
+
+  fetch(`${API}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({ title: newTitle })
+  })
+    .then(() => loadMaterials())
+    .catch(err => console.error("Edit error:", err));
+}
+
+/* 🧹 Clear form */
+function clearForm() {
+  title.value = "";
+  description.value = "";
+  pdfUrl.value = "";
+  imgUrl.value = "";
+}
+
+/* 🚪 Logout */
 function logout() {
   localStorage.removeItem("adminToken");
   window.location.href = "login.html";
 }
+
+/* 🚀 Init */
+loadMaterials();
