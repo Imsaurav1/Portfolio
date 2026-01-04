@@ -1,1 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="center">
+
+<div class="login-box">
+  <h2>Admin Login</h2>
+  <input id="email" placeholder="Admin Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="error"></p>
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>
 
