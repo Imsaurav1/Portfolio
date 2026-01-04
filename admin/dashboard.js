@@ -7,33 +7,56 @@ if (!token) {
 }
 
 /* 📥 Load all materials */
+/* 📥 Load all materials (PUBLIC API) */
 function loadMaterials() {
-  fetch(API, {
-    headers: {
-      "Authorization": "Bearer " + token
-    }
-  })
-    .then(res => res.json())
+  fetch(API)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to load materials");
+      }
+      return res.json();
+    })
     .then(data => {
       const table = document.getElementById("materialTable");
       table.innerHTML = "";
+
+      if (!data.length) {
+        table.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align:center;">No materials found</td>
+          </tr>
+        `;
+        return;
+      }
 
       data.forEach(item => {
         table.innerHTML += `
           <tr>
             <td>${item.title}</td>
             <td>${item.date || "-"}</td>
-            <td><a href="${item.pdfUrl}" target="_blank">View</a></td>
             <td>
-              <button class="action-btn edit" onclick="editMaterial('${item._id}', '${item.title}')">Edit</button>
-              <button class="action-btn delete" onclick="deleteMaterial('${item._id}')">Delete</button>
+              <a href="${item.pdfUrl}" target="_blank">View</a>
+            </td>
+            <td>
+              <button class="action-btn edit"
+                onclick="editMaterial('${item._id}', '${item.title.replace(/'/g, "\\'")}')">
+                Edit
+              </button>
+              <button class="action-btn delete"
+                onclick="deleteMaterial('${item._id}')">
+                Delete
+              </button>
             </td>
           </tr>
         `;
       });
     })
-    .catch(err => console.error("Load error:", err));
+    .catch(err => {
+      console.error("Load error:", err);
+      alert("Unable to load materials. Please refresh.");
+    });
 }
+
 
 /* ➕ Add material */
 function addMaterial() {
@@ -112,3 +135,4 @@ function logout() {
 
 /* 🚀 Init */
 loadMaterials();
+
