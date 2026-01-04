@@ -1,44 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
+<!-- Topbar -->
 <div class="topbar">
   <h2>Admin Dashboard</h2>
   <button onclick="logout()">Logout</button>
 </div>
 
-<div class="container">
+<div class="dashboard">
 
-  <div class="card">
-    <h3>Add Study Material</h3>
-    <input id="title" placeholder="Title">
-    <input id="imageUrl" placeholder="Image URL">
-    <input id="pdfUrl" placeholder="PDF URL">
-    <textarea id="description" placeholder="Description"></textarea>
-    <button onclick="addMaterial()">Add</button>
-  </div>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li class="active">Practice Materials</li>
+    </ul>
+  </aside>
 
-  <div class="card">
-    <h3>All Study Materials</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>PDF</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="materialTable"></tbody>
-    </table>
-  </div>
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Practice Materials</h1>
 
+    <!-- Add Form -->
+    <div class="card">
+      <h3>Add New Material</h3>
+      <div class="form">
+        <input id="title" placeholder="Title">
+        <input type="text" id="date" placeholder="DD-MM-YYYY">
+        <input id="imgUrl" placeholder="Image URL">
+        <input id="pdfUrl" placeholder="PDF URL">
+        <textarea id="description" placeholder="Description"></textarea>
+        <button onclick="addMaterial()">Add Material</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <h3>All Materials</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>PDF</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="materialTable"></tbody>
+      </table>
+    </div>
+
+  </main>
 </div>
 
-<script src="dashboard.js"></script>
+<script src="admin.js"></script>
+
+<script>
+  // Auto-fill today's date
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  document.getElementById("date").value = `${dd}-${mm}-${yyyy}`;
+
+  // Logout function
+  function logout() {
+    // Example: clear session and redirect
+    localStorage.clear();
+    window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
-
