@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Admin Login</title>
-  <link rel="stylesheet" href="css/admin.css">
-</head>
-<body class="center">
+const API = "https://studymaterial-1heb.onrender.com/api/admin/login";
 
-<div class="login-box">
-  <h2>Admin Login</h2>
-  <input id="email" placeholder="Admin Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <p id="error"></p>
-</div>
-
-<script src="js/auth.js"></script>
-</body>
-</html>
-
+function login() {
+  fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.token) {
+      localStorage.setItem("adminToken", data.token);
+      window.location.href = "dashboard.html";
+    } else {
+      document.getElementById("error").innerText = "Invalid credentials";
+    }
+  });
+}
