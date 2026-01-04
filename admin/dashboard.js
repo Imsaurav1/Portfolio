@@ -7,12 +7,12 @@ if (!token) {
 }
 
 /* 📥 Load all materials */
-/* 📥 Load all materials (PUBLIC API) */
+/* 📥 Load all materials – PUBLIC API */
 function loadMaterials() {
   fetch(API)
     .then(res => {
       if (!res.ok) {
-        throw new Error("Failed to load materials");
+        throw new Error("Failed to fetch materials");
       }
       return res.json();
     })
@@ -20,10 +20,10 @@ function loadMaterials() {
       const table = document.getElementById("materialTable");
       table.innerHTML = "";
 
-      if (!data.length) {
+      if (!data || data.length === 0) {
         table.innerHTML = `
           <tr>
-            <td colspan="4" style="text-align:center;">No materials found</td>
+            <td colspan="4" style="text-align:center;">No materials available</td>
           </tr>
         `;
         return;
@@ -53,7 +53,7 @@ function loadMaterials() {
     })
     .catch(err => {
       console.error("Load error:", err);
-      alert("Unable to load materials. Please refresh.");
+      alert("Unable to load materials. Check console for details.");
     });
 }
 
@@ -135,4 +135,5 @@ function logout() {
 
 /* 🚀 Init */
 loadMaterials();
+
 
