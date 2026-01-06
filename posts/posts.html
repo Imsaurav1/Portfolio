@@ -38,7 +38,7 @@
     const container = document.getElementById("postContainer");
 
     try {
-      const res = await fetch(`https://YOUR_BACKEND_DOMAIN/api/posts/${slug}`);
+      const res = await fetch(`https://studymaterial-1heb.onrender.com/api/posts/${slug}`);
 
       if (!res.ok) throw new Error("Post not found");
 
