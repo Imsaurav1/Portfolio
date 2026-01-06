@@ -2,7 +2,7 @@ const API = "https://studymaterial-1heb.onrender.com/api/posts";
 const token = localStorage.getItem("adminToken");
 
 /* 🔐 Auth Guard */
-const token = localStorage.getItem("adminToken");
+
 
 if (!token) {
   alert("Session expired. Please login again.");
