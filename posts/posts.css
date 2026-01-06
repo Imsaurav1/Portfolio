@@ -1,19 +1,32 @@
-body {
+* {
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
   background: #f9f9f9;
   color: #222;
-  margin: 0;
-  padding: 0;
 }
 
-header {
-  background: #ffffff;
-  padding: 20px;
+.site-header {
+  background: #0f172a;
+  color: #fff;
+  padding: 25px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
 }
 
-main {
+.site-header h1 {
+  margin-bottom: 6px;
+}
+
+.back-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
   max-width: 900px;
   margin: 30px auto;
   padding: 0 15px;
@@ -22,8 +35,8 @@ main {
 .post-card {
   background: #fff;
   padding: 20px;
+  border-radius: 8px;
   margin-bottom: 20px;
-  border-radius: 6px;
   border: 1px solid #ddd;
 }
 
@@ -32,23 +45,31 @@ main {
 }
 
 .post-card a {
+  color: #2563eb;
   text-decoration: none;
-  color: #007bff;
 }
 
 .post-card a:hover {
   text-decoration: underline;
 }
 
-article {
-  max-width: 900px;
-  margin: 30px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+.meta {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
 }
 
 article h1 {
   margin-top: 0;
+}
+
+article hr {
+  margin: 20px 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background: #eee;
+  font-size: 14px;
 }
