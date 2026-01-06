@@ -57,24 +57,34 @@ function addPost() {
   }
 
   fetch(API, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token
-    },
-    body: JSON.stringify({
-      title: postTitle.value,
-      excerpt: postExcerpt.value,
-      content: postContent.value,
-      status: postStatus.value
-    })
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer " + token
+  },
+  body: JSON.stringify({
+    title: postTitle.value,
+    excerpt: postExcerpt.value,
+    content: postContent.value,
+    status: postStatus.value
   })
-    .then(res => res.json())
-    .then(() => {
-      alert("Post Added");
-      clearPostForm();
-      loadPosts();
-    });
+})
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("Failed to add post");
+    }
+    return res.json();
+  })
+  .then(() => {
+    alert("Post Added");
+    clearPostForm();
+    loadPosts();
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error adding post. Check console.");
+  });
+
 }
 
 /* ✏️ Edit Post (title only for safety) */
