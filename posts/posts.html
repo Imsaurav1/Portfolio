@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title id="pageTitle">Post | SaurabhJha.live</title>
-  <meta name="description" id="metaDesc" content="">
+
+  <!-- Dynamic SEO -->
+  <title id="pageTitle">Loading... | SaurabhJha.live</title>
+  <meta name="description" id="metaDesc" content="Loading post..." />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph (for WhatsApp, LinkedIn, etc.) -->
+  <meta property="og:title" id="ogTitle" content="">
+  <meta property="og:description" id="ogDesc" content="">
+  <meta property="og:type" content="article">
+  <meta property="og:url" id="ogUrl" content="">
 
   <link rel="stylesheet" href="./posts.css">
 </head>
+
 <body>
 
 <header class="site-header">
@@ -15,13 +25,62 @@
 </header>
 
 <article class="container" id="postContainer">
-  <p>Loading post...</p>
+  <p class="loading">Loading post...</p>
 </article>
 
 <footer class="site-footer">
   © 2026 SaurabhJha.live | All Rights Reserved
 </footer>
 
-<script src="./posts.js"></script>
+<script>
+  (async function () {
+    const slug = window.location.pathname.split("/").pop();
+    const container = document.getElementById("postContainer");
+
+    try {
+      const res = await fetch(`https://YOUR_BACKEND_DOMAIN/api/posts/${slug}`);
+
+      if (!res.ok) throw new Error("Post not found");
+
+      const post = await res.json();
+
+      /* =====================
+         SEO UPDATES
+      ===================== */
+      document.title = `${post.title} | SaurabhJha.live`;
+      document.getElementById("metaDesc").content =
+        post.excerpt || post.title;
+
+      document.getElementById("ogTitle").content = post.title;
+      document.getElementById("ogDesc").content =
+        post.excerpt || post.title;
+      document.getElementById("ogUrl").content =
+        window.location.href;
+
+      /* =====================
+         CONTENT RENDER
+      ===================== */
+      container.innerHTML = `
+        <h1 class="post-title">${post.title}</h1>
+        <div class="post-meta">
+          <span>By ${post.author || "Saurabh Kumar Jha"}</span>
+          <span>•</span>
+          <span>${new Date(post.createdAt).toDateString()}</span>
+        </div>
+        <div class="post-content">
+          ${post.content}
+        </div>
+      `;
+
+    } catch (err) {
+      container.innerHTML = `
+        <h1>404 – Post Not Found</h1>
+        <p>The post you are looking for does not exist.</p>
+      `;
+      document.title = "Post Not Found | SaurabhJha.live";
+    }
+  })();
+</script>
+
 </body>
 </html>
