@@ -50,20 +50,27 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
  *************************************************/
 (function loadSinglePost() {
   const container = document.getElementById("postContainer");
-  if (!container) return; // not on single post page
+  if (!container) return;
 
-  /* Extract slug from URL
-     Example URL:
-     https://saurabhjha.live/posts/infosys-specialist-programmer-interview-experience
+  /*
+    Valid URLs:
+    /posts/my-slug
+    NOT:
+    /posts
+    /posts/
+    /posts/posts.html
   */
+
   const path = window.location.pathname;
 
-  // Remove "/posts/" from path
-  const slug = path.startsWith("/posts/")
-    ? path.replace("/posts/", "").replace("/", "")
-    : null;
+  let slug = null;
 
-  if (!slug) {
+  if (path.startsWith("/posts/")) {
+    slug = path.replace("/posts/", "").replace("/", "");
+  }
+
+  // ❌ Block invalid slug
+  if (!slug || slug === "posts.html" || slug === "index.html") {
     container.innerHTML = "<p>Post not found.</p>";
     return;
   }
@@ -74,18 +81,12 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
       return res.json();
     })
     .then(post => {
-      // SEO
-      const titleEl = document.getElementById("pageTitle");
-      if (titleEl) {
-        titleEl.innerText = `${post.title} | SaurabhJha.live`;
-      }
+      document.getElementById("pageTitle").innerText =
+        `${post.title} | SaurabhJha.live`;
 
-      const metaDesc = document.getElementById("metaDesc");
-      if (metaDesc) {
-        metaDesc.content = post.excerpt || post.title;
-      }
+      document.getElementById("metaDesc").content =
+        post.excerpt || post.title;
 
-      // Render post
       container.innerHTML = `
         <h1>${post.title}</h1>
         <div class="meta">
@@ -98,6 +99,6 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
     })
     .catch(err => {
       console.error("Single post error:", err);
-      container.innerHTML = "<p>Unable to load post.</p>";
+      container.innerHTML = "<p>Post not found.</p>";
     });
 })();
