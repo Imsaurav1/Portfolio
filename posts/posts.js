@@ -1,4 +1,4 @@
-const API_BASE = "https://studymaterial-1heb.onrender.com/api/posts"; 
+const API_BASE = "https://studymaterial-1heb.onrender.com/api"; 
 // change if backend domain is different
 
 // ------------------------------
