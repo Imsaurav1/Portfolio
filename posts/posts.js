@@ -17,18 +17,19 @@ if (document.getElementById("postsContainer")) {
 
       posts.forEach(post => {
         container.innerHTML += `
-          <div class="post-card">
-            <h2>
-              <a href="post.html?slug=${post.slug}">
-                ${post.title}
-              </a>
-            </h2>
-            <div class="meta">
-              ${new Date(post.createdAt).toDateString()}
-            </div>
-            <p>${post.excerpt || ""}</p>
-          </div>
-        `;
+           <div class="post-card">
+             <h2>
+               <a href="/posts/${post.slug}">
+                 ${post.title}
+               </a>
+             </h2>
+             <div class="meta">
+               ${new Date(post.createdAt).toDateString()}
+             </div>
+             <p>${post.excerpt || ""}</p>
+           </div>
+         `;
+
       });
     })
     .catch(() => {
