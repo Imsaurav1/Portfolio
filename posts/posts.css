@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  background: #f9f9f9;
+  background: #545454;
   color: #222;
 }
 
@@ -70,6 +70,6 @@ article hr {
 .site-footer {
   text-align: center;
   padding: 20px;
-  background: #eee;
+  background: #545454;
   font-size: 14px;
 }
