@@ -73,3 +73,18 @@ article hr {
   background: #545454;
   font-size: 14px;
 }
+
+
+.tags {
+  margin: 10px 0;
+}
+
+.tags span {
+  display: inline-block;
+  background: #f1f1f1;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
