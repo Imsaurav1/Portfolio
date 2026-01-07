@@ -439,96 +439,72 @@
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 <script>
-  (async function () {
-    const slug = window.location.pathname.split("/").pop();
-    const container = document.getElementById("postContainer");
+(async function () {
+  const slug = window.location.pathname.split("/").pop();
 
-    if (!slug || slug === "posts" || slug === "posts.html") {
-      container.innerHTML = "<h1>Post Not Found</h1>";
-      return;
+  if (!slug) {
+    document.getElementById("blogContent").innerHTML = "Post not found";
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      `https://studymaterial-1heb.onrender.com/api/posts/${slug}`
+    );
+
+    if (!res.ok) throw new Error("Post not found");
+
+    const post = await res.json();
+
+    /* =====================
+       SEO
+    ===================== */
+    document.title = `${post.title} | SaurabhJha.live`;
+    document.getElementById("metaDesc").content =
+      post.excerpt || post.title;
+
+    document.getElementById("ogTitle").content = post.title;
+    document.getElementById("ogDesc").content =
+      post.excerpt || post.title;
+    document.getElementById("ogUrl").content = window.location.href;
+
+    /* =====================
+       CONTENT
+    ===================== */
+    document.getElementById("blogTitle").innerText = post.title;
+
+    document.getElementById("blogDate").innerText =
+      new Date(post.createdAt).toDateString();
+
+    document.getElementById("blogCategory").innerText =
+      post.category || "Blog";
+
+    document.getElementById("blogViews").innerText =
+      `👁️ ${post.views || 0} views`;
+
+    document.getElementById("blogContent").innerHTML =
+      post.content;
+
+    /* =====================
+       TAGS
+    ===================== */
+    const tagsDiv = document.getElementById("blogTags");
+    if (post.tags && post.tags.length) {
+      tagsDiv.innerHTML = post.tags
+        .map(tag => `<span class="tag">#${tag}</span>`)
+        .join(" ");
     }
 
-    const VIEW_KEY = `viewed_${slug}`;
-
-    try {
-      /* =====================
-         🔹 COUNT VIEW (ONCE)
-      ===================== */
-      if (!localStorage.getItem(VIEW_KEY)) {
-        fetch(`https://studymaterial-1heb.onrender.com/api/posts/${slug}/view`, {
-          method: "POST"
-        }).then(() => {
-          localStorage.setItem(VIEW_KEY, "true");
-        }).catch(() => {});
-      }
-
-      /* =====================
-         🔹 FETCH POST
-      ===================== */
-      const res = await fetch(
-        `https://studymaterial-1heb.onrender.com/api/posts/${slug}`
-      );
-
-      if (!res.ok) throw new Error("Post not found");
-
-      const post = await res.json();
-
-      /* =====================
-         SEO UPDATES
-      ===================== */
-      document.title = `${post.title} | SaurabhJha.live`;
-      document.getElementById("metaDesc").content =
-        post.excerpt || post.title;
-
-      document.getElementById("ogTitle").content = post.title;
-      document.getElementById("ogDesc").content =
-        post.excerpt || post.title;
-      document.getElementById("ogUrl").content =
-        window.location.href;
-
-      /* =====================
-         TAGS HTML
-      ===================== */
-      let tagsHTML = "";
-      if (post.tags && post.tags.length > 0) {
-        tagsHTML = `
-          <div class="post-tags">
-            ${post.tags.map(tag => `<span>#${tag}</span>`).join("")}
-          </div>
-        `;
-      }
-
-      /* =====================
-         CONTENT RENDER
-      ===================== */
-      container.innerHTML = `
-        <h1 class="post-title">${post.title}</h1>
-
-        <div class="post-meta">
-          <span>By ${post.author || "Saurabh Kumar Jha"}</span>
-          <span>•</span>
-          <span>${new Date(post.createdAt).toDateString()}</span>
-          <span>•</span>
-          <span>👁️ ${post.views || 0} views</span>
-        </div>
-
-        ${tagsHTML}
-
-        <div class="post-content">
-          ${post.content}
-        </div>
-      `;
-
-    } catch (err) {
-      console.error("Post load error:", err);
-      container.innerHTML = `
-        <h1>404 – Post Not Found</h1>
-        <p>The post you are looking for does not exist.</p>
-      `;
-      document.title = "Post Not Found | SaurabhJha.live";
-    }
-  })();
+  } catch (err) {
+    console.error(err);
+    document.getElementById("blogContent").innerHTML = `
+      <h2>404 – Post Not Found</h2>
+      <p>This post does not exist.</p>
+    `;
+  }
+})();
 </script>
+
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="/js/form.js"></script>
