@@ -52,17 +52,7 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
   const container = document.getElementById("postContainer");
   if (!container) return;
 
-  /*
-    Valid URLs:
-    /posts/my-slug
-    NOT:
-    /posts
-    /posts/
-    /posts/posts.html
-  */
-
   const path = window.location.pathname;
-
   let slug = null;
 
   if (path.startsWith("/posts/")) {
@@ -75,25 +65,55 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
     return;
   }
 
+  const viewKey = `viewed_${slug}`;
+
+  // 🔹 COUNT VIEW (once per browser)
+  if (!localStorage.getItem(viewKey)) {
+    fetch(`${API_BASE}/posts/${slug}/view`, { method: "POST" })
+      .then(res => res.json())
+      .then(() => {
+        localStorage.setItem(viewKey, "true");
+      })
+      .catch(() => {});
+  }
+
+  // 🔹 FETCH POST DATA
   fetch(`${API_BASE}/posts/${slug}`)
     .then(res => {
       if (!res.ok) throw new Error("Post not found");
       return res.json();
     })
     .then(post => {
+      // SEO
       document.getElementById("pageTitle").innerText =
         `${post.title} | SaurabhJha.live`;
 
       document.getElementById("metaDesc").content =
         post.excerpt || post.title;
 
+      // 🔹 Render tags
+      let tagsHTML = "";
+      if (post.tags && post.tags.length > 0) {
+        tagsHTML = `
+          <div class="tags">
+            ${post.tags.map(tag => `<span>#${tag}</span>`).join("")}
+          </div>
+        `;
+      }
+
       container.innerHTML = `
         <h1>${post.title}</h1>
+
         <div class="meta">
           By ${post.author || "Saurabh Jha"} •
-          ${new Date(post.createdAt).toDateString()}
+          ${new Date(post.createdAt).toDateString()} •
+          👁️ ${post.views || 0} views
         </div>
+
+        ${tagsHTML}
+
         <hr>
+
         ${post.content}
       `;
     })
@@ -102,3 +122,4 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
       container.innerHTML = "<p>Post not found.</p>";
     });
 })();
+
