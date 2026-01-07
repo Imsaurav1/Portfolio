@@ -56,36 +56,46 @@ function addPost() {
     return;
   }
 
-  fetch(API, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer " + token
-  },
-  body: JSON.stringify({
-    title: postTitle.value,
-    excerpt: postExcerpt.value,
-    content: postContent.value,
-    status: postStatus.value
-  })
-})
-  .then(res => {
-    if (!res.ok) {
-      throw new Error("Failed to add post");
-    }
-    return res.json();
-  })
-  .then(() => {
-    alert("Post Added");
-    clearPostForm();
-    loadPosts();
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Error adding post. Check console.");
-  });
+  // ✅ Read tags input
+  const tagsInput = document.getElementById("postTags").value;
 
+  // ✅ Convert comma-separated tags to array
+  const tags = tagsInput
+    .split(",")
+    .map(tag => tag.trim())
+    .filter(tag => tag.length > 0);
+
+  fetch(API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      title: postTitle.value,
+      excerpt: postExcerpt.value,
+      content: postContent.value,
+      status: postStatus.value,
+      tags // 👈 NEW
+    })
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to add post");
+      }
+      return res.json();
+    })
+    .then(() => {
+      alert("Post Added");
+      clearPostForm();
+      loadPosts();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error adding post. Check console.");
+    });
 }
+
 
 /* ✏️ Edit Post (title only for safety) */
 function editPost(id, oldTitle) {
