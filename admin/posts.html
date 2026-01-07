@@ -30,20 +30,28 @@
 
     <!-- Add Post -->
     <div class="card">
-      <h3>Add New Post</h3>
-      <div class="form">
-        <input id="postTitle" placeholder="Post Title">
-        <input id="postExcerpt" placeholder="Short Excerpt">
-        <textarea id="postContent" rows="6" placeholder="Paste FULL HTML content"></textarea>
+  <h3>Add New Post</h3>
+  <div class="form">
+    <input id="postTitle" placeholder="Post Title">
+    <input id="postExcerpt" placeholder="Short Excerpt">
+    <!-- ✅ NEW: Tags input -->
+    <input
+      id="postTags"
+      placeholder="Tags (comma separated e.g. Infosys, Coding, DSA)"
+    >
+    <textarea
+      id="postContent"
+      rows="6"
+      placeholder="Paste FULL HTML content">
+    </textarea>
+    <select id="postStatus">
+      <option value="published">Published</option>
+      <option value="draft">Draft</option>
+    </select>
+    <button onclick="addPost()">Add Post</button>
+  </div>
+</div>
 
-        <select id="postStatus">
-          <option value="published">Published</option>
-          <option value="draft">Draft</option>
-        </select>
-
-        <button onclick="addPost()">Add Post</button>
-      </div>
-    </div>
 
     <!-- Posts Table -->
     <div class="card">
