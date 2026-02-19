@@ -18,33 +18,137 @@ document.addEventListener("DOMContentLoaded", function () {
   // ──────────────────────────────────────────────────────────────
   const style = document.createElement('style');
   style.textContent = `
+    /* ===============================
+      FLOATING BUTTON CONTAINER
+    ================================ */
+
     #ai-widget-btn {
       position: fixed;
       bottom: 28px;
       right: 28px;
       z-index: 99999;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
+
+      background: none;
       border: none;
-      background: linear-gradient(135deg, #7c6aff, #ff6aad);
-      color: white;
-      font-size: 24px;
       cursor: pointer;
-      box-shadow: 0 4px 24px #7c6aff55;
-      transition: transform 0.2s ease;
+
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+
+      transition: transform 0.3s ease;
     }
 
     #ai-widget-btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
+
+    /* ===============================
+      AI CONTAINER
+    ================================ */
+
+    .ai-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ===============================
+      BOT IMAGE
+    ================================ */
+
+    .ai-bot {
+      width: 85px;
+      max-width: 100%;
+      display: block;
+      animation: floatBot 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ===============================
+      SHADOW
+    ================================ */
+
+    .ai-shadow {
+      width: 70px;
+      height: 14px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,0,0,0.1) 70%,
+        transparent 100%
+      );
+      border-radius: 50%;
+      margin-top: 4px;
+      animation: shadowBounce 3s ease-in-out infinite;
+    }
+
+    @keyframes shadowBounce {
+      0%,100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(0.7); opacity: 0.15; }
+    }
+
+    /* ===============================
+      HI BUBBLE
+    ================================ */
+
+    .hi-bubble {
+      position: absolute;
+      top: -8px;
+      left: 65px;
+      background: white;
+      color: #1e3a8a;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 14px;
+      font-weight: 600;
+      opacity: 0;
+      animation: popHi 4s infinite;
+    }
+
+    @keyframes popHi {
+      0%,60%,100% { opacity: 0; transform: scale(0.8); }
+      70%,90% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ===============================
+      LABEL TEXT
+    ================================ */
+
+    .ai-label {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    /* ===============================
+      GLOW EFFECT
+    ================================ */
+
+    #ai-widget-btn {
+      animation: glow 3s infinite;
+    }
+
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 0px #7c6aff); }
+      50% { filter: drop-shadow(0 0 10px #7c6aff); }
+      100% { filter: drop-shadow(0 0 0px #7c6aff); }
+    }
+
+    /* ===============================
+      CHATBOX UI (UNCHANGED CLEAN)
+    ================================ */
 
     #ai-widget-box {
       position: fixed;
-      bottom: 96px;
+      bottom: 110px;
       right: 28px;
       z-index: 99999;
       width: 360px;
@@ -69,157 +173,41 @@ document.addEventListener("DOMContentLoaded", function () {
       to   { opacity: 1; transform: none; }
     }
 
-    #ai-widget-header {
-      padding: 14px 16px;
-      background: #1c1c28;
-      border-bottom: 1px solid #2a2a3d;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    #ai-widget-header .title {
-      color: #e8e8f0;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    #ai-widget-header .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px #4ade8088;
-    }
-
-    #ai-widget-close {
-      background: none;
-      border: none;
-      color: #8888aa;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    #ai-widget-msgs {
-      flex: 1;
-      overflow-y: auto;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .w-msg {
-      max-width: 85%;
-      padding: 9px 13px;
-      border-radius: 14px;
-      font-size: 0.85rem;
-      line-height: 1.55;
-      color: #e8e8f0;
-      word-wrap: break-word;
-    }
-
-    .w-msg.user {
-      align-self: flex-end;
-      background: #1e1b40;
-      border: 1px solid #3a3470;
-      border-bottom-right-radius: 4px;
-    }
-
-    .w-msg.bot {
-      align-self: flex-start;
-      background: #1c1c28;
-      border: 1px solid #2a2a3d;
-      border-bottom-left-radius: 4px;
-    }
-
-    .w-msg.bot a {
-      color: #7c6aff;
-      text-decoration: none;
-    }
-
-    .w-msg.bot a:hover {
-      text-decoration: underline;
-    }
-
-    .w-typing {
-      align-self: flex-start;
-      background: #1c1c28;
-      border: 1px solid #2a2a3d;
-      border-radius: 14px;
-      border-bottom-left-radius: 4px;
-      padding: 10px 14px;
-      display: flex;
-      gap: 4px;
-    }
-
-    .w-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #8888aa;
-      animation: wbounce 1.2s infinite;
-    }
-
-    .w-dot:nth-child(2){animation-delay:.2s}
-    .w-dot:nth-child(3){animation-delay:.4s}
-
-    @keyframes wbounce{
-      0%,80%,100%{transform:translateY(0);opacity:.4}
-      40%{transform:translateY(-5px);opacity:1}
-    }
-
-    #ai-widget-input-row {
-      padding: 10px 12px;
-      border-top: 1px solid #2a2a3d;
-      display: flex;
-      gap: 8px;
-      background: #13131a;
-    }
-
-    #ai-widget-input {
-      flex: 1;
-      background: #1c1c28;
-      border: 1px solid #2a2a3d;
-      border-radius: 10px;
-      color: #e8e8f0;
-      padding: 8px 12px;
-      font-size: 0.83rem;
-      outline: none;
-      resize: none;
-      max-height: 80px;
-    }
-
-    #ai-widget-input:focus {
-      border-color: #7c6aff;
-    }
-
-    #ai-widget-send {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      border: none;
-      background: linear-gradient(135deg,#7c6aff,#ff6aad);
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #ai-widget-send:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
+    /* ===============================
+      MOBILE RESPONSIVE
+    ================================ */
 
     @media(max-width:480px){
-      #ai-widget-box{width:calc(100vw - 32px);right:16px;bottom:88px;}
-      #ai-widget-btn{bottom:20px;right:16px;}
+
+      #ai-widget-btn {
+        bottom: 18px;
+        right: 14px;
+      }
+
+      .ai-bot {
+        width: 65px;
+      }
+
+      .ai-shadow {
+        width: 55px;
+      }
+
+      .ai-label {
+        font-size: 11px;
+      }
+
+      .hi-bubble {
+        font-size: 10px;
+        left: 50px;
+      }
+
+      #ai-widget-box {
+        width: calc(100vw - 24px);
+        right: 12px;
+        bottom: 100px;
+      }
     }
+
   `;
   document.head.appendChild(style);
 
@@ -227,7 +215,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // HTML
   // ──────────────────────────────────────────────────────────────
   document.body.insertAdjacentHTML('beforeend', `
-    <button id="ai-widget-btn" title="Chat with AI assistant">💬</button>
+    <button id="ai-widget-btn">
+      <div class="ai-container">
+        <img src="images/chatbot1.png" class="ai-bot" />
+        <div class="ai-shadow"></div>
+        <div class="hi-bubble">Hi!</div>
+      </div>
+    </button>
+
+
 
     <div id="ai-widget-box">
       <div id="ai-widget-header">
