@@ -400,14 +400,14 @@ document.addEventListener("DOMContentLoaded", function () {
     <div id="ai-widget-box">
       <div id="ai-widget-header">
         <div class="title">
-          <span class="dot"></span> Site Assistant
+          <span class="dot"></span> Syneix AI Assistant
         </div>
         <button id="ai-widget-close">✕</button>
       </div>
 
       <div id="ai-widget-msgs">
         <div class="w-msg bot">
-          👋 Hi! I'm your site assistant. Ask me anything about this website!
+          👋 Hi! I'm Syneix AI. Ask me anything about this website and coding!
         </div>
       </div>
 
