@@ -1,533 +1,443 @@
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-		 <title id="pageTitle">Loading... | SaurabhJha.live</title>
+<html lang="en">
+<head>
+  <!-- =============================================
+       PRIMARY META (dynamic, set by JS)
+  ============================================= -->
+  <title id="pageTitle">Loading... | SaurabhJha.live</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Single description tag (you had TWO — second one was static & wrong) -->
   <meta name="description" id="metaDesc" content="Loading post..." />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  	<meta charset="utf-8">
 
-  <!-- Open Graph (for WhatsApp, LinkedIn, etc.) -->
-  <meta property="og:title" id="ogTitle" content="">
-  <meta property="og:description" id="ogDesc" content="">
-  <meta property="og:type" content="article">
-  <meta property="og:url" id="ogUrl" content="">
-	
-	
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
 
+  <!-- Open Graph -->
+  <meta property="og:title"       id="ogTitle"   content="" />
+  <meta property="og:description" id="ogDesc"    content="" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         id="ogUrl"     content="" />
 
-<meta name="description" content="Complete preparation guide for Infosys Specialist Programmer (SP) and Digital Specialist Engineer (DSE) 2025. Get latest exam pattern, coding questions, interview experience, assessment test details, off campus drive pattern, and preparation strategy." />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet" />
 
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/animate.css" />
+  <link rel="stylesheet" href="/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="/css/magnific-popup.css" />
+  <link rel="stylesheet" href="/css/aos.css" />
+  <link rel="stylesheet" href="/css/ionicons.min.css" />
+  <link rel="stylesheet" href="/css/flaticon.css" />
+  <link rel="stylesheet" href="/css/icomoon.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/commnet.css" />
+  <link rel="stylesheet" href="/css/form.css" />
 
-<!-- SEO & Indexing -->
-<meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index, follow" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta charset="UTF-8" />
+  <style>
+    /* ── Post Layout ───────────────────────────── */
+    #blogPost {
+      padding: 2rem 0;
+    }
 
+    #blogPost h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
 
-		<link rel="icon" type="image/png" href="/images/logo.png" />
-		
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    .blog-meta {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 0.5rem;
+    }
 
-		<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
-		<link rel="stylesheet" href="/css/animate.css">
-		
-		<link rel="stylesheet" href="/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="/css/owl.theme.default.min.css">
-		<link rel="stylesheet" href="/css/magnific-popup.css">
+    .blog-tags .tag {
+      display: inline-block;
+      background: #ffbd39;
+      color: #000;
+      border-radius: 4px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
 
-		<link rel="stylesheet" href="/css/aos.css">
+    /* ── Auth Popup ────────────────────────────── */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
 
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		
-		<link rel="stylesheet" href="/css/flaticon.css">
-		<link rel="stylesheet" href="/css/icomoon.css">
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/commnet.css">
-		<link rel="stylesheet" href="/css/form.css">
+    .popup.active {
+      display: flex;
+    }
 
+    .popup-content {
+      background: #545454;
+      padding: 20px;
+      border-radius: 8px;
+      width: 350px;
+      text-align: center;
+      position: relative;
+    }
 
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
 
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
 
-	<style>
+    .tab {
+      flex: 1;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      background: #f1f1f1;
+    }
 
-	/*======================================
-	//--//-->   ABOUT
-	======================================*/
+    .tab.active {
+      background: #ffbd39;
+      color: #fff;
+    }
 
-	.about-mf .box-shadow-full {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
-	}
+    .btn-success {
+      color: #fff;
+      background-color: #ffbd39;
+      border-color: #545454;
+    }
 
-	.about-mf .about-img {
-	margin-bottom: 2rem;
-	}
+    .form { display: none; }
+    .form.active { display: block; }
+  </style>
 
-	.about-mf .about-img img {
-	margin-left: 10px;
-	}
+  <!-- Vercel Analytics -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 
+  <!-- Vercel Speed Insights -->
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 
-	.skill-mf .progress {
-	/* background-color: #cde1f8; */
-	margin: .5rem 0 1.2rem 0;
-	border-radius: 0;
-	height: .7rem;
-	}
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558" crossorigin="anonymous"></script>
+</head>
 
-	.skill-mf .progress .progress-bar {
-	height: .7rem;
-	background-color: #ffbd39;
-	}
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
-	/* Animation styles */
-	#typing-animation {
-	position: relative;
-	font-size: 30px;
-	font-weight: bold;
-	color: rgb(255, 255, 255);
-	overflow: hidden;
-	white-space: nowrap;
-	animation: typing 3s steps(20, end) infinite;
-	}
-
-	#typing-animation:before {
-	content: "";
-	/* position: absolute; */
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 100%;
-	background-color: #ccc;
-	animation: typing-cursor 0.5s ease-in-out infinite;
-	}
-
-	@keyframes typing {
-	from {
-		width: 0;
-	}
-	to {
-		width: 100%;
-	}
-	}
-
-	@keyframes typing-cursor {
-	from {
-		width: 5px;
-	}
-	to {
-		width: 0;
-	}
-	}
-
-	#linkedin-post {
-	padding: 60px 0;
-	background-color: #000204;
-	color: #fff;
-	}
-
-	#linkedin-post h2 {
-	font-size: 2rem;
-	margin-bottom: 30px;
-	}
-
-	#linkedin-post iframe {
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-	border-radius: 12px;
-	}
-
-
-	/* project image zoom effect */
-
-	.zoom-effect {
-	overflow: hidden;
-	transition: transform 0.3s ease-out;
-	}
-
-	.zoom-effect:hover {
-	transform: scale(1.1);
-	}
-
-
-						
-		
-		/* Popup Overlay */
-		.popup {
-		  display: none; 
-		  position: fixed; 
-		  top: 0; left: 0; 
-		  width: 100%; height: 100%; 
-		  background: rgba(0,0,0,0.6); 
-		  justify-content: center; align-items: center;
-		}
-		.popup-content {
-		  background: #545454; 
-		  padding: 20px; 
-		  border-radius: 8px; 
-		  width: 350px;
-		  text-align: center;
-		  position: relative;
-		}
-		.close {
-		  position: absolute; 
-		  top: 10px; right: 15px; 
-		  font-size: 20px; 
-		  cursor: pointer;
-		}
-		.tabs {
-		  display: flex;
-		  justify-content: center;
-		  margin-bottom: 20px;
-		}
-		.tab {
-		  flex: 1;
-		  padding: 10px;
-		  cursor: pointer;
-		  border: none;
-		  background: #f1f1f1;
-		}
-		.tab.active {
-		  background: #ffbd39;
-		  color: #fff;
-		}
-		.btn-success {
-		    color: #fff;
-		    background-color: #ffbd39;
-		    border-color: #545454;
-		}
-		.form {
-		  display: none;
-		}
-		.form.active {
-		  display: block;
-		}
-		
-
-	</style>
-		<script>
-	window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-	</script>
-	<script defer src="/_vercel/insights/script.js"></script>
-
-		<script>
-	window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-	</script>
-	<script defer src="/_vercel/speed-insights/script.js"></script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558"
-		crossorigin="anonymous"></script>
-
-    
-
-
-	</head>
-	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-  <!-- Navbar -->
+  <!-- =============================================
+       NAVBAR
+  ============================================= -->
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SAURABH KUMAR JHA</a>
-      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
-        data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="/index.html">SAURABH KUMAR JHA</a>
+
+      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+        type="button"
+        data-toggle="collapse"
+        data-target="#ftco-nav"
+        aria-controls="ftco-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav nav ml-auto">
-          <li class="nav-item"><a href="/home-section" class="nav-link"><span>Home</span></a></li>
-          <li class="nav-item"><a href="/about-section" class="nav-link"><span>About</span></a></li>
-          <li class="nav-item"><a href="/resume-section" class="nav-link"><span>Resume</span></a></li>
-          <li class="nav-item"><a href="/project-section" class="nav-link"><span>Projects</span></a></li>
-          <li class="nav-item"><a href="/blogs-section" class="nav-link"><span>Blogs</span></a></li>
-          <li class="nav-item"><a href="/contact-section" class="nav-link"><span>Contact</span></a></li>
-          <li class="nav-item"><a href="/Games" class="nav-link"><span>Games</span></a></li>
+          <li class="nav-item"><a href="/#home-section"    class="nav-link"><span>Home</span></a></li>
+          <li class="nav-item"><a href="/#about-section"   class="nav-link"><span>About</span></a></li>
+          <li class="nav-item"><a href="/#resume-section"  class="nav-link"><span>Resume</span></a></li>
+          <li class="nav-item"><a href="/#project-section" class="nav-link"><span>Projects</span></a></li>
+          <li class="nav-item"><a href="/#blogs-section"   class="nav-link"><span>Blogs</span></a></li>
+          <li class="nav-item"><a href="/#contact-section" class="nav-link"><span>Contact</span></a></li>
+          <li class="nav-item"><a href="/Games"            class="nav-link"><span>Games</span></a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- LinkedIn Section -->
-<section class="ftco-section ftco-no-pb" id="linkedin-section">
-  <div class="container">
+  <!-- =============================================
+       BLOG POST
+  ============================================= -->
+  <section class="ftco-section ftco-no-pb" id="linkedin-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
 
-    <!-- Blog Post Container -->
-<div class="row justify-content-center">
-  <div class="col-md-10">
+          <article id="blogPost" class="ftco-animate">
 
-    <article id="blogPost" class="ftco-animate">
-      <h1 id="blogTitle"></h1>
+            <!-- Title -->
+            <h1 id="blogTitle"></h1>
 
-      <!-- ✅ META INFO -->
-      <div class="blog-meta">
-        <span id="blogDate"></span> ·
-        <span id="blogCategory"></span> ·
-        <span id="blogViews">👁️ 0 views</span>
-      </div>
+            <!-- Meta -->
+            <div class="blog-meta">
+              <span id="blogDate"></span> ·
+              <span id="blogCategory"></span> ·
+              <span id="blogViews">👁️ 0 views</span>
+            </div>
 
-      <!-- ✅ TAGS -->
-      <div id="blogTags" class="blog-tags mt-2"></div>
+            <!-- Tags -->
+            <div id="blogTags" class="blog-tags mt-2"></div>
 
-      <div id="blogContent" class="mt-4">
-        Loading post...
-      </div>
-    </article>
+            <!-- Content -->
+            <div id="blogContent" class="mt-4">
+              <p>Loading post…</p>
+            </div>
 
-  </div>
-</div>
+          </article>
 
-
-
-
-  </div>
-</section>
-
-
-		<section class="ftco-section comment-section ftco-no-pb" id="comment-section">
-		<div class="container">
-	
-		<div class="row justify-content-center mb-5 pb-3">
-			<div class="col-md-7 heading-section text-center ftco-animate">
-			<h1 class="big big-2">Comments</h1>
-			<h2 class="mb-4">Leave a Comment</h2>
-			<p>Feel free to leave your thoughts, feedback, or questions below!</p>
-			</div>
-		</div>
-	<!-- Comment Section -->
-<!-- Comment Form -->
-<div class="row">
-  <div class="col-md-12">
-    <form id="commentForm">
-
-      <div class="mb-3">
-        <input
-          type="text"
-          id="name"
-          class="form-control"
-          placeholder="Your Name"
-          required
-        />
-      </div>
-
-      <div class="mb-3">
-        <textarea
-          id="comment"
-          class="form-control"
-          rows="4"
-          placeholder="Your Comment"
-          required
-        ></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-primary py-3 px-5">
-        Submit Comment
-      </button>
-
-    </form>
-  </div>
-</div>
-
-<!-- Display Comments -->
-<div class="row mt-5">
-  <div class="col-md-12">
-    <h3 class="mb-4">Comments</h3>
-
-    <div id="commentList">
-      <!-- Comments will be dynamically loaded here -->
-    </div>
-
-  </div>
-</div>
-
-
-		<div class="container">
-			<div class="col-md-7 ftco-animate text-center fadeInUp ftco-animated"></div>
-			<br>
-			<br>
-			
-				<div class="row d-flex contact-info mb-5">
-					<div class="col-md-7 ftco-animate text-center">
-						<h2>Have a<span> Question?  </span> <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-					</div>
-				</div>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					<li class="ftco-animate normal-txt">Find me on  </li>
-					<li class="ftco-animate"><a href="https://www.youtube.com/@saurabh_jha_nituk"><span class="icon-youtube"></span></a></li>
-					<li class="ftco-animate"><a href="https://www.linkedin.com/in/imsaurav1/"><span class="icon-linkedin"></span></a></li>  
-					<li class="ftco-animate"><a href="https://x.com/I_m_saurav____"><span class="icon-twitter"></span></a></li>
-					<li class="ftco-animate"><a href="https://www.facebook.com/thesauravking/"><span class="icon-facebook"></span></a></li>
-					<li class="ftco-animate"><a href="https://www.instagram.com/i_m_saurav____/"><span class="icon-instagram"></span></a></li>
-					<li class="ftco-animate"><a href="https://t.me/sauravjha1234"><span class="icon-telegram"></span></a></li>
-					</ul>
-				<br>
-		</div>
-		</div>
-	</section>
-
-
-
-				<!-- Login/Register Popup -->
-<div id="authPopup" class="popup">
-  <div class="popup-content">
-    <span class="close" id="closePopup">&times;</span>
-
-    <!-- Tabs -->
-    <div class="tabs">
-      <button id="loginTab" class="tab active">Login</button>
-      <button id="registerTab" class="tab">Register</button>
-    </div>
-
-    <!-- Login Form -->
-    <form id="loginForm" class="form active">
-      <h2 class="mb-4">Login</h2>
-      <div class="form-group">
-        <input type="email" id="loginEmail" placeholder="Email Address" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="loginPassword" placeholder="Password" required>
-      </div>
-      <button type="submit" class="btn btn-primary py-2 px-4">Login</button>
-    </form>
-
-    <!-- Register Form -->
-    <form id="registerForm" class="form">
-	  <h3>Register</h3>
-      <div class="form-group">
-        <input type="text" id="registerName" placeholder="Full Name" required>
-      </div>
-      <div class="form-group">
-        <input type="email" id="registerEmail" placeholder="Email Address" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="registerPassword" placeholder="Password" required>
-      </div>
-      <button type="submit" class="btn btn-success py-2 px-4">Sign Up</button>
-    </form>
-  </div>
-</div>
-
-
-
-	
-		
-		<footer class="ftco-footer ftco-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-
-        <!-- Policy Links -->
-        <p>
-          <a href="/privacy-policy">Privacy Policy</a> |
-          <a href="/disclaimer">Disclaimer</a> |
-          <a href="/terms-and-conditions">Terms & Conditions</a>
-        </p>
-
-        <!-- Copyright -->
-        <p class="mt-2">
-          © 2026 <strong>SaurabhJha.live</strong> | All Rights Reserved
-        </p>
-
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- =============================================
+       COMMENT SECTION
+  ============================================= -->
+  <section class="ftco-section comment-section ftco-no-pb" id="comment-section">
+    <div class="container">
+
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+          <h2 class="mb-4">Leave a Comment</h2>
+          <p>Feel free to leave your thoughts, feedback, or questions below!</p>
+        </div>
+      </div>
+
+      <!-- Comment Form -->
+      <div class="row">
+        <div class="col-md-12">
+          <form id="commentForm">
+            <div class="mb-3">
+              <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+            </div>
+            <div class="mb-3">
+              <textarea id="comment" class="form-control" rows="4" placeholder="Your Comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary py-3 px-5">Submit Comment</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Comment List -->
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <h3 class="mb-4">Comments</h3>
+          <div id="commentList"></div>
+        </div>
+      </div>
+
+      <!-- Question CTA -->
+      <div class="container mt-5">
+        <div class="row d-flex contact-info mb-5">
+          <div class="col-md-7 ftco-animate text-center">
+            <h2>Have a <span>Question?</span>
+              <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn btn-primary py-3 px-5">Click Here</a>
+            </h2>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+          <li class="ftco-animate normal-txt">Find me on &nbsp;</li>
+          <li class="ftco-animate"><a href="https://www.youtube.com/@saurabh_jha_nituk"      aria-label="YouTube"><span class="icon-youtube"></span></a></li>
+          <li class="ftco-animate"><a href="https://www.linkedin.com/in/imsaurav1/"          aria-label="LinkedIn"><span class="icon-linkedin"></span></a></li>
+          <li class="ftco-animate"><a href="https://x.com/I_m_saurav____"                   aria-label="X / Twitter"><span class="icon-twitter"></span></a></li>
+          <li class="ftco-animate"><a href="https://www.facebook.com/thesauravking/"         aria-label="Facebook"><span class="icon-facebook"></span></a></li>
+          <li class="ftco-animate"><a href="https://www.instagram.com/i_m_saurav____/"      aria-label="Instagram"><span class="icon-instagram"></span></a></li>
+          <li class="ftco-animate"><a href="https://t.me/sauravjha1234"                     aria-label="Telegram"><span class="icon-telegram"></span></a></li>
+        </ul>
+        <br />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       AUTH POPUP
+  ============================================= -->
+  <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
+    <div class="popup-content">
+      <span class="close" id="closePopup" role="button" aria-label="Close">&times;</span>
+
+      <div class="tabs">
+        <button id="loginTab"    class="tab active">Login</button>
+        <button id="registerTab" class="tab">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
+        <h2 class="mb-4">Login</h2>
+        <div class="form-group">
+          <input type="email"    id="loginEmail"    placeholder="Email Address" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <input type="password" id="loginPassword" placeholder="Password"      required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary py-2 px-4">Login</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="form">
+        <h3 class="mb-4">Register</h3>
+        <div class="form-group">
+          <input type="text"     id="registerName"     placeholder="Full Name"      required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <input type="email"    id="registerEmail"    placeholder="Email Address"  required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <input type="password" id="registerPassword" placeholder="Password"       required autocomplete="new-password" />
+        </div>
+        <button type="submit" class="btn btn-success py-2 px-4">Sign Up</button>
+      </form>
+    </div>
   </div>
-</footer>
 
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="ftco-footer ftco-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>
+            <a href="/privacy-policy">Privacy Policy</a> |
+            <a href="/disclaimer">Disclaimer</a> |
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+          </p>
+          <p class="mt-2">
+            &copy; 2026 <strong>SaurabhJha.live</strong> | All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
+  <!-- Loader -->
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+      <circle class="path"    cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+    </svg>
+  </div>
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-<script>
-(async function () {
-  const slug = window.location.pathname.split("/").pop();
+  <!-- =============================================
+       POST LOADER SCRIPT
+  ============================================= -->
+  <script>
+  (async function loadPost() {
+    const API_BASE = "https://studymaterial-1heb.onrender.com/api";
 
-  if (!slug) {
-    document.getElementById("blogContent").innerHTML = "Post not found";
-    return;
-  }
+    // ✅ Robust slug extraction — handles /posts/my-slug and /posts/my-slug/
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const slug = pathParts[pathParts.length - 1];
 
-  try {
-    const res = await fetch(
-      `https://studymaterial-1heb.onrender.com/api/posts/${slug}`
-    );
+    const contentEl = document.getElementById("blogContent");
 
-    if (!res.ok) throw new Error("Post not found");
-
-    const post = await res.json();
-
-    /* =====================
-       SEO
-    ===================== */
-    document.title = `${post.title} | SaurabhJha.live`;
-    document.getElementById("metaDesc").content =
-      post.excerpt || post.title;
-
-    document.getElementById("ogTitle").content = post.title;
-    document.getElementById("ogDesc").content =
-      post.excerpt || post.title;
-    document.getElementById("ogUrl").content = window.location.href;
-
-    /* =====================
-       CONTENT
-    ===================== */
-    document.getElementById("blogTitle").innerText = post.title;
-
-    document.getElementById("blogDate").innerText =
-      new Date(post.createdAt).toDateString();
-
-    document.getElementById("blogCategory").innerText =
-      post.category || "Blog";
-
-    document.getElementById("blogViews").innerText =
-      `👁️ ${post.views || 0} views`;
-
-    document.getElementById("blogContent").innerHTML =
-      post.content;
-
-    /* =====================
-       TAGS
-    ===================== */
-    const tagsDiv = document.getElementById("blogTags");
-    if (post.tags && post.tags.length) {
-      tagsDiv.innerHTML = post.tags
-        .map(tag => `<span class="tag">#${tag}</span>`)
-        .join(" ");
+    if (!slug || slug === "post.html") {
+      contentEl.innerHTML = "<h2>404 – Post Not Found</h2>";
+      return;
     }
 
-  } catch (err) {
-    console.error(err);
-    document.getElementById("blogContent").innerHTML = `
-      <h2>404 – Post Not Found</h2>
-      <p>This post does not exist.</p>
-    `;
-  }
-})();
-</script>
+    // ── Count view (once per session) ──────────────
+    const viewKey = `viewed_${slug}`;
+    if (!sessionStorage.getItem(viewKey)) {
+      fetch(`${API_BASE}/posts/${encodeURIComponent(slug)}/view`, { method: "POST" })
+        .then(() => sessionStorage.setItem(viewKey, "true"))
+        .catch(() => {});
+    }
 
+    // ── Fetch post ─────────────────────────────────
+    try {
+      const res = await fetch(`${API_BASE}/posts/${encodeURIComponent(slug)}`);
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="/js/form.js"></script>
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.easing.1.3.js"></script>
-	<script src="/js/jquery.waypoints.min.js"></script>
-	<script src="/js/jquery.stellar.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/aos.js"></script>
-	<script src="/js/jquery.animateNumber.min.js"></script>
-	<script src="/js/scrollax.min.js"></script>
-	<script src="/js/coments.js"></script>
-	<script src="/js/studymaterial.js"></script>
-	<script src="js/chatbot.js"></script>
+      if (res.status === 404) throw new Error("not_found");
+      if (!res.ok) throw new Error(`server_error`);
 
-	
+      const post = await res.json();
 
-	
-	<script src="/js/main.js"></script>
-		
-	</body>
-	</html>
+      // ── SEO ──────────────────────────────────────
+      document.title = `${post.title} | SaurabhJha.live`;
+
+      document.getElementById("metaDesc").setAttribute("content", post.excerpt || post.title);
+      document.getElementById("ogTitle").setAttribute("content", post.title);
+      document.getElementById("ogDesc").setAttribute("content",  post.excerpt || post.title);
+      document.getElementById("ogUrl").setAttribute("content",   window.location.href);
+
+      // ── Content (textContent where possible) ─────
+      document.getElementById("blogTitle").textContent    = post.title;
+      document.getElementById("blogCategory").textContent = post.category || "Blog";
+      document.getElementById("blogViews").textContent    = `👁️ ${post.views ?? 0} views`;
+
+      const dateEl = document.getElementById("blogDate");
+      const date   = new Date(post.createdAt);
+      dateEl.textContent = isNaN(date) ? "" : date.toDateString();
+
+      // ── Tags (textContent, XSS safe) ─────────────
+      const tagsDiv = document.getElementById("blogTags");
+      if (post.tags && post.tags.length) {
+        post.tags.forEach(tag => {
+          const span = document.createElement("span");
+          span.className   = "tag";
+          span.textContent = `#${tag}`; // ✅ never innerHTML for user data
+          tagsDiv.appendChild(span);
+        });
+      }
+
+      // ── Post body (innerHTML is intentional — admin-authored HTML) ──
+      contentEl.innerHTML = post.content;
+
+    } catch (err) {
+      console.error("Post load error:", err);
+      contentEl.innerHTML = err.message === "not_found"
+        ? "<h2>404 – Post Not Found</h2><p>This post does not exist.</p>"
+        : "<h2>Error</h2><p>Failed to load post. Please try again later.</p>";
+    }
+  })();
+  </script>
+
+  <!-- =============================================
+       SCRIPTS  (jQuery must come before plugins)
+  ============================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/scrollax.min.js"></script>
+  <script src="/js/form.js"></script>
+  <script src="/js/coments.js"></script>
+  <script src="/js/studymaterial.js"></script>
+  <script src="/js/chatbot.js"></script>
+  <script src="/js/main.js"></script>
+
+</body>
+</html>
