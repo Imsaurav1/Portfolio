@@ -8,122 +8,182 @@ const API_BASE = "https://studymaterial-1heb.onrender.com/api";
  *********************************/
 (function loadStudyMaterials() {
   const container = document.getElementById("studyMaterialContainer");
-  if (!container) return;
 
-  container.innerHTML = `<div class="col-12 text-center"><p>Loading materials…</p></div>`;
+  // ── Guard: container must exist on this page ──
+  if (!container) {
+    console.warn("[studymaterial.js] #studyMaterialContainer not found on this page.");
+    return;
+  }
+
+  // ── Show loading spinner ──────────────────────
+  container.innerHTML = `
+    <div class="col-12 text-center" style="padding: 60px 0;">
+      <div style="
+        display: inline-block;
+        width: 48px; height: 48px;
+        border: 5px solid #333;
+        border-top-color: #ffbd39;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      "></div>
+      <p style="color:#aaa; margin-top:16px;">Loading materials…</p>
+      <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+    </div>
+  `;
 
   fetch(`${API_BASE}/materials`)
     .then(res => {
-      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      console.log("[studymaterial.js] API response status:", res.status);
+      if (!res.ok) throw new Error(`API returned ${res.status}`);
       return res.json();
     })
     .then(materials => {
+      console.log("[studymaterial.js] Materials received:", materials);
+
       container.innerHTML = "";
 
-      if (!materials.length) {
-        container.innerHTML = `<div class="col-12 text-center"><p>No materials available yet.</p></div>`;
+      if (!Array.isArray(materials) || materials.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center" style="padding:60px 0;">
+            <p style="color:#aaa; font-size:1rem;">No materials available yet. Check back soon!</p>
+          </div>`;
         return;
       }
 
       materials.forEach(material => {
         const col = document.createElement("div");
         col.className = "col-md-4 d-flex ftco-animate";
+        col.style.marginBottom = "30px";
 
-        // ── Card wrapper ──────────────────────────────
+        // ── Card ─────────────────────────────────
         const card = document.createElement("div");
-        card.className = "blog-entry align-self-stretch";
-        card.style.cssText = "background:#1a1a2e; border-radius:12px; overflow:hidden; width:100%; margin-bottom:30px;";
+        card.style.cssText = `
+          background: #111827;
+          border-radius: 12px;
+          overflow: hidden;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        `;
 
-        // ── Image ─────────────────────────────────────
+        // ── Image ─────────────────────────────────
         if (material.imageUrl) {
-          const imgWrapper = document.createElement("a");
-          imgWrapper.href = material.pdfUrl || "#";
-          imgWrapper.target = "_blank";
-          imgWrapper.rel = "noopener noreferrer";
-          imgWrapper.style.cssText = "display:block; overflow:hidden;";
+          const imgLink = document.createElement("a");
+          imgLink.href   = material.pdfUrl || "#";
+          imgLink.target = "_blank";
+          imgLink.rel    = "noopener noreferrer";
+          imgLink.style.cssText = "display:block; overflow:hidden; flex-shrink:0;";
 
           const img = document.createElement("img");
-          img.src = material.imageUrl;
-          img.alt = material.title;         // ✅ textContent equivalent for alt
-          img.style.cssText = "width:100%; height:220px; object-fit:cover; transition:transform 0.3s ease;";
+          img.src   = material.imageUrl;
+          img.alt   = material.title;
+          img.style.cssText = `
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+          `;
           img.addEventListener("mouseover", () => img.style.transform = "scale(1.05)");
           img.addEventListener("mouseout",  () => img.style.transform = "scale(1)");
-          img.onerror = () => { imgWrapper.style.display = "none"; }; // Hide broken images
+          img.onerror = () => { imgLink.style.display = "none"; };
 
-          imgWrapper.appendChild(img);
-          card.appendChild(imgWrapper);
+          imgLink.appendChild(img);
+          card.appendChild(imgLink);
         }
 
-        // ── Body ──────────────────────────────────────
+        // ── Body ──────────────────────────────────
         const body = document.createElement("div");
-        body.style.cssText = "padding:20px;";
+        body.style.cssText = "padding: 20px; display:flex; flex-direction:column; flex:1;";
 
         // Title
         const title = document.createElement("h3");
-        title.style.cssText = "color:#fff; font-size:1.1rem; font-weight:700; margin-bottom:10px;";
-        title.textContent = material.title; // ✅ textContent, never innerHTML
+        title.textContent = material.title;
+        title.style.cssText = "color:#fff; font-size:1.05rem; font-weight:700; margin-bottom:10px; line-height:1.4;";
 
-        // Meta: category, type, date
-        const metaCategory = makeMeta(material.category || "Practice Material");
-        const metaType      = makeMeta(material.type     || "PDF Download");
-        const metaDate      = makeMeta(material.date     || "");
+        // Category
+        const cat = document.createElement("p");
+        cat.textContent = material.category || "Practice Material";
+        cat.style.cssText = "color:#ccc; font-size:0.88rem; font-weight:600; margin:3px 0;";
+
+        // Type
+        const type = document.createElement("p");
+        type.textContent = material.type || "PDF Download";
+        type.style.cssText = "color:#ccc; font-size:0.88rem; font-weight:600; margin:3px 0;";
+
+        // Date
+        const date = document.createElement("p");
+        date.textContent = material.date || "";
+        date.style.cssText = "color:#ccc; font-size:0.88rem; margin:3px 0 10px;";
 
         // Description
         const desc = document.createElement("p");
-        desc.style.cssText = "color:#aaa; font-size:0.85rem; margin:10px 0 15px;";
         desc.textContent = material.description || "";
+        desc.style.cssText = "color:#aaa; font-size:0.85rem; margin-bottom:14px; flex:1;";
 
-        // ── Download count display ─────────────────────
+        // Download count
         const dlCount = document.createElement("p");
-        dlCount.style.cssText = "color:#ffbd39; font-size:0.8rem; margin-bottom:12px;";
+        dlCount.id = `dl-count-${material._id}`;
         dlCount.textContent = `⬇️ ${material.downloads ?? 0} downloads`;
-        dlCount.id = `dl-count-${material._id}`; // So we can update it after click
+        dlCount.style.cssText = "color:#ffbd39; font-size:0.82rem; margin-bottom:14px; font-weight:600;";
 
-        // ── Download button ───────────────────────────
+        // Download button
         const btn = document.createElement("a");
-        btn.href = material.pdfUrl || "#";
-        btn.target = "_blank";
-        btn.rel = "noopener noreferrer";
-        btn.className = "btn btn-primary py-2 px-4";
-        btn.style.cssText = "background:#ffbd39; border:none; color:#000; font-weight:600; font-size:0.85rem; letter-spacing:1px; border-radius:4px;";
+        btn.href        = material.pdfUrl || "#";
+        btn.target      = "_blank";
+        btn.rel         = "noopener noreferrer";
         btn.textContent = "DOWNLOAD PDF";
+        btn.style.cssText = `
+          display: inline-block;
+          background: #ffbd39;
+          color: #000;
+          font-weight: 700;
+          font-size: 0.82rem;
+          letter-spacing: 1px;
+          padding: 10px 20px;
+          border-radius: 4px;
+          text-decoration: none;
+          text-align: center;
+          transition: background 0.2s ease;
+          align-self: flex-start;
+        `;
+        btn.addEventListener("mouseover", () => btn.style.background = "#e6a800");
+        btn.addEventListener("mouseout",  () => btn.style.background = "#ffbd39");
 
-        // ── Track download on click ───────────────────
-        // Every click on the button fires a POST to increment the counter.
-        // We use `fetch` in the background — the PDF still opens immediately
-        // because we don't `preventDefault()`.
+        // ── Track download count on click ──────────
         btn.addEventListener("click", () => {
           fetch(`${API_BASE}/materials/${material._id}/download`, { method: "POST" })
             .then(res => res.json())
             .then(data => {
-              // Update the count shown on the card without a page reload
-              const countEl = document.getElementById(`dl-count-${material._id}`);
-              if (countEl) {
-                countEl.textContent = `⬇️ ${data.downloads} downloads`;
-              }
+              const el = document.getElementById(`dl-count-${material._id}`);
+              if (el) el.textContent = `⬇️ ${data.downloads} downloads`;
             })
-            .catch(() => {}); // Silent — download count is non-critical
+            .catch(err => console.warn("[studymaterial.js] Download count error:", err));
         });
 
-        body.append(title, metaCategory, metaType, metaDate, desc, dlCount, btn);
+        body.append(title, cat, type, date, desc, dlCount, btn);
         card.appendChild(body);
         col.appendChild(card);
         container.appendChild(col);
       });
     })
     .catch(err => {
-      console.error("Study materials load error:", err);
-      container.innerHTML = `<div class="col-12 text-center"><p>Failed to load materials. Please try again later.</p></div>`;
+      console.error("[studymaterial.js] Failed to load materials:", err);
+      container.innerHTML = `
+        <div class="col-12 text-center" style="padding:60px 0;">
+          <p style="color:#e74c3c; font-size:1rem;">
+            ⚠️ Failed to load materials.<br>
+            <span style="color:#aaa; font-size:0.85rem;">
+              The server may be starting up (can take ~30s on free tier). Please refresh the page.
+            </span>
+          </p>
+          <button
+            onclick="location.reload()"
+            style="margin-top:16px; background:#ffbd39; border:none; color:#000;
+                   font-weight:700; padding:10px 24px; border-radius:4px; cursor:pointer;">
+            Retry
+          </button>
+        </div>`;
     });
 })();
-
-/*********************************
- * HELPER – create a small meta line
- *********************************/
-function makeMeta(text) {
-  if (!text) return document.createDocumentFragment();
-  const p = document.createElement("p");
-  p.style.cssText = "color:#ccc; font-size:0.9rem; font-weight:600; margin:4px 0;";
-  p.textContent = text;
-  return p;
-}
