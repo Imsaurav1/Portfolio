@@ -125,6 +125,124 @@
     .popup.active { display: flex; }
 
     .popup-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 400px;
+      max-width: calc(100vw - 2rem);
+      text-align: center;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
+    }
+
+    @keyframes popIn {
+      from { opacity:0; transform:scale(.9) translateY(20px); }
+      to   { opacity:1; transform:scale(1) translateY(0); }
+    }
+
+    .popup .close-btn {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      font-size: 1.4rem; color: var(--muted); cursor: pointer;
+      background: none; border: none; line-height: 1; transition: color 0.2s;
+    }
+
+    .popup .close-btn:hover { color: #fff; }
+
+    .tabs { display: flex; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 4px; margin-bottom: 1.8rem; }
+    .tab { flex:1; padding:9px; border:none; background:transparent; color:var(--muted); font-family:var(--body); font-size:0.85rem; font-weight:600; cursor:pointer; border-radius:6px; transition:all 0.2s; }
+    .tab.active { background:var(--accent); color:#000; }
+    .form { display:none; }
+    .form.active { display:block; }
+
+    .form h2, .form h3 { font-family:var(--head); color:#fff; margin-bottom:1.4rem; font-size:1.5rem; }
+
+    .form input {
+      width:100%; background:rgba(255,255,255,0.05);
+      border:1px solid var(--border); color:#fff;
+      padding:0.8rem 1rem; border-radius:8px;
+      font-family:var(--body); font-size:0.88rem;
+      margin-bottom:1rem; transition:border-color 0.2s;
+    }
+
+    .form input:focus { outline:none; border-color:var(--accent); }
+    .form input::placeholder { color:var(--muted); }
+
+    .btn-auth {
+      width:100%; background:var(--accent); color:#000;
+      font-weight:800; font-family:var(--body); border:none;
+      border-radius:8px; padding:0.85rem; font-size:0.85rem;
+      letter-spacing:0.5px; cursor:pointer; transition:background 0.2s;
+    }
+
+    .btn-auth:hover { background:#e6a800; }
+
+    /* ── FOOTER ─────────────────────────────── */
+    .site-footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    .social-row {
+      display: flex; justify-content: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 1.2rem;
+    }
+
+    .social-row a {
+      width:38px; height:38px;
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid var(--border); border-radius:8px;
+      color:var(--muted); font-size:0.95rem;
+      text-decoration:none; transition:all 0.2s;
+    }
+
+    .social-row a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
+
+    .footer-links { display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; margin-bottom:0.8rem; }
+    .footer-links a { color:var(--muted); font-size:0.8rem; text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--accent); }
+    .footer-copy { color:var(--muted); font-size:0.78rem; }
+
+    /* ── ANIMATIONS ─────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .post-card:nth-child(1){animation-delay:.05s}
+    .post-card:nth-child(2){animation-delay:.10s}
+    .post-card:nth-child(3){animation-delay:.15s}
+    .post-card:nth-child(4){animation-delay:.20s}
+    .post-card:nth-child(5){animation-delay:.25s}
+    .post-card:nth-child(6){animation-delay:.30s}
+    .post-card:nth-child(7){animation-delay:.35s}
+
+    /* scrollbar */
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:#2d3748;border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+    /* suppress legacy ftco footer */
+    .ftco-footer { display:none !important; }
+    .ftco-section { padding:0 !important; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">SAURABH <em>JHA</em></a>
+      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button"
+        data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span>
       background: #545454;
       padding: 20px;
       border-radius: 8px;
@@ -179,7 +297,6 @@
         aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
-
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav nav ml-auto">
           <li class="nav-item"><a href="/#home-section"    class="nav-link"><span>Home</span></a></li>
@@ -195,6 +312,69 @@
     </div>
   </nav>
 
+  <!-- HERO -->
+  <header class="blog-hero">
+    <div class="container">
+      <span class="eyebrow">Knowledge Hub</span>
+      <h1>Blogs &amp; <em>Study Material</em></h1>
+      <p>Exam prep guides, coding questions &amp; interview experiences for top tech companies.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num" id="statPosts">—</div><div class="lbl">Articles</div></div>
+        <div class="hero-stat"><div class="num" id="statViews">—</div><div class="lbl">Total Views</div></div>
+        <div class="hero-stat"><div class="num">Free</div><div class="lbl">Always</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">All Posts</button>
+  </div>
+
+  <!-- POSTS -->
+  <section class="posts-section" id="linkedin-section">
+    <div class="posts-grid" id="postsContainer">
+      <!-- skeletons -->
+      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:80%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:60%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:75%;"></div></div>
+      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:75%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:55%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:60%;"></div></div>
+      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:85%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:65%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:80%;"></div></div>
+    </div>
+    <div id="pagination"></div>
+  </section>
+
+  <!-- COMMENT SECTION -->
+  <section class="comment-section" id="comment-section">
+    <div class="container" style="max-width:700px;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-eyebrow">Join the Conversation</div>
+        <h2 class="section-h">Leave a Comment</h2>
+        <p style="color:var(--muted);">Share your thoughts, feedback, or questions below.</p>
+      </div>
+
+      <form id="commentForm">
+        <input  type="text" id="name"    class="form-ctrl" placeholder="Your Name"    required />
+        <textarea           id="comment" class="form-ctrl" rows="4" placeholder="Your Comment" required style="resize:vertical;"></textarea>
+        <button type="submit" class="btn-submit">Post Comment →</button>
+      </form>
+
+      <div style="margin-top:3rem;">
+        <h3 style="font-family:var(--head);color:#fff;margin-bottom:1.5rem;font-size:1.4rem;">Comments</h3>
+        <div id="commentList"></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-banner">
+        <h3>Have a Question?</h3>
+        <p>Ask anything about exam prep, career, or coding.</p>
+        <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn-cta" target="_blank" rel="noopener">Ask Now →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTH POPUP -->
+  <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
+    <div class="popup-content">
+      <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
   <!-- =============================================
        POSTS SECTION
   ============================================= -->
@@ -337,6 +517,7 @@
           </p>
         </div>
       </div>
+      <p class="footer-copy">&copy; 2026 <strong style="color:#fff;">SaurabhJha.live</strong> &mdash; All Rights Reserved</p>
     </div>
   </footer>
 
