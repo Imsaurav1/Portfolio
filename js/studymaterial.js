@@ -24,6 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/*********************************
+ * TRACK DOWNLOAD — shared helper
+ * Called by image link, title link, and download button.
+ * Fires in background — PDF opens immediately, no delay.
+ *********************************/
+function trackDownload(id) {
+  fetch(`https://studymaterial-1heb.onrender.com/api/materials/${id}/download`, {
+    method: "POST"
+  })
+    .then(res => res.json())
+    .then(data => {
+      const countEl = document.getElementById(`dl-count-${id}`);
+      if (countEl) countEl.textContent = `⬇️ ${data.downloads} downloads`;
+    })
+    .catch(() => {}); // Silent — non-critical
+}
+
 function renderStudyMaterial(materials) {
   const container = document.getElementById("studyMaterialContainer");
   if (!container) return;
@@ -45,76 +62,66 @@ function renderStudyMaterial(materials) {
         const month = String(d.getMonth() + 1).padStart(2, "0");
         formattedDate = `${day}-${month}-${d.getFullYear()}`;
       } else {
-        // date stored as "05-01-2026" string — use as-is
-        formattedDate = item.date;
+        formattedDate = item.date; // already formatted string like "05-01-2026"
       }
     }
 
-    // ── Build card using your original CSS classes ──
-    // ✅ Uses blog-entry, block-20, zoom-effect — exactly like before
-    // ✅ Only addition: download count <p> and tracking via addEventListener
     const col = document.createElement("div");
     col.className = "col-md-4 justify-content-center";
 
     col.innerHTML = `
       <div class="blog-entry justify-content-end">
 
-        <a href="${item.pdfUrl}" target="_blank" rel="noopener noreferrer"
-           class="block-20 zoom-effect"
+        <!-- ✅ Image link — tracked -->
+        <a href="${item.pdfUrl}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block-20 zoom-effect dl-trigger"
            style="background-image: url('${item.imageUrl}');">
         </a>
 
         <div class="text mt-3 float-right d-block">
+
           <h2 class="heading">
-            <a href="${item.pdfUrl}" target="_blank" rel="noopener noreferrer">
+            <!-- ✅ Title link — tracked -->
+            <a href="${item.pdfUrl}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="dl-trigger">
               ${item.title}
             </a>
           </h2>
+
           <h5 class="category">${item.category || "Practice Material"}</h5>
           <h5 class="type">${item.type || "PDF Download"}</h5>
           <h5 class="date">${formattedDate}</h5>
 
           <p>${item.description || ""}</p>
 
-          <!-- ✅ NEW: download count display -->
-          <p class="download-count"
-             id="dl-count-${item._id}"
+          <!-- Download count -->
+          <p id="dl-count-${item._id}"
              style="color:#ffbd39; font-weight:600; font-size:0.85rem; margin-bottom:8px;">
             ⬇️ ${item.downloads ?? 0} downloads
           </p>
 
-          <!-- Download button — uses addEventListener so we can track clicks -->
+          <!-- ✅ Download button — tracked -->
           <a href="${item.pdfUrl}"
              target="_blank"
              rel="noopener noreferrer"
-             class="btn btn-primary mt-2 dl-btn"
-             data-id="${item._id}">
+             class="btn btn-primary mt-2 dl-trigger">
             Download PDF
           </a>
-        </div>
 
+        </div>
       </div>
     `;
 
     container.appendChild(col);
 
-    // ✅ Attach click listener AFTER the element is in the DOM
-    // PDF still opens instantly (no preventDefault) — tracking fires in background
-    const btn = col.querySelector(".dl-btn");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        fetch(`https://studymaterial-1heb.onrender.com/api/materials/${item._id}/download`, {
-          method: "POST"
-        })
-          .then(res => res.json())
-          .then(data => {
-            const countEl = document.getElementById(`dl-count-${item._id}`);
-            if (countEl) {
-              countEl.textContent = `⬇️ ${data.downloads} downloads`;
-            }
-          })
-          .catch(() => {}); // Silent — non-critical
-      });
-    }
+    // ── Attach ONE listener to all 3 triggers at once ──
+    // querySelectorAll(".dl-trigger") finds image link, title link, and button
+    col.querySelectorAll(".dl-trigger").forEach(el => {
+      el.addEventListener("click", () => trackDownload(item._id));
+    });
   });
 }
