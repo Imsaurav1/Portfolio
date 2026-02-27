@@ -4,7 +4,7 @@
   <title>Blogs & Study Material | SaurabhJha.live</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Complete preparation guide for Infosys SP, DSE, Accenture, and more. Get latest exam patterns, coding questions, and interview experiences." />
+  <meta name="description" content="Complete preparation guide for Infosys SP, DSE, Accenture, and more. Coding questions, interview experiences, exam patterns." />
   <meta name="robots" content="index, follow" />
 
   <link rel="icon" type="image/png" href="/images/logo.png" />
@@ -12,966 +12,664 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Existing stylesheets -->
   <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/animate.css" />
   <link rel="stylesheet" href="/css/ionicons.min.css" />
+  <link rel="stylesheet" href="/css/flaticon.css" />
   <link rel="stylesheet" href="/css/icomoon.css" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/commnet.css" />
   <link rel="stylesheet" href="/css/form.css" />
   <link rel="stylesheet" href="/css/login.css" />
 
-  <!-- Vercel (only on prod) -->
+  <!-- Vercel: only on production -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
   <script>
-    if (location.hostname !== '127.0.0.1' && location.hostname !== 'localhost') {
-      ['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(function(src){
-        var s = document.createElement('script'); s.defer = true; s.src = src; document.head.appendChild(s);
+    if (!['127.0.0.1','localhost'].includes(location.hostname)) {
+      ['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(src => {
+        const s = document.createElement('script'); s.defer = true; s.src = src; document.head.appendChild(s);
       });
     }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558" crossorigin="anonymous"></script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ============================================
+       DESIGN TOKENS
+    ============================================ */
     :root {
-      --bg:       #060810;
-      --bg2:      #0d1117;
-      --surface:  #111827;
-      --border:   rgba(255,255,255,0.07);
-      --accent:   #ffbd39;
-      --accent2:  #ff6b6b;
-      --text:     #e8eaf0;
-      --muted:    #6b7280;
-      --head:     'Playfair Display', Georgia, serif;
-      --body:     'DM Sans', sans-serif;
-      --r:        14px;
-      --glow:     0 0 60px rgba(255,189,57,0.12);
+      --bg:        #050810;
+      --bg2:       #0b1020;
+      --bg3:       #111827;
+      --accent:    #f5a623;
+      --accent2:   #ff6b35;
+      --text:      #e8eaf0;
+      --muted:     #6b7280;
+      --border:    rgba(255,255,255,0.07);
+      --card-bg:   rgba(12,17,32,0.85);
+      --radius:    14px;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --glow:      0 0 50px rgba(245,166,35,0.12);
     }
 
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: var(--body);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* noise texture */
+    /* ── Ambient Orbs ─── */
+    .orb-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: drift 20s ease-in-out infinite alternate; }
+    .orb-1 { width:700px; height:700px; background:radial-gradient(circle,#f5a623,transparent 70%); top:-300px; left:-250px; opacity:.2; animation-duration:22s; }
+    .orb-2 { width:500px; height:500px; background:radial-gradient(circle,#ff6b35,transparent 70%); bottom:-150px; right:-200px; opacity:.18; animation-duration:27s; animation-delay:-10s; }
+    .orb-3 { width:400px; height:400px; background:radial-gradient(circle,#3b4fd4,transparent 70%); top:45%; left:50%; opacity:.12; animation-duration:32s; animation-delay:-18s; }
+
+    @keyframes drift {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(70px,-50px) scale(1.1); }
+      66%  { transform: translate(-50px,70px) scale(0.93); }
+      100% { transform: translate(40px,25px) scale(1.05); }
+    }
+
+    /* Noise grain */
     body::after {
       content: '';
       position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0;
-    }
-
-    /* ── NAVBAR ─────────────────────────────── */
-    #ftco-navbar {
-      position: fixed !important;
-      top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 1rem 0 !important;
-      background: rgba(6,8,16,0.88) !important;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    #ftco-navbar .navbar-brand {
-      font-family: var(--head);
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #fff !important;
-    }
-
-    #ftco-navbar .navbar-brand em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    #ftco-navbar .nav-link {
-      color: rgba(255,255,255,0.65) !important;
-      font-size: 0.82rem !important;
-      font-weight: 500 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.6px !important;
-      padding: 0.4rem 0.8rem !important;
-      transition: color 0.2s !important;
-    }
-
-    #ftco-navbar .nav-link:hover { color: #fff !important; }
-
-    #loginBtn {
-      background: var(--accent) !important;
-      color: #000 !important;
-      font-weight: 800 !important;
-      border-radius: 6px !important;
-    }
-
-    /* ── HERO ───────────────────────────────── */
-    .blog-hero {
-      position: relative;
-      padding: 155px 0 70px;
-      text-align: center;
-      overflow: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .025;
+      pointer-events: none;
       z-index: 1;
     }
 
-    .blog-hero::before {
-      content: '';
-      position: absolute;
-      top: -180px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(255,189,57,0.14) 0%, transparent 65%);
-      pointer-events: none;
+    .site-content { position: relative; z-index: 2; }
+
+    /* ── NAVBAR ─── */
+    #ftco-navbar {
+      background: rgba(5,8,16,0.9) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    #ftco-navbar .navbar-brand { font-family:var(--font-head); font-size:1rem; letter-spacing:.1em; color:var(--text) !important; }
+    #ftco-navbar .nav-link span { color:var(--muted); font-size:.85rem; font-weight:500; letter-spacing:.04em; transition:color .2s; }
+    #ftco-navbar .nav-link:hover span { color:var(--accent); }
+
+    /* ── HERO ─── */
+    .hero-section { padding: 120px 0 70px; text-align: center; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.2);
+      border-radius: 100px; padding: 6px 20px;
+      font-size: .75rem; font-weight: 600; color: var(--accent);
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 28px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(255,189,57,0.35);
-      padding: 5px 16px;
-      border-radius: 100px;
-      margin-bottom: 1.4rem;
-      animation: fadeUp 0.5s ease both;
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: blink 2s ease infinite;
     }
 
-    .blog-hero h1 {
-      font-family: var(--head);
-      font-size: clamp(2.6rem, 7vw, 5.2rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -1px;
-      color: #fff;
-      animation: fadeUp 0.5s 0.1s ease both;
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800; line-height: 1.06; letter-spacing: -.025em; margin-bottom: 22px;
     }
 
-    .blog-hero h1 em { font-style: italic; color: var(--accent); }
-
-    .blog-hero p {
-      margin: 1rem auto 0;
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 460px;
-      animation: fadeUp 0.5s 0.2s ease both;
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 2.5rem;
-      animation: fadeUp 0.5s 0.3s ease both;
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin: 0 auto 48px; font-weight: 300; line-height: 1.75; }
+
+    .stats-row { display: flex; justify-content: center; gap: 52px; flex-wrap: wrap; margin-bottom: 64px; }
+    .stat-num { font-family:var(--font-head); font-size:2.2rem; font-weight:800; color:var(--accent); display:block; line-height:1; }
+    .stat-lbl { font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; margin-top:5px; }
+
+    .divider { width:60px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin:0 auto 52px; }
+
+    /* ── FILTERS ─── */
+    .filter-bar { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:52px; }
+    .filter-pill {
+      background:transparent; border:1px solid var(--border); color:var(--muted);
+      border-radius:100px; padding:8px 20px; font-family:var(--font-body); font-size:.8rem;
+      font-weight:500; cursor:pointer; transition:all .2s; letter-spacing:.03em;
     }
+    .filter-pill:hover { border-color:rgba(245,166,35,.35); color:var(--text); }
+    .filter-pill.active { background:var(--accent); border-color:var(--accent); color:#000; font-weight:700; }
 
-    .hero-stat .num {
-      font-family: var(--head);
-      font-size: 2rem;
-      font-weight: 900;
-      color: #fff;
-      line-height: 1;
-    }
-
-    .hero-stat .lbl {
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-top: 3px;
-    }
-
-    /* ── FILTER BAR ─────────────────────────── */
-    .filter-bar {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 0 1rem 3.5rem;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.5s 0.35s ease both;
-    }
-
-    .filter-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 6px 18px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-family: var(--body);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #000;
-      font-weight: 700;
-    }
-
-    /* ── GRID ───────────────────────────────── */
-    .posts-section { padding: 0 0 80px; position: relative; z-index: 1; }
-
-    .posts-grid {
+    /* ── POSTS GRID ─── */
+    #postsContainer {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.4rem;
-      padding: 0 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 22px;
+      margin-bottom: 50px;
     }
 
-    .posts-grid .post-card:first-child { grid-column: 1 / -1; }
+    #postsContainer .post-card:first-child { grid-column: 1 / -1; }
 
-    /* ── CARD ───────────────────────────────── */
+    /* ── POST CARD ─── */
     .post-card {
-      background: var(--surface);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 1.8rem;
+      border-radius: var(--radius);
+      padding: 30px;
+      text-decoration: none;
+      display: block;
       position: relative;
       overflow: hidden;
-      text-decoration: none !important;
-      color: inherit !important;
-      display: block;
-      transition: transform 0.3s cubic-bezier(.25,.8,.25,1), border-color 0.3s, box-shadow 0.3s;
-      animation: fadeUp 0.5s ease both;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .post-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transform:scaleX(0); transform-origin:left; transition:transform .4s ease;
     }
 
-    .post-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255,189,57,0.28);
-      box-shadow: var(--glow), 0 24px 60px rgba(0,0,0,0.45);
-      color: inherit !important;
-      text-decoration: none !important;
-    }
-
-    .post-card:hover::before { transform: scaleX(1); }
+    .post-card:hover { transform:translateY(-5px); border-color:rgba(245,166,35,.25); box-shadow:var(--glow); }
+    .post-card:hover::before { transform:scaleX(1); }
 
     /* Featured card */
     .post-card.featured {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
-      padding: 2.5rem;
-      background: linear-gradient(135deg, #111827 0%, #1a2235 100%);
+      align-items: start;
+      gap: 20px;
+      padding: 38px;
+      background: linear-gradient(140deg, rgba(12,18,38,.97) 0%, rgba(245,166,35,.04) 100%);
     }
 
-    .post-card.featured h2 { font-size: 2rem; }
-
-    .featured-icon {
-      width: 160px; height: 160px;
-      background: linear-gradient(135deg, rgba(255,189,57,0.15), rgba(255,107,107,0.1));
-      border: 1px solid rgba(255,189,57,0.2);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 4rem;
-      flex-shrink: 0;
+    .post-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(245,166,35,.12); border: 1px solid rgba(245,166,35,.25);
+      color: var(--accent); border-radius: 100px; padding: 4px 14px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 14px;
     }
 
-    @media (max-width: 640px) {
-      .post-card.featured { grid-template-columns: 1fr; }
-      .featured-icon { display: none; }
-      .posts-grid .post-card:first-child { grid-column: 1; }
-      .posts-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
-    }
+    .post-badge::before { content: '★'; font-size: .65rem; }
 
-    .card-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(255,189,57,0.1);
-      border: 1px solid rgba(255,189,57,0.2);
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-bottom: 0.85rem;
-    }
+    .card-title { font-family:var(--font-head); font-size:1.18rem; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:10px; transition:color .2s; }
+    .post-card:hover .card-title { color:var(--accent); }
+    .post-card.featured .card-title { font-size:1.6rem; }
 
-    .post-card h2 {
-      font-family: var(--head);
-      font-size: 1.25rem;
-      font-weight: 700;
-      line-height: 1.3;
-      color: #fff;
-      margin-bottom: 0.65rem;
-      transition: color 0.2s;
-    }
+    .card-excerpt { color:var(--muted); font-size:.88rem; line-height:1.7; margin-bottom:18px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
-    .post-card:hover h2 { color: var(--accent); }
+    .card-meta { display:flex; align-items:center; gap:14px; font-size:.76rem; color:var(--muted); flex-wrap:wrap; }
+    .card-meta-item { display:flex; align-items:center; gap:4px; }
+    .card-meta svg { width:12px; height:12px; opacity:.6; }
 
-    .post-excerpt {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      margin-bottom: 1.1rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    .card-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+    .tag { background:rgba(255,255,255,.04); border:1px solid var(--border); color:var(--muted); border-radius:6px; padding:3px 9px; font-size:.71rem; font-weight:500; transition:all .2s; }
+    .post-card:hover .tag { border-color:rgba(245,166,35,.2); color:rgba(255,255,255,.75); }
 
-    .post-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.77rem;
-      color: var(--muted);
-      flex-wrap: wrap;
-    }
-
-    .meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
-
-    .post-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.9rem; }
-
-    .tag {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.45);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 2px 8px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-
-    .post-card:hover .tag { border-color: rgba(255,189,57,0.3); color: rgba(255,189,57,0.75); }
-
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 1.2rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: gap 0.2s;
-    }
-
-    .post-card:hover .read-more { gap: 12px; }
-
-    /* ── SKELETON ───────────────────────────── */
-    .skeleton {
-      background: linear-gradient(90deg, var(--surface) 25%, #1c2536 50%, var(--surface) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: 5px;
-    }
-
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    /* ── PAGINATION ─────────────────────────── */
-    #pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 2.5rem 1rem 1rem;
-    }
-
-    .pg-btn {
-      min-width: 40px; height: 40px;
-      padding: 0 12px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--muted);
-      font-family: var(--body);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .pg-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .pg-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
-    .pg-btn:disabled { opacity: 0.25; cursor: not-allowed; }
-
-    /* ── COMMENT SECTION ────────────────────── */
-    .comment-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 80px 0;
-      position: relative; z-index: 1;
-    }
-
-    .section-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
-    .section-h {
-      font-family: var(--head);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-ctrl {
-      width: 100%;
-      display: block;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 0.9rem 1.1rem;
-      border-radius: 8px;
-      font-family: var(--body);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      transition: border-color 0.2s;
-    }
-
-    .form-ctrl:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,189,57,0.1); }
-    .form-ctrl::placeholder { color: var(--muted); }
-
-    .btn-submit {
-      background: var(--accent);
-      color: #000;
-      font-weight: 800;
-      font-family: var(--body);
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.9rem 2.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .btn-submit:hover { background: #e6a800; transform: translateY(-2px); }
-
-    /* ── CTA BANNER ─────────────────────────── */
-    .cta-banner {
-      position: relative;
-      background: linear-gradient(135deg, rgba(255,189,57,0.1), rgba(255,107,107,0.07));
-      border: 1px solid rgba(255,189,57,0.18);
-      border-radius: var(--r);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      margin-top: 3.5rem;
-      overflow: hidden;
-    }
-
-    .cta-banner::before {
-      content: '?';
-      position: absolute;
-      font-family: var(--head);
-      font-size: 14rem;
-      font-weight: 900;
-      color: rgba(255,189,57,0.04);
-      top: -4rem; right: -0.5rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .cta-banner h3 { font-family: var(--head); font-size: 1.7rem; color: #fff; margin-bottom: 0.4rem; }
-    .cta-banner p { color: var(--muted); margin-bottom: 1.4rem; font-size: 0.95rem; }
-
-    .btn-cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #000 !important;
-      font-weight: 800;
-      font-size: 0.82rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none !important;
-      transition: all 0.2s;
-    }
-
-    .btn-cta:hover { background: #e6a800; transform: translateY(-2px); }
-
-    /* ── AUTH POPUP ─────────────────────────── */
-    .popup {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.82);
-      backdrop-filter: blur(12px);
-      justify-content: center; align-items: center;
-      z-index: 9999;
-    }
-
-    .popup.active { display: flex; }
-
-    .popup-content {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      width: 400px;
-      max-width: calc(100vw - 2rem);
-      text-align: center;
-      position: relative;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-      animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
-    }
-
-    @keyframes popIn {
-      from { opacity:0; transform:scale(.9) translateY(20px); }
-      to   { opacity:1; transform:scale(1) translateY(0); }
-    }
-
-    .popup .close-btn {
-      position: absolute; top: 1.2rem; right: 1.5rem;
-      font-size: 1.4rem; color: var(--muted); cursor: pointer;
-      background: none; border: none; line-height: 1; transition: color 0.2s;
-    }
-
-    .popup .close-btn:hover { color: #fff; }
-
-    .tabs { display: flex; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 4px; margin-bottom: 1.8rem; }
-    .tab { flex:1; padding:9px; border:none; background:transparent; color:var(--muted); font-family:var(--body); font-size:0.85rem; font-weight:600; cursor:pointer; border-radius:6px; transition:all 0.2s; }
-    .tab.active { background:var(--accent); color:#000; }
-    .form { display:none; }
-    .form.active { display:block; }
-
-    .form h2, .form h3 { font-family:var(--head); color:#fff; margin-bottom:1.4rem; font-size:1.5rem; }
-
-    .form input {
-      width:100%; background:rgba(255,255,255,0.05);
-      border:1px solid var(--border); color:#fff;
-      padding:0.8rem 1rem; border-radius:8px;
-      font-family:var(--body); font-size:0.88rem;
-      margin-bottom:1rem; transition:border-color 0.2s;
-    }
-
-    .form input:focus { outline:none; border-color:var(--accent); }
-    .form input::placeholder { color:var(--muted); }
-
-    .btn-auth {
-      width:100%; background:var(--accent); color:#000;
-      font-weight:800; font-family:var(--body); border:none;
-      border-radius:8px; padding:0.85rem; font-size:0.85rem;
-      letter-spacing:0.5px; cursor:pointer; transition:background 0.2s;
-    }
-
-    .btn-auth:hover { background:#e6a800; }
-
-    /* ── FOOTER ─────────────────────────────── */
-    .site-footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 0;
-      text-align: center;
-      position: relative; z-index: 1;
-    }
-
-    .social-row {
-      display: flex; justify-content: center; gap: 8px;
-      flex-wrap: wrap; margin-bottom: 1.2rem;
-    }
-
-    .social-row a {
-      width:38px; height:38px;
+    .card-arrow {
       display:flex; align-items:center; justify-content:center;
-      border:1px solid var(--border); border-radius:8px;
-      color:var(--muted); font-size:0.95rem;
-      text-decoration:none; transition:all 0.2s;
+      width:38px; height:38px; border-radius:50%; border:1px solid var(--border);
+      color:var(--muted); font-size:.95rem; flex-shrink:0; transition:all .3s; margin-top:2px;
     }
+    .post-card:hover .card-arrow { background:var(--accent); border-color:var(--accent); color:#000; transform:rotate(45deg); }
 
-    .social-row a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
+    /* Skeleton */
+    .skeleton-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:30px; }
+    .sk { background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.04) 75%); background-size:200% 100%; animation:shimmer 1.6s ease infinite; border-radius:6px; height:15px; margin-bottom:12px; }
+    .sk.h { height:22px; width:65%; margin-bottom:18px; }
+    .sk.s { width:42%; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-    .footer-links { display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; margin-bottom:0.8rem; }
-    .footer-links a { color:var(--muted); font-size:0.8rem; text-decoration:none; transition:color 0.2s; }
-    .footer-links a:hover { color:var(--accent); }
-    .footer-copy { color:var(--muted); font-size:0.78rem; }
-
-    /* ── ANIMATIONS ─────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(22px); }
-      to   { opacity:1; transform:translateY(0); }
+    /* ── PAGINATION ─── */
+    #pagination { display:flex; align-items:center; justify-content:center; gap:8px; margin:10px 0 80px; flex-wrap:wrap; }
+    .page-btn {
+      display:flex; align-items:center; justify-content:center;
+      min-width:44px; height:44px; padding:0 16px;
+      border-radius:10px; border:1px solid var(--border);
+      background:var(--card-bg); color:var(--muted);
+      font-family:var(--font-body); font-size:.85rem; font-weight:500;
+      cursor:pointer; transition:all .2s; backdrop-filter:blur(8px);
     }
+    .page-btn:hover:not(:disabled) { border-color:rgba(245,166,35,.35); color:var(--text); }
+    .page-btn.active { background:var(--accent); border-color:var(--accent); color:#000; font-weight:700; }
+    .page-btn:disabled { opacity:.3; cursor:not-allowed; }
 
-    .post-card:nth-child(1){animation-delay:.05s}
-    .post-card:nth-child(2){animation-delay:.10s}
-    .post-card:nth-child(3){animation-delay:.15s}
-    .post-card:nth-child(4){animation-delay:.20s}
-    .post-card:nth-child(5){animation-delay:.25s}
-    .post-card:nth-child(6){animation-delay:.30s}
-    .post-card:nth-child(7){animation-delay:.35s}
+    /* ── COMMENTS ─── */
+    .comment-wrapper { background:var(--bg2); border-top:1px solid var(--border); padding:80px 0; }
+    .sec-title { font-family:var(--font-head); font-size:1.9rem; font-weight:800; margin-bottom:8px; }
+    .sec-sub { color:var(--muted); font-size:.92rem; margin-bottom:38px; }
+    .cf-field {
+      width:100%; background:var(--bg3); border:1px solid var(--border);
+      border-radius:10px; color:var(--text); font-family:var(--font-body);
+      font-size:.92rem; padding:13px 16px; margin-bottom:14px; outline:none;
+      transition:border-color .2s; resize:vertical;
+    }
+    .cf-field:focus { border-color:rgba(245,166,35,.45); }
+    .cf-field::placeholder { color:var(--muted); }
+    .btn-submit {
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#000; font-family:var(--font-body); font-weight:700;
+      font-size:.88rem; padding:13px 34px; border:none; border-radius:10px;
+      cursor:pointer; letter-spacing:.04em; transition:opacity .2s, transform .2s;
+    }
+    .btn-submit:hover { opacity:.86; transform:translateY(-1px); }
 
-    /* scrollbar */
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:var(--bg)}
-    ::-webkit-scrollbar-thumb{background:#2d3748;border-radius:3px}
-    ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+    /* ── AUTH POPUP ─── */
+    .popup { display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); backdrop-filter:blur(10px); justify-content:center; align-items:center; z-index:9999; }
+    .popup.active { display:flex; }
+    .popup-content { background:var(--bg2); border:1px solid var(--border); border-radius:20px; padding:36px; width:100%; max-width:400px; text-align:center; position:relative; box-shadow:0 40px 80px rgba(0,0,0,.6); }
+    .close { position:absolute; top:16px; right:20px; font-size:20px; cursor:pointer; color:var(--muted); transition:color .2s; line-height:1; }
+    .close:hover { color:var(--text); }
+    .tabs { display:flex; gap:8px; margin-bottom:26px; }
+    .tab { flex:1; padding:10px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--muted); border-radius:10px; font-family:var(--font-body); font-weight:600; font-size:.85rem; transition:all .2s; }
+    .tab.active { background:var(--accent); border-color:var(--accent); color:#000; }
+    .popup-form { display:none; }
+    .popup-form.active { display:block; }
+    .popup-input { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:var(--font-body); font-size:.88rem; padding:12px 15px; margin-bottom:12px; outline:none; transition:border-color .2s; }
+    .popup-input:focus { border-color:rgba(245,166,35,.45); }
+    .popup-input::placeholder { color:var(--muted); }
 
-    /* suppress legacy ftco footer */
-    .ftco-footer { display:none !important; }
-    .ftco-section { padding:0 !important; }
+    /* ── SOCIAL ─── */
+    .social-sec { text-align:center; padding:60px 0 44px; }
+    .social-links { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .soc-link { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid var(--border); color:var(--muted); font-size:1.1rem; text-decoration:none; transition:all .2s; }
+    .soc-link:hover { border-color:rgba(245,166,35,.35); color:var(--accent); transform:translateY(-2px); }
+
+    /* ── FOOTER ─── */
+    .site-footer { background:var(--bg); border-top:1px solid var(--border); padding:30px 0; text-align:center; }
+    .site-footer p { color:var(--muted); font-size:.82rem; }
+    .site-footer a { color:var(--muted); text-decoration:none; transition:color .2s; }
+    .site-footer a:hover { color:var(--accent); }
+
+    /* ── Reveal ─── */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ── Error ─── */
+    .err-state { text-align:center; padding:60px 20px; color:var(--muted); grid-column:1/-1; }
+    .err-state .err-icon { font-size:3rem; margin-bottom:14px; }
+    .err-state h3 { color:var(--text); font-family:var(--font-head); margin-bottom:8px; }
+
+    /* ── Responsive ─── */
+    @media (max-width: 768px) {
+      #postsContainer { grid-template-columns:1fr; }
+      .post-card.featured { grid-template-columns:1fr; }
+      .hero-title { font-size:2.3rem; }
+      .stats-row { gap:28px; }
+    }
   </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/index.html">SAURABH <em>JHA</em></a>
-      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button"
-        data-toggle="collapse" data-target="#ftco-nav"
-        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav nav ml-auto">
-          <li class="nav-item"><a href="/#home-section"    class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/#about-section"   class="nav-link">About</a></li>
-          <li class="nav-item"><a href="/#resume-section"  class="nav-link">Resume</a></li>
-          <li class="nav-item"><a href="/#project-section" class="nav-link">Projects</a></li>
-          <li class="nav-item"><a href="/#blogs-section"   class="nav-link">Blogs</a></li>
-          <li class="nav-item"><a href="/#contact-section" class="nav-link">Contact</a></li>
-          <li class="nav-item"><a href="/Games"            class="nav-link">Games</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" id="loginBtn">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="blog-hero">
-    <div class="container">
-      <span class="eyebrow">Knowledge Hub</span>
-      <h1>Blogs &amp; <em>Study Material</em></h1>
-      <p>Exam prep guides, coding questions &amp; interview experiences for top tech companies.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num" id="statPosts">—</div><div class="lbl">Articles</div></div>
-        <div class="hero-stat"><div class="num" id="statViews">—</div><div class="lbl">Total Views</div></div>
-        <div class="hero-stat"><div class="num">Free</div><div class="lbl">Always</div></div>
-      </div>
-    </div>
-  </header>
-
-  <!-- FILTER BAR -->
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-filter="all">All Posts</button>
+  <!-- Orbs -->
+  <div class="orb-container" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-  <!-- POSTS -->
-  <section class="posts-section" id="linkedin-section">
-    <div class="posts-grid" id="postsContainer">
-      <!-- skeletons -->
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:80%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:60%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:75%;"></div></div>
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:75%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:55%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:60%;"></div></div>
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:85%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:65%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:80%;"></div></div>
+  <div class="site-content">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/index.html">SAURABH KUMAR JHA</a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button"
+          data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><a href="/#home-section"    class="nav-link"><span>Home</span></a></li>
+            <li class="nav-item"><a href="/#about-section"   class="nav-link"><span>About</span></a></li>
+            <li class="nav-item"><a href="/#resume-section"  class="nav-link"><span>Resume</span></a></li>
+            <li class="nav-item"><a href="/#project-section" class="nav-link"><span>Projects</span></a></li>
+            <li class="nav-item"><a href="/#blogs-section"   class="nav-link"><span>Blogs</span></a></li>
+            <li class="nav-item"><a href="/#contact-section" class="nav-link"><span>Contact</span></a></li>
+            <li class="nav-item"><a href="/Games"            class="nav-link"><span>Games</span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link" id="loginBtn"><span>Login</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-eyebrow">Latest Articles &amp; Guides</div>
+
+        <h1 class="hero-title">
+          Level Up Your<br/>
+          <span class="gradient-text">Placement Prep</span>
+        </h1>
+
+        <p class="hero-sub">
+          Interview experiences, coding guides, exam patterns —<br/>everything you need to crack top tech companies.
+        </p>
+
+        <div class="stats-row">
+          <div>
+            <span class="stat-num" id="statPosts">—</span>
+            <div class="stat-lbl">Articles</div>
+          </div>
+          <div>
+            <span class="stat-num">100%</span>
+            <div class="stat-lbl">Free</div>
+          </div>
+          <div>
+            <span class="stat-num">2025</span>
+            <div class="stat-lbl">Updated</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Filter pills built dynamically by JS -->
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-pill active" data-tag="all">All Posts</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- POSTS GRID -->
+    <section>
+      <div class="container">
+        <div id="postsContainer">
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        </div>
+        <div id="pagination"></div>
+      </div>
+    </section>
+
+    <!-- COMMENTS -->
+    <div class="comment-wrapper" id="comment-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+
+            <div class="reveal">
+              <h2 class="sec-title">Leave a Comment</h2>
+              <p class="sec-sub">Share your thoughts, feedback, or questions below.</p>
+            </div>
+
+            <form id="commentForm" class="reveal">
+              <input  type="text"  id="name"    class="cf-field" placeholder="Your Name"    required />
+              <textarea            id="comment" class="cf-field" rows="4" placeholder="Your Comment" required></textarea>
+              <button type="submit" class="btn-submit">Submit Comment</button>
+            </form>
+
+            <div style="margin-top:52px" class="reveal">
+              <h3 class="sec-title" style="font-size:1.35rem;margin-bottom:22px">Comments</h3>
+              <div id="commentList"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="pagination"></div>
-  </section>
 
-  <!-- COMMENT SECTION -->
-  <section class="comment-section" id="comment-section">
-    <div class="container" style="max-width:700px;">
-      <div style="text-align:center;margin-bottom:3rem;">
-        <div class="section-eyebrow">Join the Conversation</div>
-        <h2 class="section-h">Leave a Comment</h2>
-        <p style="color:var(--muted);">Share your thoughts, feedback, or questions below.</p>
-      </div>
-
-      <form id="commentForm">
-        <input  type="text" id="name"    class="form-ctrl" placeholder="Your Name"    required />
-        <textarea           id="comment" class="form-ctrl" rows="4" placeholder="Your Comment" required style="resize:vertical;"></textarea>
-        <button type="submit" class="btn-submit">Post Comment →</button>
-      </form>
-
-      <div style="margin-top:3rem;">
-        <h3 style="font-family:var(--head);color:#fff;margin-bottom:1.5rem;font-size:1.4rem;">Comments</h3>
-        <div id="commentList"></div>
-      </div>
-
-      <!-- CTA -->
-      <div class="cta-banner">
-        <h3>Have a Question?</h3>
-        <p>Ask anything about exam prep, career, or coding.</p>
-        <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn-cta" target="_blank" rel="noopener">Ask Now →</a>
+    <!-- SOCIAL + CTA -->
+    <div class="social-sec">
+      <div class="container">
+        <p style="color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;">Find me on</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@saurabh_jha_nituk"    class="soc-link" aria-label="YouTube"><span class="icon-youtube"></span></a>
+          <a href="https://www.linkedin.com/in/imsaurav1/"        class="soc-link" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>
+          <a href="https://x.com/I_m_saurav____"                 class="soc-link" aria-label="X / Twitter"><span class="icon-twitter"></span></a>
+          <a href="https://www.facebook.com/thesauravking/"       class="soc-link" aria-label="Facebook"><span class="icon-facebook"></span></a>
+          <a href="https://www.instagram.com/i_m_saurav____/"    class="soc-link" aria-label="Instagram"><span class="icon-instagram"></span></a>
+          <a href="https://t.me/sauravjha1234"                   class="soc-link" aria-label="Telegram"><span class="icon-telegram"></span></a>
+        </div>
+        <div style="margin-top:36px">
+          <a href="https://forms.gle/FXtDyiMRHxv2A3Y99"
+            style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:700;font-size:.88rem;padding:13px 30px;border-radius:12px;text-decoration:none;letter-spacing:.04em;transition:opacity .2s"
+            onmouseover="this.style.opacity='.84'" onmouseout="this.style.opacity='1'">
+            Have a Question? Ask Here →
+          </a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- AUTH POPUP -->
-  <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
-    <div class="popup-content">
-      <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
-      <div class="tabs">
-        <button id="loginTab"    class="tab active">Login</button>
-        <button id="registerTab" class="tab">Register</button>
+    <!-- AUTH POPUP -->
+    <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
+      <div class="popup-content">
+        <span class="close" id="closePopup" role="button" aria-label="Close">&times;</span>
+        <div class="tabs">
+          <button id="loginTab"    class="tab active">Login</button>
+          <button id="registerTab" class="tab">Register</button>
+        </div>
+        <form id="loginForm" class="popup-form active">
+          <h2 style="font-family:var(--font-head);margin-bottom:18px;font-size:1.35rem;">Welcome back</h2>
+          <input type="email"    id="loginEmail"    class="popup-input" placeholder="Email Address" required autocomplete="email" />
+          <input type="password" id="loginPassword" class="popup-input" placeholder="Password"      required autocomplete="current-password" />
+          <button type="submit" class="btn-submit" style="width:100%;margin-top:6px;">Login</button>
+        </form>
+        <form id="registerForm" class="popup-form">
+          <h2 style="font-family:var(--font-head);margin-bottom:18px;font-size:1.35rem;">Create account</h2>
+          <input type="text"     id="registerName"     class="popup-input" placeholder="Full Name"     required autocomplete="name" />
+          <input type="email"    id="registerEmail"    class="popup-input" placeholder="Email Address" required autocomplete="email" />
+          <input type="password" id="registerPassword" class="popup-input" placeholder="Password"      required autocomplete="new-password" />
+          <button type="submit" class="btn-submit" style="width:100%;margin-top:6px;">Sign Up</button>
+        </form>
       </div>
-      <form id="loginForm" class="form active">
-        <h2>Welcome back</h2>
-        <input type="email"    id="loginEmail"    placeholder="Email Address" required autocomplete="email" />
-        <input type="password" id="loginPassword" placeholder="Password"      required autocomplete="current-password" />
-        <button type="submit" class="btn-auth">Login</button>
-      </form>
-      <form id="registerForm" class="form">
-        <h3>Create Account</h3>
-        <input type="text"     id="registerName"     placeholder="Full Name"     required autocomplete="name" />
-        <input type="email"    id="registerEmail"    placeholder="Email Address" required autocomplete="email" />
-        <input type="password" id="registerPassword" placeholder="Password"      required autocomplete="new-password" />
-        <button type="submit" class="btn-auth">Sign Up</button>
-      </form>
     </div>
-  </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="social-row">
-        <a href="https://www.youtube.com/@saurabh_jha_nituk"    aria-label="YouTube"   target="_blank" rel="noopener"><span class="icon-youtube"></span></a>
-        <a href="https://www.linkedin.com/in/imsaurav1/"        aria-label="LinkedIn"  target="_blank" rel="noopener"><span class="icon-linkedin"></span></a>
-        <a href="https://x.com/I_m_saurav____"                  aria-label="Twitter"   target="_blank" rel="noopener"><span class="icon-twitter"></span></a>
-        <a href="https://www.facebook.com/thesauravking/"       aria-label="Facebook"  target="_blank" rel="noopener"><span class="icon-facebook"></span></a>
-        <a href="https://www.instagram.com/i_m_saurav____/"     aria-label="Instagram" target="_blank" rel="noopener"><span class="icon-instagram"></span></a>
-        <a href="https://t.me/sauravjha1234"                    aria-label="Telegram"  target="_blank" rel="noopener"><span class="icon-telegram"></span></a>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <p style="margin-bottom:10px">
+          <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="/disclaimer">Disclaimer</a> &nbsp;·&nbsp;
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        </p>
+        <p>&copy; 2026 <strong style="color:var(--text)">SaurabhJha.live</strong> — All Rights Reserved</p>
       </div>
-      <div class="footer-links">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/disclaimer">Disclaimer</a>
-        <a href="/terms-and-conditions">Terms &amp; Conditions</a>
-      </div>
-      <p class="footer-copy">&copy; 2026 <strong style="color:#fff;">SaurabhJha.live</strong> &mdash; All Rights Reserved</p>
-    </div>
-  </footer>
+    </footer>
+
+  </div><!-- /site-content -->
 
   <!-- Loader -->
   <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+      <circle class="path"    cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
     </svg>
   </div>
 
   <!-- POSTS SCRIPT -->
   <script>
   (function () {
-    var API_BASE    = "https://studymaterial-1heb.onrender.com/api";
-    var container   = document.getElementById("postsContainer");
-    var pagDiv      = document.getElementById("pagination");
-    var filterBar   = document.getElementById("filterBar");
-    var currentPage = 1;
-    var allPosts    = [];
+    const API    = "https://studymaterial-1heb.onrender.com/api";
+    const cont   = document.getElementById("postsContainer");
+    const pagDiv = document.getElementById("pagination");
+    const fBar   = document.getElementById("filterBar");
+    let page     = 1;
+    let allPosts = [];
+    let activeTag= "all";
 
-    function formatDate(str) {
-      var d = new Date(str);
-      if (isNaN(d)) return "";
-      return d.toLocaleDateString("en-US", { month:"short", day:"numeric", year:"numeric" });
+    function fmtDate(s) {
+      const d = new Date(s);
+      return isNaN(d) ? "" : d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
     }
 
-    function buildCard(post, index) {
-      var a = document.createElement("a");
-      a.href      = "/posts/" + encodeURIComponent(post.slug);
-      a.className = "post-card" + (index === 0 ? " featured" : "");
-
-      var tag0 = (post.tags && post.tags[0]) ? post.tags[0] : "Blog";
-
-      var badge = document.createElement("span");
-      badge.className   = "card-badge";
-      badge.textContent = tag0;
-
-      var h2 = document.createElement("h2");
-      h2.textContent = post.title;
-
-      var excerpt = document.createElement("p");
-      excerpt.className   = "post-excerpt";
-      excerpt.textContent = post.excerpt || "";
-
-      var meta = document.createElement("div");
-      meta.className = "post-meta";
-
-      var dateSpan = document.createElement("span");
-      dateSpan.textContent = formatDate(post.createdAt);
-
-      var dot1 = document.createElement("span");
-      dot1.className = "meta-dot";
-
-      var viewSpan = document.createElement("span");
-      viewSpan.textContent = "👁 " + (post.views || 0);
-
-      meta.append(dateSpan, dot1, viewSpan);
-
-      if (index === 0) {
-        // Featured: add author + read more
-        var dot2 = document.createElement("span");
-        dot2.className = "meta-dot";
-        var authSpan = document.createElement("span");
-        authSpan.textContent = post.author || "Saurabh Jha";
-        meta.append(dot2, authSpan);
-
-        var rm = document.createElement("span");
-        rm.className   = "read-more";
-        rm.textContent = "Read Article →";
-
-        var left = document.createElement("div");
-        left.append(badge, h2, excerpt, meta, rm);
-
-        var icon = document.createElement("div");
-        icon.className   = "featured-icon";
-        icon.textContent = "📘";
-
-        a.append(left, icon);
-      } else {
-        // Normal card + tags
-        var tagsDiv = document.createElement("div");
-        tagsDiv.className = "post-tags";
-        if (post.tags && post.tags.length) {
-          post.tags.slice(0, 4).forEach(function(t) {
-            var s = document.createElement("span");
-            s.className   = "tag";
-            s.textContent = "#" + t;
-            tagsDiv.appendChild(s);
-          });
-        }
-        a.append(badge, h2, excerpt, meta, tagsDiv);
-      }
-
-      return a;
+    /* ── Tag filters ── */
+    function buildFilters(posts) {
+      const tags = [...new Set(posts.flatMap(p => p.tags||[]))];
+      tags.forEach(tag => {
+        const b = document.createElement("button");
+        b.className = "filter-pill"; b.dataset.tag = tag;
+        b.textContent = `#${tag}`;
+        b.onclick = () => setFilter(tag);
+        fBar.appendChild(b);
+      });
+      fBar.querySelector("[data-tag='all']").onclick = () => setFilter("all");
     }
 
-    function renderPosts(posts) {
-      container.innerHTML = "";
+    function setFilter(tag) {
+      activeTag = tag;
+      fBar.querySelectorAll(".filter-pill").forEach(b => b.classList.toggle("active", b.dataset.tag === tag));
+      renderCards(filtered());
+    }
+
+    function filtered() {
+      return activeTag === "all" ? allPosts : allPosts.filter(p => (p.tags||[]).includes(activeTag));
+    }
+
+    /* ── Render cards ── */
+    function renderCards(posts) {
+      cont.innerHTML = "";
+
       if (!posts.length) {
-        var msg = document.createElement("p");
-        msg.style.cssText = "color:var(--muted);text-align:center;grid-column:1/-1;padding:3rem 0;";
-        msg.textContent   = "No posts found.";
-        container.appendChild(msg);
+        cont.innerHTML = `<div class="err-state"><div class="err-icon">📭</div><h3>No posts found</h3><p>Try a different filter.</p></div>`;
         return;
       }
-      var frag = document.createDocumentFragment();
-      posts.forEach(function(p, i) { frag.appendChild(buildCard(p, i)); });
-      container.appendChild(frag);
+
+      const frag = document.createDocumentFragment();
+
+      posts.forEach((p, i) => {
+        const card = document.createElement("a");
+        card.href = `/posts/${encodeURIComponent(p.slug)}`;
+        card.className = `post-card reveal${i===0?" featured":""}`;
+
+        const col = document.createElement("div");
+
+        if (i === 0) {
+          const badge = document.createElement("div");
+          badge.className = "post-badge"; badge.textContent = "Featured";
+          col.appendChild(badge);
+        }
+
+        const title = document.createElement("div");
+        title.className = "card-title"; title.textContent = p.title;
+
+        const exc = document.createElement("p");
+        exc.className = "card-excerpt"; exc.textContent = p.excerpt || "";
+
+        const meta = document.createElement("div");
+        meta.className = "card-meta";
+        meta.innerHTML = `
+          <span class="card-meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            ${fmtDate(p.createdAt)}
+          </span>
+          <span class="card-meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            ${p.views??0} views
+          </span>`;
+
+        const tags = document.createElement("div");
+        tags.className = "card-tags";
+        (p.tags||[]).forEach(t => {
+          const s = document.createElement("span");
+          s.className = "tag"; s.textContent = `#${t}`;
+          tags.appendChild(s);
+        });
+
+        col.append(title, exc, meta, tags);
+        card.appendChild(col);
+
+        const arr = document.createElement("div");
+        arr.className = "card-arrow"; arr.textContent = "↗";
+        card.appendChild(arr);
+
+        frag.appendChild(card);
+      });
+
+      cont.appendChild(frag);
+
+      requestAnimationFrame(() => {
+        cont.querySelectorAll(".reveal").forEach((el,i) => {
+          el.style.transitionDelay = `${i*55}ms`;
+          obs.observe(el);
+        });
+      });
     }
 
-    function renderPagination(pagination) {
+    /* ── Pagination ── */
+    function renderPagination(pg) {
       pagDiv.innerHTML = "";
-      if (!pagination || pagination.totalPages <= 1) return;
+      if (!pg || pg.totalPages <= 1) return;
+      const {page:p, totalPages:tp} = pg;
 
-      var page = pagination.page, total = pagination.totalPages;
-
-      var prev = document.createElement("button");
-      prev.className   = "pg-btn";
-      prev.textContent = "← Prev";
-      prev.disabled    = page <= 1;
-      prev.onclick     = function() { currentPage--; loadPosts(currentPage); scrollTo({top:0,behavior:"smooth"}); };
+      const prev = makeBtn("← Prev", p<=1, ()=>{ page--; load(); });
       pagDiv.appendChild(prev);
 
-      for (var i = 1; i <= total; i++) {
-        (function(n) {
-          var btn = document.createElement("button");
-          btn.className   = "pg-btn" + (n === page ? " active" : "");
-          btn.textContent = n;
-          btn.onclick     = function() { currentPage = n; loadPosts(currentPage); scrollTo({top:0,behavior:"smooth"}); };
-          pagDiv.appendChild(btn);
-        })(i);
+      for (let i=1; i<=tp; i++) {
+        const b = makeBtn(i, false, ()=>{ page=i; load(); });
+        if (i===p) b.classList.add("active");
+        pagDiv.appendChild(b);
       }
 
-      var next = document.createElement("button");
-      next.className   = "pg-btn";
-      next.textContent = "Next →";
-      next.disabled    = page >= total;
-      next.onclick     = function() { currentPage++; loadPosts(currentPage); scrollTo({top:0,behavior:"smooth"}); };
-      pagDiv.appendChild(next);
+      pagDiv.appendChild(makeBtn("Next →", p>=tp, ()=>{ page++; load(); }));
     }
 
-    function buildFilters(posts) {
-      var tagSet = {};
-      posts.forEach(function(p) {
-        (p.tags || []).forEach(function(t) { tagSet[t] = true; });
-      });
-
-      Object.keys(tagSet).forEach(function(tag) {
-        var btn = document.createElement("button");
-        btn.className      = "filter-btn";
-        btn.textContent    = tag;
-        btn.dataset.filter = tag;
-        btn.onclick = function() {
-          document.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); });
-          btn.classList.add("active");
-          var filtered = allPosts.filter(function(p){ return p.tags && p.tags.indexOf(tag) > -1; });
-          renderPosts(filtered);
-          pagDiv.innerHTML = "";
-        };
-        filterBar.appendChild(btn);
-      });
-
-      filterBar.querySelector("[data-filter='all']").onclick = function() {
-        document.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); });
-        filterBar.querySelector("[data-filter='all']").classList.add("active");
-        loadPosts(1);
-      };
+    function makeBtn(txt, disabled, fn) {
+      const b = document.createElement("button");
+      b.className = "page-btn"; b.textContent = txt; b.disabled = disabled;
+      b.onclick = () => { fn(); window.scrollTo({top:0,behavior:"smooth"}); };
+      return b;
     }
 
-    function updateStats(total, posts) {
-      document.getElementById("statPosts").textContent = total;
-      var views = posts.reduce(function(s, p){ return s + (p.views || 0); }, 0);
-      document.getElementById("statViews").textContent = views > 999
-        ? (views / 1000).toFixed(1) + "k" : views;
+    /* ── Fetch ── */
+    async function load() {
+      cont.innerHTML = `
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>`;
+      pagDiv.innerHTML = "";
+
+      try {
+        const res  = await fetch(`${API}/posts?page=${page}&limit=10`);
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+
+        allPosts = Array.isArray(data) ? data : (data.posts ?? []);
+        const pagination = data.pagination ?? null;
+
+        if (pagination) document.getElementById("statPosts").textContent = pagination.total;
+
+        // Build tag filters once
+        if (page===1 && fBar.querySelectorAll(".filter-pill").length===1) buildFilters(allPosts);
+
+        renderCards(filtered());
+        renderPagination(pagination);
+
+      } catch(e) {
+        console.error(e);
+        cont.innerHTML = `<div class="err-state"><div class="err-icon">⚠️</div><h3>Failed to load posts</h3><p>Please try again later.</p></div>`;
+      }
     }
 
-    function loadPosts(page) {
-      fetch(API_BASE + "/posts?page=" + page + "&limit=10")
-        .then(function(res) {
-          if (!res.ok) throw new Error("Server " + res.status);
-          return res.json();
-        })
-        .then(function(data) {
-          var posts = Array.isArray(data) ? data : (data.posts || []);
-          var pag   = data.pagination || null;
+    /* ── Intersection Observer for reveal ── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }});
+    }, { threshold: 0.08 });
 
-          allPosts = posts;
-          renderPosts(posts);
-          renderPagination(pag);
-          updateStats(pag ? pag.total : posts.length, posts);
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 
-          if (page === 1 && filterBar.children.length === 1) {
-            buildFilters(posts);
-          }
-        })
-        .catch(function(err) {
-          console.error("Posts error:", err);
-          container.innerHTML = '<p style="color:#ff6b6b;text-align:center;grid-column:1/-1;padding:3rem 0;">Failed to load posts. Try refreshing.</p>';
-        });
-    }
-
-    loadPosts(1);
+    load();
   })();
   </script>
 
-  <!-- SCRIPTS — jQuery first, then plugins, then yours -->
+  <!-- Scripts — jQuery MUST come before plugins and form.js -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="/js/jquery.min.js"></script>
