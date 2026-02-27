@@ -4,20 +4,19 @@
   <title>Blogs & Study Material | SaurabhJha.live</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Complete preparation guide for Infosys Specialist Programmer (SP) and Digital Specialist Engineer (DSE) 2025. Get latest exam pattern, coding questions, interview experience, assessment test details, off campus drive pattern, and preparation strategy." />
+  <meta name="description" content="Complete preparation guide for Infosys SP, DSE, Accenture, and more. Coding questions, interview experiences, exam patterns." />
   <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow" />
 
   <link rel="icon" type="image/png" href="/images/logo.png" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet" />
 
-  <!-- Stylesheets -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Existing stylesheets -->
   <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
   <link rel="stylesheet" href="/css/animate.css" />
-  <link rel="stylesheet" href="/css/owl.carousel.min.css" />
-  <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
-  <link rel="stylesheet" href="/css/magnific-popup.css" />
-  <link rel="stylesheet" href="/css/aos.css" />
   <link rel="stylesheet" href="/css/ionicons.min.css" />
   <link rel="stylesheet" href="/css/flaticon.css" />
   <link rel="stylesheet" href="/css/icomoon.css" />
@@ -26,500 +25,466 @@
   <link rel="stylesheet" href="/css/form.css" />
   <link rel="stylesheet" href="/css/login.css" />
 
-  <style>
-    /* ── Post Cards ─────────────────────────────── */
-    .post-card {
-      background: #1a1a2e;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border-left: 4px solid #ffbd39;
-    }
-
-    .post-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .post-card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .post-card h2 a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .post-card h2 a:hover {
-      color: #ffbd39;
-    }
-
-    .post-meta {
-      font-size: 0.82rem;
-      color: #aaa;
-      margin-bottom: 0.5rem;
-    }
-
-    .post-excerpt {
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .post-tags .tag {
-      display: inline-block;
-      background: #ffbd39;
-      color: #000;
-      border-radius: 4px;
-      padding: 2px 9px;
-      font-size: 0.75rem;
-      margin-right: 5px;
-      margin-bottom: 4px;
-    }
-
-    /* ── Pagination ──────────────────────────────── */
-    #pagination {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    #pagination button {
-      background: #1a1a2e;
-      color: #fff;
-      border: 1px solid #ffbd39;
-      border-radius: 6px;
-      padding: 6px 14px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-
-    #pagination button:hover,
-    #pagination button.active {
-      background: #ffbd39;
-      color: #000;
-    }
-
-    #pagination button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* ── Auth Popup ────────────────────────────── */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .popup.active { display: flex; }
-
-    .popup-content {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      width: 400px;
-      max-width: calc(100vw - 2rem);
-      text-align: center;
-      position: relative;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-      animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
-    }
-
-    @keyframes popIn {
-      from { opacity:0; transform:scale(.9) translateY(20px); }
-      to   { opacity:1; transform:scale(1) translateY(0); }
-    }
-
-    .popup .close-btn {
-      position: absolute; top: 1.2rem; right: 1.5rem;
-      font-size: 1.4rem; color: var(--muted); cursor: pointer;
-      background: none; border: none; line-height: 1; transition: color 0.2s;
-    }
-
-    .popup .close-btn:hover { color: #fff; }
-
-    .tabs { display: flex; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 4px; margin-bottom: 1.8rem; }
-    .tab { flex:1; padding:9px; border:none; background:transparent; color:var(--muted); font-family:var(--body); font-size:0.85rem; font-weight:600; cursor:pointer; border-radius:6px; transition:all 0.2s; }
-    .tab.active { background:var(--accent); color:#000; }
-    .form { display:none; }
-    .form.active { display:block; }
-
-    .form h2, .form h3 { font-family:var(--head); color:#fff; margin-bottom:1.4rem; font-size:1.5rem; }
-
-    .form input {
-      width:100%; background:rgba(255,255,255,0.05);
-      border:1px solid var(--border); color:#fff;
-      padding:0.8rem 1rem; border-radius:8px;
-      font-family:var(--body); font-size:0.88rem;
-      margin-bottom:1rem; transition:border-color 0.2s;
-    }
-
-    .form input:focus { outline:none; border-color:var(--accent); }
-    .form input::placeholder { color:var(--muted); }
-
-    .btn-auth {
-      width:100%; background:var(--accent); color:#000;
-      font-weight:800; font-family:var(--body); border:none;
-      border-radius:8px; padding:0.85rem; font-size:0.85rem;
-      letter-spacing:0.5px; cursor:pointer; transition:background 0.2s;
-    }
-
-    .btn-auth:hover { background:#e6a800; }
-
-    /* ── FOOTER ─────────────────────────────── */
-    .site-footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 0;
-      text-align: center;
-      position: relative; z-index: 1;
-    }
-
-    .social-row {
-      display: flex; justify-content: center; gap: 8px;
-      flex-wrap: wrap; margin-bottom: 1.2rem;
-    }
-
-    .social-row a {
-      width:38px; height:38px;
-      display:flex; align-items:center; justify-content:center;
-      border:1px solid var(--border); border-radius:8px;
-      color:var(--muted); font-size:0.95rem;
-      text-decoration:none; transition:all 0.2s;
-    }
-
-    .social-row a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
-
-    .footer-links { display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; margin-bottom:0.8rem; }
-    .footer-links a { color:var(--muted); font-size:0.8rem; text-decoration:none; transition:color 0.2s; }
-    .footer-links a:hover { color:var(--accent); }
-    .footer-copy { color:var(--muted); font-size:0.78rem; }
-
-    /* ── ANIMATIONS ─────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(22px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .post-card:nth-child(1){animation-delay:.05s}
-    .post-card:nth-child(2){animation-delay:.10s}
-    .post-card:nth-child(3){animation-delay:.15s}
-    .post-card:nth-child(4){animation-delay:.20s}
-    .post-card:nth-child(5){animation-delay:.25s}
-    .post-card:nth-child(6){animation-delay:.30s}
-    .post-card:nth-child(7){animation-delay:.35s}
-
-    /* scrollbar */
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:var(--bg)}
-    ::-webkit-scrollbar-thumb{background:#2d3748;border-radius:3px}
-    ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-
-    /* suppress legacy ftco footer */
-    .ftco-footer { display:none !important; }
-    .ftco-section { padding:0 !important; }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/index.html">SAURABH <em>JHA</em></a>
-      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button"
-        data-toggle="collapse" data-target="#ftco-nav"
-        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span>
-      background: #545454;
-      padding: 20px;
-      border-radius: 8px;
-      width: 350px;
-      text-align: center;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px; right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .tabs { display: flex; justify-content: center; margin-bottom: 20px; }
-    .tab  { flex: 1; padding: 10px; cursor: pointer; border: none; background: #f1f1f1; }
-    .tab.active { background: #ffbd39; color: #fff; }
-
-    .btn-success { color: #fff; background-color: #ffbd39; border-color: #545454; }
-    .form { display: none; }
-    .form.active { display: block; }
-  </style>
-
-  <!-- Vercel Analytics -->
+  <!-- Vercel: only on production -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
-  <!-- Vercel Speed Insights -->
   <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-
-  <!-- Google AdSense -->
+  <script>
+    if (!['127.0.0.1','localhost'].includes(location.hostname)) {
+      ['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(src => {
+        const s = document.createElement('script'); s.defer = true; s.src = src; document.head.appendChild(s);
+      });
+    }
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558" crossorigin="anonymous"></script>
+
+  <style>
+    /* ============================================
+       DESIGN TOKENS
+    ============================================ */
+    :root {
+      --bg:        #050810;
+      --bg2:       #0b1020;
+      --bg3:       #111827;
+      --accent:    #f5a623;
+      --accent2:   #ff6b35;
+      --text:      #e8eaf0;
+      --muted:     #6b7280;
+      --border:    rgba(255,255,255,0.07);
+      --card-bg:   rgba(12,17,32,0.85);
+      --radius:    14px;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --glow:      0 0 50px rgba(245,166,35,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Ambient Orbs ─── */
+    .orb-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: drift 20s ease-in-out infinite alternate; }
+    .orb-1 { width:700px; height:700px; background:radial-gradient(circle,#f5a623,transparent 70%); top:-300px; left:-250px; opacity:.2; animation-duration:22s; }
+    .orb-2 { width:500px; height:500px; background:radial-gradient(circle,#ff6b35,transparent 70%); bottom:-150px; right:-200px; opacity:.18; animation-duration:27s; animation-delay:-10s; }
+    .orb-3 { width:400px; height:400px; background:radial-gradient(circle,#3b4fd4,transparent 70%); top:45%; left:50%; opacity:.12; animation-duration:32s; animation-delay:-18s; }
+
+    @keyframes drift {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(70px,-50px) scale(1.1); }
+      66%  { transform: translate(-50px,70px) scale(0.93); }
+      100% { transform: translate(40px,25px) scale(1.05); }
+    }
+
+    /* Noise grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .025;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .site-content { position: relative; z-index: 2; }
+
+    /* ── NAVBAR ─── */
+    #ftco-navbar {
+      background: rgba(5,8,16,0.9) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    #ftco-navbar .navbar-brand { font-family:var(--font-head); font-size:1rem; letter-spacing:.1em; color:var(--text) !important; }
+    #ftco-navbar .nav-link span { color:var(--muted); font-size:.85rem; font-weight:500; letter-spacing:.04em; transition:color .2s; }
+    #ftco-navbar .nav-link:hover span { color:var(--accent); }
+
+    /* ── HERO ─── */
+    .hero-section { padding: 120px 0 70px; text-align: center; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.2);
+      border-radius: 100px; padding: 6px 20px;
+      font-size: .75rem; font-weight: 600; color: var(--accent);
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: blink 2s ease infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800; line-height: 1.06; letter-spacing: -.025em; margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin: 0 auto 48px; font-weight: 300; line-height: 1.75; }
+
+    .stats-row { display: flex; justify-content: center; gap: 52px; flex-wrap: wrap; margin-bottom: 64px; }
+    .stat-num { font-family:var(--font-head); font-size:2.2rem; font-weight:800; color:var(--accent); display:block; line-height:1; }
+    .stat-lbl { font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; margin-top:5px; }
+
+    .divider { width:60px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin:0 auto 52px; }
+
+    /* ── FILTERS ─── */
+    .filter-bar { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:52px; }
+    .filter-pill {
+      background:transparent; border:1px solid var(--border); color:var(--muted);
+      border-radius:100px; padding:8px 20px; font-family:var(--font-body); font-size:.8rem;
+      font-weight:500; cursor:pointer; transition:all .2s; letter-spacing:.03em;
+    }
+    .filter-pill:hover { border-color:rgba(245,166,35,.35); color:var(--text); }
+    .filter-pill.active { background:var(--accent); border-color:var(--accent); color:#000; font-weight:700; }
+
+    /* ── POSTS GRID ─── */
+    #postsContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 22px;
+      margin-bottom: 50px;
+    }
+
+    #postsContainer .post-card:first-child { grid-column: 1 / -1; }
+
+    /* ── POST CARD ─── */
+    .post-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .post-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transform:scaleX(0); transform-origin:left; transition:transform .4s ease;
+    }
+
+    .post-card:hover { transform:translateY(-5px); border-color:rgba(245,166,35,.25); box-shadow:var(--glow); }
+    .post-card:hover::before { transform:scaleX(1); }
+
+    /* Featured card */
+    .post-card.featured {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 20px;
+      padding: 38px;
+      background: linear-gradient(140deg, rgba(12,18,38,.97) 0%, rgba(245,166,35,.04) 100%);
+    }
+
+    .post-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(245,166,35,.12); border: 1px solid rgba(245,166,35,.25);
+      color: var(--accent); border-radius: 100px; padding: 4px 14px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    .post-badge::before { content: '★'; font-size: .65rem; }
+
+    .card-title { font-family:var(--font-head); font-size:1.18rem; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:10px; transition:color .2s; }
+    .post-card:hover .card-title { color:var(--accent); }
+    .post-card.featured .card-title { font-size:1.6rem; }
+
+    .card-excerpt { color:var(--muted); font-size:.88rem; line-height:1.7; margin-bottom:18px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+    .card-meta { display:flex; align-items:center; gap:14px; font-size:.76rem; color:var(--muted); flex-wrap:wrap; }
+    .card-meta-item { display:flex; align-items:center; gap:4px; }
+    .card-meta svg { width:12px; height:12px; opacity:.6; }
+
+    .card-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+    .tag { background:rgba(255,255,255,.04); border:1px solid var(--border); color:var(--muted); border-radius:6px; padding:3px 9px; font-size:.71rem; font-weight:500; transition:all .2s; }
+    .post-card:hover .tag { border-color:rgba(245,166,35,.2); color:rgba(255,255,255,.75); }
+
+    .card-arrow {
+      display:flex; align-items:center; justify-content:center;
+      width:38px; height:38px; border-radius:50%; border:1px solid var(--border);
+      color:var(--muted); font-size:.95rem; flex-shrink:0; transition:all .3s; margin-top:2px;
+    }
+    .post-card:hover .card-arrow { background:var(--accent); border-color:var(--accent); color:#000; transform:rotate(45deg); }
+
+    /* Skeleton */
+    .skeleton-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:30px; }
+    .sk { background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.04) 75%); background-size:200% 100%; animation:shimmer 1.6s ease infinite; border-radius:6px; height:15px; margin-bottom:12px; }
+    .sk.h { height:22px; width:65%; margin-bottom:18px; }
+    .sk.s { width:42%; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* ── PAGINATION ─── */
+    #pagination { display:flex; align-items:center; justify-content:center; gap:8px; margin:10px 0 80px; flex-wrap:wrap; }
+    .page-btn {
+      display:flex; align-items:center; justify-content:center;
+      min-width:44px; height:44px; padding:0 16px;
+      border-radius:10px; border:1px solid var(--border);
+      background:var(--card-bg); color:var(--muted);
+      font-family:var(--font-body); font-size:.85rem; font-weight:500;
+      cursor:pointer; transition:all .2s; backdrop-filter:blur(8px);
+    }
+    .page-btn:hover:not(:disabled) { border-color:rgba(245,166,35,.35); color:var(--text); }
+    .page-btn.active { background:var(--accent); border-color:var(--accent); color:#000; font-weight:700; }
+    .page-btn:disabled { opacity:.3; cursor:not-allowed; }
+
+    /* ── COMMENTS ─── */
+    .comment-wrapper { background:var(--bg2); border-top:1px solid var(--border); padding:80px 0; }
+    .sec-title { font-family:var(--font-head); font-size:1.9rem; font-weight:800; margin-bottom:8px; }
+    .sec-sub { color:var(--muted); font-size:.92rem; margin-bottom:38px; }
+    .cf-field {
+      width:100%; background:var(--bg3); border:1px solid var(--border);
+      border-radius:10px; color:var(--text); font-family:var(--font-body);
+      font-size:.92rem; padding:13px 16px; margin-bottom:14px; outline:none;
+      transition:border-color .2s; resize:vertical;
+    }
+    .cf-field:focus { border-color:rgba(245,166,35,.45); }
+    .cf-field::placeholder { color:var(--muted); }
+    .btn-submit {
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#000; font-family:var(--font-body); font-weight:700;
+      font-size:.88rem; padding:13px 34px; border:none; border-radius:10px;
+      cursor:pointer; letter-spacing:.04em; transition:opacity .2s, transform .2s;
+    }
+    .btn-submit:hover { opacity:.86; transform:translateY(-1px); }
+
+    /* ── AUTH POPUP ─── */
+    .popup { display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); backdrop-filter:blur(10px); justify-content:center; align-items:center; z-index:9999; }
+    .popup.active { display:flex; }
+    .popup-content { background:var(--bg2); border:1px solid var(--border); border-radius:20px; padding:36px; width:100%; max-width:400px; text-align:center; position:relative; box-shadow:0 40px 80px rgba(0,0,0,.6); }
+    .close { position:absolute; top:16px; right:20px; font-size:20px; cursor:pointer; color:var(--muted); transition:color .2s; line-height:1; }
+    .close:hover { color:var(--text); }
+    .tabs { display:flex; gap:8px; margin-bottom:26px; }
+    .tab { flex:1; padding:10px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--muted); border-radius:10px; font-family:var(--font-body); font-weight:600; font-size:.85rem; transition:all .2s; }
+    .tab.active { background:var(--accent); border-color:var(--accent); color:#000; }
+    .popup-form { display:none; }
+    .popup-form.active { display:block; }
+    .popup-input { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:var(--font-body); font-size:.88rem; padding:12px 15px; margin-bottom:12px; outline:none; transition:border-color .2s; }
+    .popup-input:focus { border-color:rgba(245,166,35,.45); }
+    .popup-input::placeholder { color:var(--muted); }
+
+    /* ── SOCIAL ─── */
+    .social-sec { text-align:center; padding:60px 0 44px; }
+    .social-links { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .soc-link { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid var(--border); color:var(--muted); font-size:1.1rem; text-decoration:none; transition:all .2s; }
+    .soc-link:hover { border-color:rgba(245,166,35,.35); color:var(--accent); transform:translateY(-2px); }
+
+    /* ── FOOTER ─── */
+    .site-footer { background:var(--bg); border-top:1px solid var(--border); padding:30px 0; text-align:center; }
+    .site-footer p { color:var(--muted); font-size:.82rem; }
+    .site-footer a { color:var(--muted); text-decoration:none; transition:color .2s; }
+    .site-footer a:hover { color:var(--accent); }
+
+    /* ── Reveal ─── */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ── Error ─── */
+    .err-state { text-align:center; padding:60px 20px; color:var(--muted); grid-column:1/-1; }
+    .err-state .err-icon { font-size:3rem; margin-bottom:14px; }
+    .err-state h3 { color:var(--text); font-family:var(--font-head); margin-bottom:8px; }
+
+    /* ── Responsive ─── */
+    @media (max-width: 768px) {
+      #postsContainer { grid-template-columns:1fr; }
+      .post-card.featured { grid-template-columns:1fr; }
+      .hero-title { font-size:2.3rem; }
+      .stats-row { gap:28px; }
+    }
+  </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-  <!-- =============================================
-       NAVBAR
-  ============================================= -->
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/index.html">SAURABH KUMAR JHA</a>
-
-      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-        type="button"
-        data-toggle="collapse"
-        data-target="#ftco-nav"
-        aria-controls="ftco-nav"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav nav ml-auto">
-          <li class="nav-item"><a href="/#home-section"    class="nav-link"><span>Home</span></a></li>
-          <li class="nav-item"><a href="/#about-section"   class="nav-link"><span>About</span></a></li>
-          <li class="nav-item"><a href="/#resume-section"  class="nav-link"><span>Resume</span></a></li>
-          <li class="nav-item"><a href="/#project-section" class="nav-link"><span>Projects</span></a></li>
-          <li class="nav-item"><a href="/#blogs-section"   class="nav-link"><span>Blogs</span></a></li>
-          <li class="nav-item"><a href="/#contact-section" class="nav-link"><span>Contact</span></a></li>
-          <li class="nav-item"><a href="/Games"            class="nav-link"><span>Games</span></a></li>
-          <li class="nav-item"><a href="#" class="nav-link" id="loginBtn">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="blog-hero">
-    <div class="container">
-      <span class="eyebrow">Knowledge Hub</span>
-      <h1>Blogs &amp; <em>Study Material</em></h1>
-      <p>Exam prep guides, coding questions &amp; interview experiences for top tech companies.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num" id="statPosts">—</div><div class="lbl">Articles</div></div>
-        <div class="hero-stat"><div class="num" id="statViews">—</div><div class="lbl">Total Views</div></div>
-        <div class="hero-stat"><div class="num">Free</div><div class="lbl">Always</div></div>
-      </div>
-    </div>
-  </header>
-
-  <!-- FILTER BAR -->
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-filter="all">All Posts</button>
+  <!-- Orbs -->
+  <div class="orb-container" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-  <!-- POSTS -->
-  <section class="posts-section" id="linkedin-section">
-    <div class="posts-grid" id="postsContainer">
-      <!-- skeletons -->
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:80%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:60%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:75%;"></div></div>
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:75%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:55%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:60%;"></div></div>
-      <div class="post-card"><div class="skeleton" style="height:22px;width:70px;margin-bottom:1rem;"></div><div class="skeleton" style="height:2rem;width:85%;margin-bottom:.5rem;"></div><div class="skeleton" style="height:2rem;width:65%;margin-bottom:1rem;"></div><div class="skeleton" style="height:.85rem;margin-bottom:.4rem;"></div><div class="skeleton" style="height:.85rem;width:80%;"></div></div>
-    </div>
-    <div id="pagination"></div>
-  </section>
+  <div class="site-content">
 
-  <!-- COMMENT SECTION -->
-  <section class="comment-section" id="comment-section">
-    <div class="container" style="max-width:700px;">
-      <div style="text-align:center;margin-bottom:3rem;">
-        <div class="section-eyebrow">Join the Conversation</div>
-        <h2 class="section-h">Leave a Comment</h2>
-        <p style="color:var(--muted);">Share your thoughts, feedback, or questions below.</p>
-      </div>
-
-      <form id="commentForm">
-        <input  type="text" id="name"    class="form-ctrl" placeholder="Your Name"    required />
-        <textarea           id="comment" class="form-ctrl" rows="4" placeholder="Your Comment" required style="resize:vertical;"></textarea>
-        <button type="submit" class="btn-submit">Post Comment →</button>
-      </form>
-
-      <div style="margin-top:3rem;">
-        <h3 style="font-family:var(--head);color:#fff;margin-bottom:1.5rem;font-size:1.4rem;">Comments</h3>
-        <div id="commentList"></div>
-      </div>
-
-      <!-- CTA -->
-      <div class="cta-banner">
-        <h3>Have a Question?</h3>
-        <p>Ask anything about exam prep, career, or coding.</p>
-        <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn-cta" target="_blank" rel="noopener">Ask Now →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- AUTH POPUP -->
-  <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
-    <div class="popup-content">
-      <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
-  <!-- =============================================
-       POSTS SECTION
-  ============================================= -->
-  <section class="ftco-section ftco-no-pb" id="linkedin-section">
-    <div class="container">
-
-      <div class="row justify-content-center mb-5 pb-3">
-        <div class="col-md-7 heading-section text-center ftco-animate">
-          <h1 class="big big-2">Blogs</h1>
-          <h2 class="mb-4">Latest Posts</h2>
-          <p>Study material, interview experiences, and exam preparation guides.</p>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/index.html">SAURABH KUMAR JHA</a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button"
+          data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><a href="/#home-section"    class="nav-link"><span>Home</span></a></li>
+            <li class="nav-item"><a href="/#about-section"   class="nav-link"><span>About</span></a></li>
+            <li class="nav-item"><a href="/#resume-section"  class="nav-link"><span>Resume</span></a></li>
+            <li class="nav-item"><a href="/#project-section" class="nav-link"><span>Projects</span></a></li>
+            <li class="nav-item"><a href="/#blogs-section"   class="nav-link"><span>Blogs</span></a></li>
+            <li class="nav-item"><a href="/#contact-section" class="nav-link"><span>Contact</span></a></li>
+            <li class="nav-item"><a href="/Games"            class="nav-link"><span>Games</span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link" id="loginBtn"><span>Login</span></a></li>
+          </ul>
         </div>
       </div>
+    </nav>
 
-      <!-- Posts render here -->
-      <div class="row justify-content-center">
-        <div class="col-md-10" id="postsContainer">
-          <p class="text-center">Loading posts…</p>
-        </div>
-      </div>
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-eyebrow">Latest Articles &amp; Guides</div>
 
-      <!-- Pagination render here -->
-      <div id="pagination"></div>
+        <h1 class="hero-title">
+          Level Up Your<br/>
+          <span class="gradient-text">Placement Prep</span>
+        </h1>
 
-    </div>
-  </section>
+        <p class="hero-sub">
+          Interview experiences, coding guides, exam patterns —<br/>everything you need to crack top tech companies.
+        </p>
 
-  <!-- =============================================
-       COMMENT SECTION
-  ============================================= -->
-  <section class="ftco-section comment-section ftco-no-pb" id="comment-section">
-    <div class="container">
-
-      <div class="row justify-content-center mb-5 pb-3">
-        <div class="col-md-7 heading-section text-center ftco-animate">
-          <h2 class="mb-4">Leave a Comment</h2>
-          <p>Feel free to leave your thoughts, feedback, or questions below!</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <form id="commentForm">
-            <div class="mb-3">
-              <input type="text" id="name" class="form-control" placeholder="Your Name" required />
-            </div>
-            <div class="mb-3">
-              <textarea id="comment" class="form-control" rows="4" placeholder="Your Comment" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary py-3 px-5">Submit Comment</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-md-12">
-          <h3 class="mb-4">Comments</h3>
-          <div id="commentList"></div>
-        </div>
-      </div>
-
-      <!-- CTA + Socials -->
-      <div class="container mt-5">
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-7 ftco-animate text-center">
-            <h2>Have a <span>Question?</span>
-              <a href="https://forms.gle/FXtDyiMRHxv2A3Y99" class="btn btn-primary py-3 px-5">Click Here</a>
-            </h2>
+        <div class="stats-row">
+          <div>
+            <span class="stat-num" id="statPosts">—</span>
+            <div class="stat-lbl">Articles</div>
+          </div>
+          <div>
+            <span class="stat-num">100%</span>
+            <div class="stat-lbl">Free</div>
+          </div>
+          <div>
+            <span class="stat-num">2025</span>
+            <div class="stat-lbl">Updated</div>
           </div>
         </div>
-        <br />
-        <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-          <li class="ftco-animate normal-txt">Find me on &nbsp;</li>
-          <li class="ftco-animate"><a href="https://www.youtube.com/@saurabh_jha_nituk"     aria-label="YouTube"><span class="icon-youtube"></span></a></li>
-          <li class="ftco-animate"><a href="https://www.linkedin.com/in/imsaurav1/"         aria-label="LinkedIn"><span class="icon-linkedin"></span></a></li>
-          <li class="ftco-animate"><a href="https://x.com/I_m_saurav____"                  aria-label="X / Twitter"><span class="icon-twitter"></span></a></li>
-          <li class="ftco-animate"><a href="https://www.facebook.com/thesauravking/"        aria-label="Facebook"><span class="icon-facebook"></span></a></li>
-          <li class="ftco-animate"><a href="https://www.instagram.com/i_m_saurav____/"     aria-label="Instagram"><span class="icon-instagram"></span></a></li>
-          <li class="ftco-animate"><a href="https://t.me/sauravjha1234"                    aria-label="Telegram"><span class="icon-telegram"></span></a></li>
-        </ul>
-        <br />
-      </div>
 
-    </div>
-  </section>
+        <div class="divider"></div>
 
-  <!-- =============================================
-       AUTH POPUP
-  ============================================= -->
-  <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
-    <div class="popup-content">
-      <span class="close" id="closePopup" role="button" aria-label="Close">&times;</span>
-
-      <div class="tabs">
-        <button id="loginTab"    class="tab active">Login</button>
-        <button id="registerTab" class="tab">Register</button>
-      </div>
-
-      <form id="loginForm" class="form active">
-        <h2 class="mb-4">Login</h2>
-        <div class="form-group">
-          <input type="email"    id="loginEmail"    placeholder="Email Address" required autocomplete="email" />
-        </div>
-        <div class="form-group">
-          <input type="password" id="loginPassword" placeholder="Password"      required autocomplete="current-password" />
-        </div>
-        <button type="submit" class="btn btn-primary py-2 px-4">Login</button>
-      </form>
-
-      <form id="registerForm" class="form">
-        <h3 class="mb-4">Register</h3>
-        <div class="form-group">
-          <input type="text"     id="registerName"     placeholder="Full Name"     required autocomplete="name" />
-        </div>
-        <div class="form-group">
-          <input type="email"    id="registerEmail"    placeholder="Email Address" required autocomplete="email" />
-        </div>
-        <div class="form-group">
-          <input type="password" id="registerPassword" placeholder="Password"      required autocomplete="new-password" />
-        </div>
-        <button type="submit" class="btn btn-success py-2 px-4">Sign Up</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer class="ftco-footer ftco-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>
-            <a href="/privacy-policy">Privacy Policy</a> |
-            <a href="/disclaimer">Disclaimer</a> |
-            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
-          </p>
-          <p class="mt-2">
-            &copy; 2026 <strong>SaurabhJha.live</strong> | All Rights Reserved
-          </p>
+        <!-- Filter pills built dynamically by JS -->
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-pill active" data-tag="all">All Posts</button>
         </div>
       </div>
-      <p class="footer-copy">&copy; 2026 <strong style="color:#fff;">SaurabhJha.live</strong> &mdash; All Rights Reserved</p>
+    </section>
+
+    <!-- POSTS GRID -->
+    <section>
+      <div class="container">
+        <div id="postsContainer">
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+          <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        </div>
+        <div id="pagination"></div>
+      </div>
+    </section>
+
+    <!-- COMMENTS -->
+    <div class="comment-wrapper" id="comment-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+
+            <div class="reveal">
+              <h2 class="sec-title">Leave a Comment</h2>
+              <p class="sec-sub">Share your thoughts, feedback, or questions below.</p>
+            </div>
+
+            <form id="commentForm" class="reveal">
+              <input  type="text"  id="name"    class="cf-field" placeholder="Your Name"    required />
+              <textarea            id="comment" class="cf-field" rows="4" placeholder="Your Comment" required></textarea>
+              <button type="submit" class="btn-submit">Submit Comment</button>
+            </form>
+
+            <div style="margin-top:52px" class="reveal">
+              <h3 class="sec-title" style="font-size:1.35rem;margin-bottom:22px">Comments</h3>
+              <div id="commentList"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+
+    <!-- SOCIAL + CTA -->
+    <div class="social-sec">
+      <div class="container">
+        <p style="color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;">Find me on</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@saurabh_jha_nituk"    class="soc-link" aria-label="YouTube"><span class="icon-youtube"></span></a>
+          <a href="https://www.linkedin.com/in/imsaurav1/"        class="soc-link" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>
+          <a href="https://x.com/I_m_saurav____"                 class="soc-link" aria-label="X / Twitter"><span class="icon-twitter"></span></a>
+          <a href="https://www.facebook.com/thesauravking/"       class="soc-link" aria-label="Facebook"><span class="icon-facebook"></span></a>
+          <a href="https://www.instagram.com/i_m_saurav____/"    class="soc-link" aria-label="Instagram"><span class="icon-instagram"></span></a>
+          <a href="https://t.me/sauravjha1234"                   class="soc-link" aria-label="Telegram"><span class="icon-telegram"></span></a>
+        </div>
+        <div style="margin-top:36px">
+          <a href="https://forms.gle/FXtDyiMRHxv2A3Y99"
+            style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:700;font-size:.88rem;padding:13px 30px;border-radius:12px;text-decoration:none;letter-spacing:.04em;transition:opacity .2s"
+            onmouseover="this.style.opacity='.84'" onmouseout="this.style.opacity='1'">
+            Have a Question? Ask Here →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH POPUP -->
+    <div id="authPopup" class="popup" role="dialog" aria-modal="true" aria-label="Login or Register">
+      <div class="popup-content">
+        <span class="close" id="closePopup" role="button" aria-label="Close">&times;</span>
+        <div class="tabs">
+          <button id="loginTab"    class="tab active">Login</button>
+          <button id="registerTab" class="tab">Register</button>
+        </div>
+        <form id="loginForm" class="popup-form active">
+          <h2 style="font-family:var(--font-head);margin-bottom:18px;font-size:1.35rem;">Welcome back</h2>
+          <input type="email"    id="loginEmail"    class="popup-input" placeholder="Email Address" required autocomplete="email" />
+          <input type="password" id="loginPassword" class="popup-input" placeholder="Password"      required autocomplete="current-password" />
+          <button type="submit" class="btn-submit" style="width:100%;margin-top:6px;">Login</button>
+        </form>
+        <form id="registerForm" class="popup-form">
+          <h2 style="font-family:var(--font-head);margin-bottom:18px;font-size:1.35rem;">Create account</h2>
+          <input type="text"     id="registerName"     class="popup-input" placeholder="Full Name"     required autocomplete="name" />
+          <input type="email"    id="registerEmail"    class="popup-input" placeholder="Email Address" required autocomplete="email" />
+          <input type="password" id="registerPassword" class="popup-input" placeholder="Password"      required autocomplete="new-password" />
+          <button type="submit" class="btn-submit" style="width:100%;margin-top:6px;">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <p style="margin-bottom:10px">
+          <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="/disclaimer">Disclaimer</a> &nbsp;·&nbsp;
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        </p>
+        <p>&copy; 2026 <strong style="color:var(--text)">SaurabhJha.live</strong> — All Rights Reserved</p>
+      </div>
+    </footer>
+
+  </div><!-- /site-content -->
 
   <!-- Loader -->
   <div id="ftco-loader" class="show fullscreen">
@@ -529,137 +494,182 @@
     </svg>
   </div>
 
-  <!-- =============================================
-       POSTS SCRIPT
-       Handles paginated API response: { posts: [], pagination: {} }
-  ============================================= -->
+  <!-- POSTS SCRIPT -->
   <script>
   (function () {
-    const API_BASE  = "https://studymaterial-1heb.onrender.com/api";
-    const container = document.getElementById("postsContainer");
-    const pagDiv    = document.getElementById("pagination");
-    let   currentPage = 1;
+    const API    = "https://studymaterial-1heb.onrender.com/api";
+    const cont   = document.getElementById("postsContainer");
+    const pagDiv = document.getElementById("pagination");
+    const fBar   = document.getElementById("filterBar");
+    let page     = 1;
+    let allPosts = [];
+    let activeTag= "all";
 
-    function formatDate(str) {
-      const d = new Date(str);
-      return isNaN(d) ? "" : d.toDateString();
+    function fmtDate(s) {
+      const d = new Date(s);
+      return isNaN(d) ? "" : d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
     }
 
-    async function loadPosts(page) {
-      container.innerHTML = "<p class='text-center'>Loading posts…</p>";
-      pagDiv.innerHTML    = "";
+    /* ── Tag filters ── */
+    function buildFilters(posts) {
+      const tags = [...new Set(posts.flatMap(p => p.tags||[]))];
+      tags.forEach(tag => {
+        const b = document.createElement("button");
+        b.className = "filter-pill"; b.dataset.tag = tag;
+        b.textContent = `#${tag}`;
+        b.onclick = () => setFilter(tag);
+        fBar.appendChild(b);
+      });
+      fBar.querySelector("[data-tag='all']").onclick = () => setFilter("all");
+    }
 
-      try {
-        const res = await fetch(`${API_BASE}/posts?page=${page}&limit=10`);
-        if (!res.ok) throw new Error(`Server error ${res.status}`);
+    function setFilter(tag) {
+      activeTag = tag;
+      fBar.querySelectorAll(".filter-pill").forEach(b => b.classList.toggle("active", b.dataset.tag === tag));
+      renderCards(filtered());
+    }
 
-        const data = await res.json();
+    function filtered() {
+      return activeTag === "all" ? allPosts : allPosts.filter(p => (p.tags||[]).includes(activeTag));
+    }
 
-        // ✅ Correctly unwrap paginated response
-        const posts      = Array.isArray(data) ? data : (data.posts ?? []);
-        const pagination = data.pagination ?? null;
+    /* ── Render cards ── */
+    function renderCards(posts) {
+      cont.innerHTML = "";
 
-        container.innerHTML = "";
+      if (!posts.length) {
+        cont.innerHTML = `<div class="err-state"><div class="err-icon">📭</div><h3>No posts found</h3><p>Try a different filter.</p></div>`;
+        return;
+      }
 
-        if (!posts.length) {
-          container.innerHTML = "<p class='text-center'>No posts found.</p>";
-          return;
+      const frag = document.createDocumentFragment();
+
+      posts.forEach((p, i) => {
+        const card = document.createElement("a");
+        card.href = `/posts/${encodeURIComponent(p.slug)}`;
+        card.className = `post-card reveal${i===0?" featured":""}`;
+
+        const col = document.createElement("div");
+
+        if (i === 0) {
+          const badge = document.createElement("div");
+          badge.className = "post-badge"; badge.textContent = "Featured";
+          col.appendChild(badge);
         }
 
-        // ✅ Build cards with DOM nodes — no XSS risk
-        const fragment = document.createDocumentFragment();
+        const title = document.createElement("div");
+        title.className = "card-title"; title.textContent = p.title;
 
-        posts.forEach(post => {
-          const card = document.createElement("div");
-          card.className = "post-card ftco-animate";
+        const exc = document.createElement("p");
+        exc.className = "card-excerpt"; exc.textContent = p.excerpt || "";
 
-          // Title + link
-          const h2 = document.createElement("h2");
-          const a  = document.createElement("a");
-          a.href        = `/posts/${encodeURIComponent(post.slug)}`;
-          a.textContent = post.title;
+        const meta = document.createElement("div");
+        meta.className = "card-meta";
+        meta.innerHTML = `
+          <span class="card-meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            ${fmtDate(p.createdAt)}
+          </span>
+          <span class="card-meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            ${p.views??0} views
+          </span>`;
 
-          // Meta
-          const meta = document.createElement("div");
-          meta.className   = "post-meta";
-          meta.textContent = [
-            formatDate(post.createdAt),
-            `👁️ ${post.views ?? 0} views`,
-            post.author || "Saurabh Jha"
-          ].join("  ·  ");
-
-          // Excerpt
-          const excerpt = document.createElement("p");
-          excerpt.className   = "post-excerpt";
-          excerpt.textContent = post.excerpt || "";
-
-          // Tags
-          const tagsDiv = document.createElement("div");
-          tagsDiv.className = "post-tags";
-          if (post.tags && post.tags.length) {
-            post.tags.forEach(tag => {
-              const span = document.createElement("span");
-              span.className   = "tag";
-              span.textContent = `#${tag}`;
-              tagsDiv.appendChild(span);
-            });
-          }
-
-          h2.appendChild(a);
-          card.append(h2, meta, excerpt, tagsDiv);
-          fragment.appendChild(card);
+        const tags = document.createElement("div");
+        tags.className = "card-tags";
+        (p.tags||[]).forEach(t => {
+          const s = document.createElement("span");
+          s.className = "tag"; s.textContent = `#${t}`;
+          tags.appendChild(s);
         });
 
-        container.appendChild(fragment);
+        col.append(title, exc, meta, tags);
+        card.appendChild(col);
 
-        // ── Pagination controls ────────────────────
-        if (pagination && pagination.totalPages > 1) {
-          renderPagination(pagination);
-        }
+        const arr = document.createElement("div");
+        arr.className = "card-arrow"; arr.textContent = "↗";
+        card.appendChild(arr);
 
-      } catch (err) {
-        console.error("Posts load error:", err);
-        container.innerHTML = "<p class='text-center' style='color:red;'>Failed to load posts. Please try again later.</p>";
-      }
+        frag.appendChild(card);
+      });
+
+      cont.appendChild(frag);
+
+      requestAnimationFrame(() => {
+        cont.querySelectorAll(".reveal").forEach((el,i) => {
+          el.style.transitionDelay = `${i*55}ms`;
+          obs.observe(el);
+        });
+      });
     }
 
-    function renderPagination(pagination) {
-      const { page, totalPages } = pagination;
+    /* ── Pagination ── */
+    function renderPagination(pg) {
+      pagDiv.innerHTML = "";
+      if (!pg || pg.totalPages <= 1) return;
+      const {page:p, totalPages:tp} = pg;
 
-      // Prev button
-      const prev = document.createElement("button");
-      prev.textContent = "← Prev";
-      prev.disabled    = page <= 1;
-      prev.onclick     = () => { currentPage--; loadPosts(currentPage); window.scrollTo(0, 0); };
-
+      const prev = makeBtn("← Prev", p<=1, ()=>{ page--; load(); });
       pagDiv.appendChild(prev);
 
-      // Page number buttons
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement("button");
-        btn.textContent = i;
-        if (i === page) btn.classList.add("active");
-        btn.onclick = () => { currentPage = i; loadPosts(currentPage); window.scrollTo(0, 0); };
-        pagDiv.appendChild(btn);
+      for (let i=1; i<=tp; i++) {
+        const b = makeBtn(i, false, ()=>{ page=i; load(); });
+        if (i===p) b.classList.add("active");
+        pagDiv.appendChild(b);
       }
 
-      // Next button
-      const next = document.createElement("button");
-      next.textContent = "Next →";
-      next.disabled    = page >= totalPages;
-      next.onclick     = () => { currentPage++; loadPosts(currentPage); window.scrollTo(0, 0); };
-
-      pagDiv.appendChild(next);
+      pagDiv.appendChild(makeBtn("Next →", p>=tp, ()=>{ page++; load(); }));
     }
 
-    // 🚀 Init
-    loadPosts(currentPage);
+    function makeBtn(txt, disabled, fn) {
+      const b = document.createElement("button");
+      b.className = "page-btn"; b.textContent = txt; b.disabled = disabled;
+      b.onclick = () => { fn(); window.scrollTo({top:0,behavior:"smooth"}); };
+      return b;
+    }
+
+    /* ── Fetch ── */
+    async function load() {
+      cont.innerHTML = `
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>
+        <div class="skeleton-card"><div class="sk h"></div><div class="sk"></div><div class="sk s"></div></div>`;
+      pagDiv.innerHTML = "";
+
+      try {
+        const res  = await fetch(`${API}/posts?page=${page}&limit=10`);
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+
+        allPosts = Array.isArray(data) ? data : (data.posts ?? []);
+        const pagination = data.pagination ?? null;
+
+        if (pagination) document.getElementById("statPosts").textContent = pagination.total;
+
+        // Build tag filters once
+        if (page===1 && fBar.querySelectorAll(".filter-pill").length===1) buildFilters(allPosts);
+
+        renderCards(filtered());
+        renderPagination(pagination);
+
+      } catch(e) {
+        console.error(e);
+        cont.innerHTML = `<div class="err-state"><div class="err-icon">⚠️</div><h3>Failed to load posts</h3><p>Please try again later.</p></div>`;
+      }
+    }
+
+    /* ── Intersection Observer for reveal ── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }});
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+
+    load();
   })();
   </script>
 
-  <!-- =============================================
-       SCRIPTS  (jQuery must come before plugins)
-  ============================================= -->
+  <!-- Scripts — jQuery MUST come before plugins and form.js -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="/js/jquery.min.js"></script>
