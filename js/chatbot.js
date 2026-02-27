@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.insertAdjacentHTML('beforeend', `
     <button id="ai-widget-btn">
       <div class="ai-container">
-        <img src="images/chatbot1.png" class="ai-bot" />
+        <img src="/images/chatbot1.png" class="ai-bot" />
         <div class="ai-shadow"></div>
         <div class="hi-bubble">Hi!</div>
         
