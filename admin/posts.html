@@ -1,76 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Manage Posts</title>
-  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Posts | Admin</title>
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
 
-<!-- Topbar -->
-<div class="topbar">
-  <h2>Manage Posts</h2>
-  <button class="logout-btn" onclick="logout()">Logout</button>
-</div>
-
-<div class="dashboard">
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <h2>Admin Panel</h2>
-    <ul>
-      <li onclick="location.href='dashboard.html'">Practice Materials</li>
-      <li class="active">Posts</li>
-    </ul>
-  </aside>
-
-  <!-- Main -->
-  <main class="main">
-    <h1>Posts</h1>
-
-    <!-- Add Post -->
-    <div class="card">
-  <h3>Add New Post</h3>
-  <div class="form">
-    <input id="postTitle" placeholder="Post Title">
-    <input id="postExcerpt" placeholder="Short Excerpt">
-    <!-- ✅ NEW: Tags input -->
-    <input
-      id="postTags"
-      placeholder="Tags (comma separated e.g. Infosys, Coding, DSA)"
-    >
-    <textarea
-      id="postContent"
-      rows="6"
-      placeholder="Paste FULL HTML content">
-    </textarea>
-    <select id="postStatus">
-      <option value="published">Published</option>
-      <option value="draft">Draft</option>
-    </select>
-    <button onclick="addPost()">Add Post</button>
+  <!-- =============================================
+       TOPBAR
+  ============================================= -->
+  <div class="topbar">
+    <h2>Manage Posts</h2>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
-</div>
 
+  <div class="dashboard">
 
-    <!-- Posts Table -->
-    <div class="card">
-      <h3>All Posts</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="postTable"></tbody>
-      </table>
-    </div>
+    <!-- =============================================
+         SIDEBAR
+    ============================================= -->
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul>
+        <li>
+          <a href="dashboard.html">Practice Materials</a>
+        </li>
+        <li class="active">
+          <a href="posts.html">Posts</a>
+        </li>
+      </ul>
+    </aside>
 
-  </main>
-</div>
+    <!-- =============================================
+         MAIN CONTENT
+    ============================================= -->
+    <main class="main">
+      <h1>Posts</h1>
 
-<script src="posts.js"></script>
+      <!-- Add New Post Card -->
+      <div class="card">
+        <h3>Add New Post</h3>
+
+        <div class="form">
+
+          <label for="postTitle">Post Title <span class="required">*</span></label>
+          <input
+            id="postTitle"
+            type="text"
+            placeholder="e.g. Top 10 DSA Questions for Infosys"
+            autocomplete="off"
+          />
+
+          <label for="postExcerpt">Short Excerpt</label>
+          <input
+            id="postExcerpt"
+            type="text"
+            placeholder="Brief summary shown on the blog listing page"
+            autocomplete="off"
+          />
+
+          <label for="postTags">Tags</label>
+          <input
+            id="postTags"
+            type="text"
+            placeholder="Comma separated e.g. Infosys, DSA, Coding"
+            autocomplete="off"
+          />
+
+          <label for="postContent">Full HTML Content <span class="required">*</span></label>
+          <textarea
+            id="postContent"
+            rows="10"
+            placeholder="Paste your full HTML post content here…"
+          ></textarea>
+
+          <label for="postStatus">Status</label>
+          <select id="postStatus">
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+
+          <div class="form-actions">
+            <!-- ✅ Fixed: added id="addPostBtn" so JS can disable it during fetch -->
+            <button id="addPostBtn" onclick="addPost()">Add Post</button>
+            <button type="button" class="secondary-btn" onclick="clearPostForm()">Clear</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- All Posts Table Card -->
+      <div class="card">
+        <h3>All Posts</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <!-- ✅ Fixed: added Views column to match JS which renders a views cell -->
+                <th>Views</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="postTable">
+              <tr>
+                <td colspan="4" style="text-align:center;">Loading…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="posts.js"></script>
 </body>
 </html>
