@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>अयि गिरिनन्दिनि — सम्पूर्ण २१ श्लोक | Aigiri Nandini | BhajanMarg</title>
+  <link rel="icon" type="image/png" href="/images/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -274,7 +275,7 @@
 	<script defer src="/_vercel/speed-insights/script.js"></script>
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558"
 		crossorigin="anonymous"></script>
-        
+
 </head>
 <body>
 <div class="bg-fixed"></div>
@@ -784,6 +785,7 @@
     <div class="audio-title">AIGIRI NANDINI — सम्पूर्ण पाठ</div>
     <div class="audio-sub">21 Stanzas • Mahishasura Mardini</div>
   </div>
+  <audio src="/audio/Aigiri Nandini (Mahisasurmardini Stotram) Maithili Thakur.mp3"></audio>
 </div>
 
 <script>
@@ -807,8 +809,26 @@
   reveals.forEach(el=>obs.observe(el));
 
   /* Play */
-  let playing=false;
-  function togglePlay(btn){playing=!playing;btn.textContent=playing?'⏸':'▶';}
+  function togglePlay(btn) {
+    const widget = btn.closest('.audio-widget');
+    const audio = widget.querySelector('audio');
+
+    if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸';
+    } else {
+        audio.pause();
+        btn.textContent = '▶';
+    }
+    }
+
+    document.querySelectorAll('.audio-widget audio').forEach(audio => {
+        audio.addEventListener('ended', function () {
+            const btn = this.closest('.audio-widget').querySelector('.play-btn');
+            btn.textContent = '▶';
+        });
+    });
+
 
   /* Like */
   document.querySelectorAll('.c-like').forEach(el=>{el.addEventListener('click',function(){this.style.color='#FF4488';});});
