@@ -989,6 +989,8 @@
     <div class="audio-title">NAMAMI SHAMISHAN</div>
     <div class="audio-sub">Shiv Stotram Paath</div>
   </div>
+  <!-- Hidden Audio Player -->
+  <audio src="/audio/namami-shamisham.mp3"></audio>
 </div>
 
 <script>
@@ -1019,11 +1021,25 @@
   reveals.forEach(el => observer.observe(el));
 
   // Play button
-  let playing = false;
-  function togglePlay(btn) {
-    playing = !playing;
-    btn.textContent = playing ? '⏸' : '▶';
-  }
+    function togglePlay(btn) {
+    const widget = btn.closest('.audio-widget');
+    const audio = widget.querySelector('audio');
+
+    if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸';
+    } else {
+        audio.pause();
+        btn.textContent = '▶';
+    }
+    }
+
+    document.querySelectorAll('.audio-widget audio').forEach(audio => {
+        audio.addEventListener('ended', function () {
+            const btn = this.closest('.audio-widget').querySelector('.play-btn');
+            btn.textContent = '▶';
+        });
+    });
 
   // Like functionality
   document.querySelectorAll('.comment-like').forEach(btn => {
