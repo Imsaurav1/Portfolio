@@ -31,7 +31,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== DIVINE BACKGROUND ===== */
     .bg-layer {
       position: fixed;
       inset: 0;
@@ -77,7 +76,6 @@
       100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
 
-    /* ===== HEADER ===== */
     header {
       position: relative;
       z-index: 10;
@@ -117,7 +115,6 @@
 
     nav a:hover { color: var(--gold); }
 
-    /* ===== HERO / BANNER ===== */
     .hero {
       position: relative;
       z-index: 10;
@@ -196,7 +193,6 @@
       margin-top: 4px;
     }
 
-    /* ===== MAIN LAYOUT ===== */
     .container {
       position: relative;
       z-index: 10;
@@ -213,7 +209,6 @@
       .container { grid-template-columns: 1fr; }
     }
 
-    /* ===== MANTRA CARD ===== */
     .mantra-card {
       background: linear-gradient(135deg, rgba(90,20,0,0.4) 0%, rgba(30,10,0,0.6) 100%);
       border: 1px solid rgba(212,160,23,0.3);
@@ -260,6 +255,16 @@
       text-align: center;
     }
 
+    .verse-number {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      color: rgba(212,160,23,0.5);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
     .mantra-verse {
       margin-bottom: 36px;
       animation: fadeIn 1s ease both;
@@ -287,6 +292,7 @@
       letter-spacing: 2px;
       text-align: center;
       margin-bottom: 10px;
+      line-height: 1.8;
     }
 
     .mantra-meaning {
@@ -307,7 +313,24 @@
       margin: 20px 0;
     }
 
-    /* ===== ABOUT SHIVA ===== */
+    .phala-shruti {
+      background: linear-gradient(135deg, rgba(139,0,0,0.25), rgba(20,5,0,0.4));
+      border: 1px solid rgba(212,160,23,0.35);
+      border-radius: 2px;
+      padding: 28px 32px;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .phala-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
     .about-shiv {
       background: linear-gradient(135deg, rgba(139,0,0,0.2), rgba(20,5,0,0.5));
       border: 1px solid rgba(212,160,23,0.2);
@@ -331,7 +354,6 @@
       margin-bottom: 14px;
     }
 
-    /* ===== SIGNIFICANCE ===== */
     .significance-list {
       margin-top: 16px;
       display: grid;
@@ -347,10 +369,7 @@
       border-left: 2px solid var(--saffron);
     }
 
-    .sig-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
+    .sig-icon { font-size: 1.4rem; flex-shrink: 0; }
 
     .sig-text {
       font-size: 0.92rem;
@@ -367,7 +386,6 @@
       margin-bottom: 3px;
     }
 
-    /* ===== SIDEBAR ===== */
     .sidebar { display: flex; flex-direction: column; gap: 24px; }
 
     .sidebar-widget {
@@ -397,7 +415,6 @@
       border-bottom: 1px solid rgba(212,160,23,0.2);
     }
 
-    /* Related posts */
     .related-post {
       display: flex;
       gap: 12px;
@@ -408,15 +425,10 @@
     }
 
     .related-post:last-child { border-bottom: none; }
-
     .related-post:hover { background: rgba(212,160,23,0.05); }
 
-    .post-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-    }
+    .post-icon { font-size: 1.8rem; flex-shrink: 0; }
 
-    .post-info { }
     .post-name {
       font-family: 'Tiro Devanagari Sanskrit', serif;
       font-size: 1rem;
@@ -432,7 +444,6 @@
       letter-spacing: 1px;
     }
 
-    /* Quick mantras */
     .quick-mantra {
       padding: 10px 0;
       border-bottom: 1px solid rgba(212,160,23,0.1);
@@ -454,7 +465,6 @@
       letter-spacing: 1px;
     }
 
-    /* Shiv names */
     .names-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -479,7 +489,6 @@
       border-color: var(--gold);
     }
 
-    /* ===== COMMENTS ===== */
     .comments-section {
       position: relative;
       z-index: 10;
@@ -498,79 +507,6 @@
       border-bottom: 1px solid rgba(212,160,23,0.3);
     }
 
-    .comment-card {
-      background: linear-gradient(135deg, rgba(80,20,0,0.35), rgba(20,5,0,0.5));
-      border: 1px solid rgba(212,160,23,0.15);
-      padding: 22px 26px;
-      margin-bottom: 16px;
-      border-radius: 1px;
-      position: relative;
-      animation: fadeIn 0.6s ease both;
-    }
-
-    .comment-card::before {
-      content: '"';
-      position: absolute;
-      top: -10px; left: 20px;
-      font-size: 4rem;
-      color: rgba(212,160,23,0.15);
-      font-family: 'Playfair Display', serif;
-      line-height: 1;
-    }
-
-    .comment-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--saffron), var(--crimson));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      color: white;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .comment-meta { }
-    .commenter-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--gold-light);
-      letter-spacing: 1px;
-    }
-
-    .comment-date {
-      font-size: 0.75rem;
-      color: rgba(253,245,230,0.4);
-    }
-
-    .comment-text {
-      font-size: 0.97rem;
-      color: rgba(253,245,230,0.75);
-      line-height: 1.8;
-    }
-
-    .comment-like {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: rgba(253,245,230,0.4);
-      cursor: pointer;
-      transition: color 0.3s;
-      display: inline-block;
-    }
-
-    .comment-like:hover { color: var(--saffron); }
-
-    /* Comment form */
     .comment-form {
       background: linear-gradient(135deg, rgba(80,20,0,0.35), rgba(20,5,0,0.5));
       border: 1px solid rgba(212,160,23,0.2);
@@ -640,7 +576,6 @@
     .submit-btn:hover::before { opacity: 1; }
     .submit-btn span { position: relative; z-index: 1; }
 
-    /* ===== FOOTER ===== */
     footer {
       position: relative;
       z-index: 10;
@@ -665,7 +600,6 @@
       text-transform: uppercase;
     }
 
-    /* ===== AUDIO PLAYER ===== */
     .audio-widget {
       position: fixed;
       bottom: 24px;
@@ -697,7 +631,6 @@
 
     .play-btn:hover { transform: scale(1.1); }
 
-    .audio-info { }
     .audio-title {
       font-family: 'Cinzel', serif;
       font-size: 0.75rem;
@@ -710,7 +643,6 @@
       color: rgba(253,245,230,0.5);
     }
 
-    /* scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -718,26 +650,13 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
-  	  <script>
-	window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-	</script>
-	<script defer src="/_vercel/insights/script.js"></script>
-
-		<script>
-	window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-	</script>
-	<script defer src="/_vercel/speed-insights/script.js"></script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3572576129639558"
-		crossorigin="anonymous"></script>
 </head>
 <body>
 
-<!-- Divine Background -->
 <div class="bg-layer"></div>
 <div class="mandala-bg"></div>
 <div class="particles" id="particles"></div>
 
-<!-- Header -->
 <header>
   <div class="site-nav">
     <a href="#" class="logo">शिव<span>मार्ग</span></a>
@@ -750,7 +669,6 @@
   </div>
 </header>
 
-<!-- Hero -->
 <div class="hero">
   <span class="om-symbol">ॐ</span>
   <div class="hero-tag">शिव स्तोत्रम् • Shiv Stotram</div>
@@ -760,10 +678,7 @@
   <div class="shiv-desc">श्री रुद्राष्टकम् — महादेव की दिव्य स्तुति</div>
 </div>
 
-<!-- Main Content -->
 <div class="container">
-
-  <!-- Left: Mantra + About -->
   <div>
     <div class="mantra-card reveal">
       <span class="corner-ornament tl">꩜</span>
@@ -771,69 +686,164 @@
       <span class="corner-ornament bl">꩜</span>
       <span class="corner-ornament br">꩜</span>
 
-      <div class="section-title">✦ पूर्ण मंत्र पाठ ✦</div>
+      <div class="section-title">✦ श्री रुद्राष्टकम् — पूर्ण पाठ ✦</div>
 
+      <!-- VERSE 1 -->
       <div class="mantra-verse">
-        <div class="mantra-text">नमामि शमीशान निर्वाण रूपं,<br>विभुं व्यापकं ब्रह्म वेदस्वरूपम्।</div>
-        <div class="mantra-transliteration">Namami Shamishan Nirvana Rupam, Vibhum Vyaapakam Brahma Vedaswarupam</div>
-        <div class="mantra-meaning">मैं उन शमीशान को नमस्कार करता हूँ जो निर्वाण के स्वरूप हैं, जो विभु, व्यापक, ब्रह्म और वेदों के स्वरूप हैं।</div>
+        <div class="verse-number">✦ प्रथम श्लोक ✦</div>
+        <div class="mantra-text">
+          नमामि शमीशान निर्वाण रूपं,<br>
+          विभुं व्यापकं ब्रह्म वेदस्वरूपम्।<br>
+          निजं निर्गुणं निर्विकल्पं निरीहं,<br>
+          चिदाकाश माकाशवासं भजेऽहम्॥ १॥
+        </div>
+        <div class="mantra-transliteration">
+          Namami Shamishan Nirvana Rupam, Vibhum Vyaapakam Brahma Vedaswarupam।<br>
+          Nijam Nirgunam Nirvikalpam Nireeham, Chidaakasham Aakashaavaasam Bhajeham॥
+        </div>
+        <div class="mantra-meaning">मैं उन शमीशान को नमस्कार करता हूँ जो निर्वाण के स्वरूप हैं, जो विभु, व्यापक, ब्रह्म और वेदों के स्वरूप हैं। जो स्वयं निर्गुण, निर्विकल्प और निरीह हैं, जो चिदाकाश और आकाश में निवास करते हैं, उनका मैं भजन करता हूँ।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 2 -->
       <div class="mantra-verse">
-        <div class="mantra-text">निजं निर्गुणं निर्विकल्पं निरीहं,<br>चिदाकाश माकाशवासं भजेऽहम्।</div>
-        <div class="mantra-transliteration">Nijam Nirgunam Nirvikalpam Nireeham, Chidakasham Akashavaasam Bhajeham</div>
-        <div class="mantra-meaning">जो स्वयं निर्गुण, निर्विकल्प और निरीह हैं, जो चिदाकाश और आकाश में निवास करते हैं, उनका मैं भजन करता हूँ।</div>
+        <div class="verse-number">✦ द्वितीय श्लोक ✦</div>
+        <div class="mantra-text">
+          निराकारमोंकार मूलं तुरीयं,<br>
+          गिराज्ञान गोतीतमीशं गिरीशम्।<br>
+          करालं महाकाल कालं कृपालं,<br>
+          गुणागार संसारपारं नतोऽहम्॥ २॥
+        </div>
+        <div class="mantra-transliteration">
+          Niraakaaramonkara Mulam Turiyam, Giraagyaan Goteetameesham Gireesham।<br>
+          Karaalam Mahakaala Kaalam Kripalam, Gunaagaara Samsaarapaaram Natoham॥
+        </div>
+        <div class="mantra-meaning">जो निराकार, ओंकार के मूल और तुरीय अवस्था में हैं, वाणी और ज्ञान से परे गिरीश को मैं प्रणाम करता हूँ। जो करालरूप महाकाल, कालों के काल और कृपालु हैं, जो गुणों के आगार और संसार से परे हैं, उन्हें मैं नमन करता हूँ।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 3 -->
       <div class="mantra-verse">
-        <div class="mantra-text">निराकारमोंकार मूलं तुरीयं,<br>गिराज्ञान गोतीतमीशं गिरीशम्।</div>
-        <div class="mantra-transliteration">Niraakaaramonkara Mulam Turiyam, Giraagyaan Goteetameesham Gireesham</div>
-        <div class="mantra-meaning">जो निराकार, ओंकार के मूल और तुरीय अवस्था में हैं, वाणी और ज्ञान से परे गिरीश को मैं प्रणाम करता हूँ।</div>
+        <div class="verse-number">✦ तृतीय श्लोक ✦</div>
+        <div class="mantra-text">
+          तुषाराद्रि संकाश गौरं गभीरं,<br>
+          मनोभूत कोटि प्रभा श्री शरीरम्।<br>
+          स्फुरन्मौलि कल्लोलिनी चारु गङ्गा,<br>
+          लसद्भाल बालेन्दु कण्ठे भुजङ्गा॥ ३॥
+        </div>
+        <div class="mantra-transliteration">
+          Tushaadri Sankaasha Gauram Gabhiram, Manobhuta Koti Prabha Shri Shariram।<br>
+          Sphuranmauli Kallolini Chaaru Ganga, Lasadbhala Balendu Kanthe Bhujanga॥
+        </div>
+        <div class="mantra-meaning">जो हिमाचल के समान श्वेत और गौरवर्ण, गंभीर और करोड़ों प्रभाओं से युक्त सुंदर शरीरवाले हैं। जिनके मस्तक पर चंचल गंगा प्रवाहित है, ललाट पर बाल चंद्रमा और कंठ में सर्प विराजमान है।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 4 -->
       <div class="mantra-verse">
-        <div class="mantra-text">करालं महाकाल कालं कृपालं,<br>गुणागार संसारपारं नतोऽहम्।</div>
-        <div class="mantra-transliteration">Karaalam Mahakaala Kaalam Kripalam, Gunaagaara Samsarapaaram Natoham</div>
-        <div class="mantra-meaning">जो करालरूप महाकाल, कालों के काल और कृपालु हैं, जो गुणों के आगार और संसार से परे हैं, उन्हें मैं नमन करता हूँ।</div>
+        <div class="verse-number">✦ चतुर्थ श्लोक ✦</div>
+        <div class="mantra-text">
+          चलत्कुण्डलं भ्रू सुनेत्रं विशालं,<br>
+          प्रसन्नाननं नीलकण्ठं दयालम्।<br>
+          मृगाधीश चर्माम्बरं मुण्डमालं,<br>
+          प्रिय शंकरं सर्वनाथं भजामि॥ ४॥
+        </div>
+        <div class="mantra-transliteration">
+          Chalatkuṇḍalam Bhru Sunetram Vishalam, Prasannaananam Nilakantham Dayaalam।<br>
+          Mrigaadheesha Charmaambaram Mundamalam, Priya Shankaram Sarvanaaatham Bhajaami॥
+        </div>
+        <div class="mantra-meaning">हिलते हुए कुण्डल, सुंदर भौहें, विशाल नेत्र, प्रसन्न मुख और नीलकंठ करुणामय रूपवाले हैं। जो सिंह की खाल पहने और मुंडमाला धारण किए हैं, ऐसे प्रिय शंकर और सर्वनाथ का मैं भजन करता हूँ।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 5 -->
       <div class="mantra-verse">
-        <div class="mantra-text">तुषाराद्रि संकाश गौरं गभीरं,<br>मनोभूत कोटि प्रभा श्री शरीरम्।</div>
-        <div class="mantra-transliteration">Tusharadri Sankaasha Gauram Gabhiram, Manobhuta Koti Prabha Shri Shariram</div>
-        <div class="mantra-meaning">जो हिमाचल के समान श्वेत और गौरवर्ण, गंभीर और करोड़ों प्रभाओं से युक्त सुंदर शरीरवाले हैं।</div>
+        <div class="verse-number">✦ पञ्चम श्लोक ✦</div>
+        <div class="mantra-text">
+          प्रचण्डं प्रकृष्टं प्रगल्भं परेशं,<br>
+          अखण्डं अजं भानुकोटिप्रकाशम्।<br>
+          त्रयः शूल निर्मूलनं शूलपाणिं,<br>
+          भजेऽहं भवानीपतिं भावगम्यम्॥ ५॥
+        </div>
+        <div class="mantra-transliteration">
+          Prachandam Prakrushtam Pragalbham Paresham, Akhandam Ajam Bhaanukotiprakaasham।<br>
+          Trayah Shoola Nirmoolanam Shoolapanim, Bhajeham Bhavaanipatim Bhaavagamyam॥
+        </div>
+        <div class="mantra-meaning">जो प्रचण्ड, प्रकृष्ट, प्रगल्भ और परेश (परमेश्वर) हैं, अखण्ड, अजन्मे और करोड़ों सूर्यों के समान प्रकाशित हैं। जो त्रिताप (आध्यात्मिक, आधिभौतिक, आधिदैविक) का नाश करते हैं, ऐसे शूलपाणि भवानीपति का मैं भजन करता हूँ।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 6 -->
       <div class="mantra-verse">
-        <div class="mantra-text">स्फुरन्मौलि कल्लोलिनी चारु गङ्गा,<br>लसद्भाल बालेन्दु कण्ठे भुजङ्गा।</div>
-        <div class="mantra-transliteration">Sphuranmauli Kallolini Charu Ganga, Lasadbhala Balendu Kanthe Bhujanga</div>
-        <div class="mantra-meaning">जिनके मस्तक पर चंचल गंगा प्रवाहित है, ललाट पर बाल चंद्रमा और कंठ में सर्प विराजमान है।</div>
+        <div class="verse-number">✦ षष्ठ श्लोक ✦</div>
+        <div class="mantra-text">
+          कलातीत कल्याण कल्पान्तकारी,<br>
+          सदा सज्जनानन्द दाता पुरारी।<br>
+          चिदानन्द संदोह मोहापहारी,<br>
+          प्रसीद प्रसीद प्रभो मन्मथारी॥ ६॥
+        </div>
+        <div class="mantra-transliteration">
+          Kalaateet Kalyaan Kalpaantakaari, Sadaa Sajjanaananda Daataa Puraaree।<br>
+          Chidaananda Sandoha Mohaapahaaree, Praseeda Praseeda Prabho Manmathaari॥
+        </div>
+        <div class="mantra-meaning">जो कला से परे, कल्याणकारी और कल्पान्त (प्रलय) के करनेवाले हैं, जो सदा सज्जनों को आनन्द देने वाले पुरारी (त्रिपुर विनाशक) हैं। जो चिदानन्द से पूर्ण और मोह का नाश करनेवाले हैं — हे प्रभो मन्मथारी (कामदेव को जीतनेवाले), प्रसन्न हों, प्रसन्न हों।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 7 -->
       <div class="mantra-verse">
-        <div class="mantra-text">चलत्कुण्डलं भ्रू सुनेत्रं विशालं,<br>प्रसन्नाननं नीलकण्ठं दयालम्।</div>
-        <div class="mantra-transliteration">Chalatkuṇḍalam Bhru Sunetram Vishalam, Prasannaananam Nilakantham Dayaalam</div>
-        <div class="mantra-meaning">हिलते हुए कुण्डल, सुंदर भौहें, विशाल नेत्र, प्रसन्न मुख और नीलकंठ करुणामय रूपवाले हैं।</div>
+        <div class="verse-number">✦ सप्तम श्लोक ✦</div>
+        <div class="mantra-text">
+          न यावद् उमानाथपादारविन्दं,<br>
+          भजन्तीह लोके परे वा नराणाम्।<br>
+          न तावत् सुखं शान्ति सन्तापनाशं,<br>
+          प्रसीद प्रभो सर्वभूताधिवासम्॥ ७॥
+        </div>
+        <div class="mantra-transliteration">
+          Na Yaavad Umanaathapaadaaravindam, Bhajanteeha Loke Pare Vaa Naraanaam।<br>
+          Na Taavat Sukham Shaanti Santaapanaasham, Praseeda Prabho Sarvabhootaadhivaasam॥
+        </div>
+        <div class="mantra-meaning">जब तक मनुष्य इस लोक में या परलोक में उमानाथ (पार्वतीपति) के चरणकमलों का भजन नहीं करते, तब तक उन्हें न सुख मिलता है, न शांति, न ताप-नाश। हे प्रभो, जो सभी प्राणियों में निवास करते हैं, प्रसन्न हों।</div>
       </div>
 
       <div class="verse-divider">~ ✦ ~</div>
 
+      <!-- VERSE 8 -->
       <div class="mantra-verse">
-        <div class="mantra-text">मृगाधीश चर्माम्बरं मुण्डमालं,<br>प्रिय शंकरं सर्वनाथं भजामि।</div>
-        <div class="mantra-transliteration">Mrigaadheesha Charmaambaram Mundamalam, Priya Shankaram Sarvanaaatham Bhajaami</div>
-        <div class="mantra-meaning">जो सिंह की खाल पहने और मुंडमाला धारण किए हैं, ऐसे प्रिय शंकर और सर्वनाथ का मैं भजन करता हूँ।</div>
+        <div class="verse-number">✦ अष्टम श्लोक ✦</div>
+        <div class="mantra-text">
+          न जानामि योगं जपं नैव पूजां,<br>
+          नतोऽहं सदा सर्वदा शम्भु तुभ्यम्।<br>
+          जरा जन्म दुःखौघ तातप्यमानं,<br>
+          प्रभो पाहि आपन्नमामीश शंभो॥ ८॥
+        </div>
+        <div class="mantra-transliteration">
+          Na Jaanaami Yogam Japam Naiva Puujaam, Natoham Sadaa Sarvadaa Shambhu Tubhyam।<br>
+          Jaraa Janma Duhkhaugha Taatapyamanam, Prabho Paahi Aapannamaameesh Shambho॥
+        </div>
+        <div class="mantra-meaning">हे शम्भो! मैं न योग जानता हूँ, न जप, न पूजा — परन्तु मैं सदा-सर्वदा आपको नमस्कार करता हूँ। वृद्धावस्था, जन्म और दुःखों के समूह से संतप्त इस दास की रक्षा करें। हे शंभो! मुझ शरणागत की रक्षा करें।</div>
       </div>
+
+      <!-- PHALA SHRUTI -->
+      <div class="phala-shruti">
+        <div class="phala-title">✦ फलश्रुति ✦</div>
+        <div class="mantra-text" style="font-size: clamp(1.1rem, 2.5vw, 1.4rem);">
+          रुद्राष्टकमिदं प्रोक्तं विप्रेण हरतोषये।<br>
+          ये पठन्ति नरा भक्त्या तेषां शम्भुः प्रसीदति॥
+        </div>
+        <div class="mantra-transliteration" style="margin-top: 10px;">
+          Rudrashtakamidaam Proktam Viprena Haratoshaye।<br>
+          Ye Pathanti Naraa Bhaktyaa Teshaam Shambhuh Praseeda॥
+        </div>
+        <div class="mantra-meaning">यह रुद्राष्टकम् एक ब्राह्मण द्वारा भगवान हर की प्रसन्नता के लिए रचा गया है। जो मनुष्य इसे भक्तिपूर्वक पढ़ते हैं, उन पर शम्भु (भगवान शिव) प्रसन्न होते हैं।</div>
+      </div>
+
     </div>
 
     <!-- About -->
@@ -865,8 +875,6 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-
-    <!-- Related Posts -->
     <div class="sidebar-widget reveal">
       <div class="widget-title">✦ संबंधित भजन ✦</div>
 
@@ -919,7 +927,6 @@
       </div>
     </div>
 
-    <!-- Quick Mantras -->
     <div class="sidebar-widget reveal">
       <div class="widget-title">✦ लघु मंत्र ✦</div>
 
@@ -949,7 +956,6 @@
       </div>
     </div>
 
-    <!-- Shiv Names -->
     <div class="sidebar-widget reveal">
       <div class="widget-title">✦ शिव के नाम ✦</div>
       <div class="names-grid">
@@ -967,16 +973,11 @@
         <div class="name-chip">विश्वेश</div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- Comments -->
 <div class="comments-section">
   <div class="comments-title reveal">🕉️ भक्तों के विचार</div>
-
-  
-  <!-- Comment Form -->
   <div class="comment-form reveal">
     <div class="form-title">✦ अपना अनुभव साझा करें ✦</div>
     <div class="form-row">
@@ -988,25 +989,21 @@
   </div>
 </div>
 
-<!-- Footer -->
 <footer>
   <span class="footer-om">ॐ</span>
   <div class="footer-text">॥ हर हर महादेव ॥ बम बम भोले ॥ © ShivaMarg 2026</div>
 </footer>
 
-<!-- Audio Widget -->
 <div class="audio-widget">
   <button class="play-btn" onclick="togglePlay(this)">▶</button>
   <div class="audio-info">
     <div class="audio-title">NAMAMI SHAMISHAN</div>
     <div class="audio-sub">Shiv Stotram Paath</div>
   </div>
-  <!-- Hidden Audio Player -->
   <audio src="/audio/namami-shamisham.mp3"></audio>
 </div>
 
 <script>
-  // Floating particles
   const particles = document.getElementById('particles');
   for (let i = 0; i < 40; i++) {
     const spark = document.createElement('div');
@@ -1019,7 +1016,6 @@
     particles.appendChild(spark);
   }
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -1032,31 +1028,22 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Play button
-    function togglePlay(btn) {
+  function togglePlay(btn) {
     const widget = btn.closest('.audio-widget');
     const audio = widget.querySelector('audio');
-
     if (audio.paused) {
-        audio.play();
-        btn.textContent = '⏸';
+      audio.play();
+      btn.textContent = '⏸';
     } else {
-        audio.pause();
-        btn.textContent = '▶';
+      audio.pause();
+      btn.textContent = '▶';
     }
-    }
+  }
 
-    document.querySelectorAll('.audio-widget audio').forEach(audio => {
-        audio.addEventListener('ended', function () {
-            const btn = this.closest('.audio-widget').querySelector('.play-btn');
-            btn.textContent = '▶';
-        });
-    });
-
-  // Like functionality
-  document.querySelectorAll('.comment-like').forEach(btn => {
-    btn.addEventListener('click', function() {
-      this.style.color = '#FF6B00';
+  document.querySelectorAll('.audio-widget audio').forEach(audio => {
+    audio.addEventListener('ended', function () {
+      const btn = this.closest('.audio-widget').querySelector('.play-btn');
+      btn.textContent = '▶';
     });
   });
 </script>
