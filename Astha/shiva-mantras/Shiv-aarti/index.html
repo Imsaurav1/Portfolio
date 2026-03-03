@@ -743,39 +743,8 @@
 <!-- COMMENTS -->
 <div class="comments-section">
   <div class="comments-heading reveal">🪔 भक्तों के विचार</div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar">L</div><div><div class="c-name">Lalita Devi</div><div class="c-date">21 फरवरी 2025 — महाशिवरात्रि</div></div></div>
-    <div class="c-txt">हर हर महादेव! बचपन से माँ के साथ "ॐ जय शिव ओंकारा" गाती हूँ — और आज भी जब यह आरती गाती हूँ, तो आँखें भर आती हैं। "ब्रह्मा विष्णु सदाशिव अर्द्धांगी धारा" — इस पंक्ति में पूरी सृष्टि समाई हुई है। अर्थ सहित पढ़कर भक्ति और गहरी हो गई। जय भोलेनाथ! 🪔🙏</div>
-    <span class="c-like">🔥 428 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#3A1800,#180C00);">M</div><div><div class="c-name">Mahesh Tiwari</div><div class="c-date">5 अगस्त 2024 — श्रावण</div></div></div>
-    <div class="c-txt">प्रतिदिन संध्या आरती करता हूँ। "ब्रह्मा विष्णु सदाशिव जानत अविवेका, प्रणवाक्षर में शोभित ये तीनों एका" — यह छंद वेदांत का सार है। जो लोग तीनों देवों में अंतर देखते हैं वे अज्ञानी हैं — ॐ में सब एक हैं। यह समझ आने पर भक्ति का स्वरूप बदल जाता है। ॐ नमः शिवाय! 🕉️</div>
-    <span class="c-like">🔥 316 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#2A1000,#120800);">S</div><div><div class="c-name">Sunita Pandey</div><div class="c-date">18 जनवरी 2025</div></div></div>
-    <div class="c-txt">शिव आरती की धुन में ही एक जादू है — "ॐ जय शिव ओंकारा" सुनते ही मन शांत हो जाता है। हमारे घर में तीनों काल आरती होती है — प्रातः, मध्याह्न और संध्या। "त्रिगुण शिवजी की आरती जो कोई नर गावे, कहत शिवानंद स्वामी मनवांछित फल पावे" — यह फलश्रुति बिल्कुल सत्य है! बम बम भोले! 🌸</div>
-    <span class="c-like">🔥 247 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#201000,#100800);">R</div><div><div class="c-name">Rajendra Kumar</div><div class="c-date">12 मार्च 2025</div></div></div>
-    <div class="c-txt">आरती की सबसे बड़ी विशेषता यह है कि इसमें पूरे ब्रह्माण्ड को एक साथ देखने की दृष्टि है। "एकानन चतुरानन पञ्चानन राजे, हंसासन गरुड़ासन वृषवाहन साजे" — एक ही छंद में ब्रह्मा, विष्णु और शिव — तीनों एक साथ! यही भारतीय दर्शन की अनूठी समग्रता है। हर हर महादेव! 🔱</div>
-    <span class="c-like">🔥 189 लाइक्स</span>
-  </div>
-
-  <div class="c-form reveal">
-    <div class="c-form-title">✦ अपना अनुभव साझा करें ✦</div>
-    <div class="form-row">
-      <input type="text" placeholder="आपका नाम">
-      <input type="email" placeholder="ईमेल">
-    </div>
-    <textarea placeholder="शिव आरती के गायन का अनुभव... ॐ जय शिव ओंकारा 🪔"></textarea>
-    <button class="submit-btn"><span>🪔 संदेश भेजें — जय शिव ओंकारा</span></button>
+  <div id="sm-comments" data-page-id="shiv-aarti"></div>
+  
   </div>
 </div>
 
@@ -867,7 +836,7 @@
 <script src="/js/auth.js"></script>
   <script src="/js/comments.js"></script>
   <script>
-    const SM_API = 'http://localhost:8000'; // ← change to your server URL in prod
+    const SM_API = 'https://shiva-marg.onrender.com'; // ← change to your server URL in prod
     SmAuth.init({ apiBase: SM_API });
     SmComments.init({ apiBase: SM_API });
   </script>
