@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="540" height="200">
+  <defs>
+
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F5E6A3"/>
+      <stop offset="25%"  stop-color="#C9A84C"/>
+      <stop offset="55%"  stop-color="#E8C96A"/>
+      <stop offset="80%"  stop-color="#A07830"/>
+      <stop offset="100%" stop-color="#E8C96A"/>
+    </linearGradient>
+
+    <linearGradient id="silverBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#E8E0FF"/>
+      <stop offset="40%"  stop-color="#B0BEC5"/>
+      <stop offset="100%" stop-color="#9575CD"/>
+    </linearGradient>
+
+    <linearGradient id="fireOm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FF8F00"/>
+      <stop offset="50%"  stop-color="#E64A00"/>
+      <stop offset="100%" stop-color="#BF360C"/>
+    </linearGradient>
+
+    <radialGradient id="diskBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#120520"/>
+      <stop offset="60%"  stop-color="#08031A"/>
+      <stop offset="100%" stop-color="#030010"/>
+    </radialGradient>
+
+    <radialGradient id="innerBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#1A0830"/>
+      <stop offset="100%" stop-color="#080318"/>
+    </radialGradient>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowSoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- single lotus petal -->
+    <path id="pet" d="M0,-20 C7,-12 7,0 0,9 C-7,0 -7,-12 0,-20Z"/>
+
+    <!-- crescent moon -->
+    <path id="moon" d="M8,0 A9,9 0 1,1 8,0.01 A5.5,5.5 0 1,0 8,0Z"/>
+
+  </defs>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- BACKGROUND                         -->
+  <!-- ══════════════════════════════════ -->
+  <rect width="540" height="200" fill="#05020F"/>
+
+  <!-- subtle star-field -->
+  <g fill="#C9A84C" opacity="0.18">
+    <circle cx="18"  cy="22"  r="0.8"/><circle cx="495" cy="18"  r="0.7"/>
+    <circle cx="510" cy="55"  r="0.9"/><circle cx="25"  cy="170" r="0.7"/>
+    <circle cx="490" cy="178" r="0.8"/><circle cx="230" cy="12"  r="0.6"/>
+    <circle cx="310" cy="188" r="0.7"/><circle cx="185" cy="7"   r="0.5"/>
+  </g>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- LEFT EMBLEM                        -->
+  <!-- ══════════════════════════════════ -->
+  <g transform="translate(100,100)">
+
+    <!-- outermost glow -->
+    <circle r="88" fill="none" stroke="#9575CD" stroke-width="0.4" opacity="0.2" filter="url(#glow)"/>
+
+    <!-- dark disk -->
+    <circle r="82" fill="url(#diskBg)"/>
+
+    <!-- outer ring — dashed gold -->
+    <circle r="80" fill="none" stroke="url(#gold)" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+    <!-- mid ring -->
+    <circle r="73" fill="none" stroke="#9575CD" stroke-width="0.5" opacity="0.45"/>
+
+    <!-- ── 16 outer lotus petals ── -->
+    <g opacity="0.78">
+      <g transform="rotate(0)">   <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(22.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(45)">  <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(67.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(90)">  <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(112.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(135)"> <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(157.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(180)"> <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(202.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(225)"> <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(247.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(270)"> <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(292.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(315)"> <use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+      <g transform="rotate(337.5)"><use href="#pet" transform="translate(0,-65) scale(1.05)" fill="none" stroke="url(#gold)" stroke-width="0.85"/></g>
+    </g>
+
+    <!-- ── 8 inner filled petals ── -->
+    <g transform="rotate(0)">   <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(45)">  <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(90)">  <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(135)"> <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(180)"> <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(225)"> <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(270)"> <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+    <g transform="rotate(315)"> <use href="#pet" transform="translate(0,-48)" fill="#180628" stroke="url(#gold)" stroke-width="1"/></g>
+
+    <!-- ── Shatkona (षट्कोण) ── -->
+    <g opacity="0.42" filter="url(#glowSoft)">
+      <polygon points="0,-32 27.7,16 -27.7,16" fill="none" stroke="url(#silverBlue)" stroke-width="0.9"/>
+      <polygon points="0,32 27.7,-16 -27.7,-16" fill="none" stroke="url(#gold)" stroke-width="0.9"/>
+    </g>
+
+    <!-- Inner disc -->
+    <circle r="26" fill="url(#innerBg)" stroke="url(#gold)" stroke-width="1.1"/>
+
+    <!-- ── OM Symbol ── -->
+    <text x="0" y="11"
+      text-anchor="middle"
+      font-family="serif"
+      font-size="34"
+      font-weight="bold"
+      fill="url(#fireOm)"
+      filter="url(#glow)"
+    >ॐ</text>
+
+    <!-- ── CRESCENT MOON above OM (Shiva's chandra) ── -->
+    <g transform="translate(0,-38) scale(1.4)" opacity="0.9" filter="url(#glowSoft)">
+      <!-- crescent: large circle minus smaller -->
+      <path d="M0,-8 A8,8 0 1,1 0,8 A5,5 0 1,0 0,-8Z" fill="url(#silverBlue)"/>
+    </g>
+
+    <!-- ── TRISHUL at top ── -->
+    <g transform="translate(0,-59) scale(0.6)" filter="url(#glowSoft)">
+      <!-- shaft -->
+      <rect x="-1.4" y="-18" width="2.8" height="26" fill="url(#gold)" rx="0.6"/>
+      <!-- left prong -->
+      <path d="M-7,-8 C-7,-17 -2.5,-18 -2.5,-13 L-2.5,2 L-7,2Z" fill="url(#gold)"/>
+      <!-- right prong -->
+      <path d="M7,-8 C7,-17 2.5,-18 2.5,-13 L2.5,2 L7,2Z" fill="url(#gold)"/>
+      <!-- tips -->
+      <ellipse cx="0"  cy="-18" rx="2.5" ry="3" fill="url(#gold)"/>
+      <ellipse cx="-5" cy="-13" rx="1.8" ry="2.2" fill="url(#gold)"/>
+      <ellipse cx="5"  cy="-13" rx="1.8" ry="2.2" fill="url(#gold)"/>
+      <!-- damaru cross-bar -->
+      <rect x="-6" y="-4" width="12" height="1.5" fill="url(#gold)" rx="0.4"/>
+    </g>
+
+    <!-- ── Side trishuls (L & R) ── -->
+    <g transform="translate(-60,0) rotate(-90) scale(0.45)" opacity="0.8" filter="url(#glowSoft)">
+      <rect x="-1.4" y="-18" width="2.8" height="26" fill="url(#gold)" rx="0.5"/>
+      <path d="M-7,-8 C-7,-17 -2.5,-18 -2.5,-13 L-2.5,2 L-7,2Z" fill="url(#gold)"/>
+      <path d="M7,-8 C7,-17 2.5,-18 2.5,-13 L2.5,2 L7,2Z" fill="url(#gold)"/>
+      <ellipse cx="0"  cy="-18" rx="2.3" ry="2.8" fill="url(#gold)"/>
+      <ellipse cx="-5" cy="-13" rx="1.6" ry="2" fill="url(#gold)"/>
+      <ellipse cx="5"  cy="-13" rx="1.6" ry="2" fill="url(#gold)"/>
+    </g>
+    <g transform="translate(60,0) rotate(90) scale(0.45)" opacity="0.8" filter="url(#glowSoft)">
+      <rect x="-1.4" y="-18" width="2.8" height="26" fill="url(#gold)" rx="0.5"/>
+      <path d="M-7,-8 C-7,-17 -2.5,-18 -2.5,-13 L-2.5,2 L-7,2Z" fill="url(#gold)"/>
+      <path d="M7,-8 C7,-17 2.5,-18 2.5,-13 L2.5,2 L7,2Z" fill="url(#gold)"/>
+      <ellipse cx="0"  cy="-18" rx="2.3" ry="2.8" fill="url(#gold)"/>
+      <ellipse cx="-5" cy="-13" rx="1.6" ry="2" fill="url(#gold)"/>
+      <ellipse cx="5"  cy="-13" rx="1.6" ry="2" fill="url(#gold)"/>
+    </g>
+
+    <!-- ── Bottom snake coil (Shiva's naga) ── -->
+    <g transform="translate(0,59)" opacity="0.85" filter="url(#glowSoft)">
+      <path d="M-14,0 C-14,-8 -6,-10 0,-8 C6,-10 14,-8 14,0 C14,6 8,8 0,6 C-8,8 -14,6 -14,0Z"
+        fill="none" stroke="url(#silverBlue)" stroke-width="1.5"/>
+      <!-- snake head -->
+      <ellipse cx="14" cy="0" rx="4" ry="3" fill="url(#silverBlue)" opacity="0.7"/>
+      <!-- tongue -->
+      <path d="M17,-0.5 L20,-2 M17,0.5 L20,2" stroke="url(#fireOm)" stroke-width="0.8"/>
+    </g>
+
+    <!-- ── 4 bilva leaves at diagonals ── -->
+    <g transform="translate(42,-42) rotate(45)">
+      <ellipse rx="5.5" ry="10" fill="none" stroke="#66BB6A" stroke-width="0.9" opacity="0.72"/>
+      <line x1="0" y1="-10" x2="0" y2="10" stroke="#66BB6A" stroke-width="0.55" opacity="0.6"/>
+    </g>
+    <g transform="translate(42,42) rotate(135)">
+      <ellipse rx="5.5" ry="10" fill="none" stroke="#66BB6A" stroke-width="0.9" opacity="0.72"/>
+      <line x1="0" y1="-10" x2="0" y2="10" stroke="#66BB6A" stroke-width="0.55" opacity="0.6"/>
+    </g>
+    <g transform="translate(-42,42) rotate(225)">
+      <ellipse rx="5.5" ry="10" fill="none" stroke="#66BB6A" stroke-width="0.9" opacity="0.72"/>
+      <line x1="0" y1="-10" x2="0" y2="10" stroke="#66BB6A" stroke-width="0.55" opacity="0.6"/>
+    </g>
+    <g transform="translate(-42,-42) rotate(315)">
+      <ellipse rx="5.5" ry="10" fill="none" stroke="#66BB6A" stroke-width="0.9" opacity="0.72"/>
+      <line x1="0" y1="-10" x2="0" y2="10" stroke="#66BB6A" stroke-width="0.55" opacity="0.6"/>
+    </g>
+
+    <!-- 16 outer dots -->
+    <g fill="url(#gold)" opacity="0.55">
+      <circle transform="rotate(0)"    cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(22.5)" cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(45)"   cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(67.5)" cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(90)"   cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(112.5)"cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(135)"  cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(157.5)"cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(180)"  cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(202.5)"cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(225)"  cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(247.5)"cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(270)"  cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(292.5)"cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(315)"  cx="0" cy="-72" r="1.9"/>
+      <circle transform="rotate(337.5)"cx="0" cy="-72" r="1.9"/>
+    </g>
+
+  </g><!-- /emblem -->
+
+  <!-- ══════════════════════════════════ -->
+  <!-- RIGHT — WORDMARK                   -->
+  <!-- ══════════════════════════════════ -->
+  <g transform="translate(205,100)">
+
+    <!-- Top ornamental rule -->
+    <line x1="0" y1="-62" x2="320" y2="-62" stroke="url(#gold)" stroke-width="0.7" opacity="0.4"/>
+    <circle cx="-5"  cy="-62" r="2.2" fill="url(#gold)" opacity="0.7"/>
+    <circle cx="325" cy="-62" r="2.2" fill="url(#gold)" opacity="0.7"/>
+    <!-- diamond centre -->
+    <polygon points="160,-66 163,-62 160,-58 157,-62" fill="url(#gold)" opacity="0.7"/>
+
+    <!-- Devanagari title -->
+    <text x="160" y="-42"
+      text-anchor="middle"
+      font-family="'Tiro Devanagari Sanskrit', serif"
+      font-size="14"
+      fill="url(#gold)"
+      opacity="0.78"
+      letter-spacing="3"
+    >शिव मार्ग</text>
+
+    <!-- ── SHIVA in silver-blue ── -->
+    <text x="5" y="8"
+      text-anchor="start"
+      font-family="'Cinzel Decorative', 'Cinzel', Georgia, serif"
+      font-size="56"
+      font-weight="700"
+      fill="url(#silverBlue)"
+      filter="url(#textGlow)"
+      letter-spacing="4"
+    >SHIVA</text>
+
+    <!-- ── MARG in gold ── -->
+    <text x="5" y="60"
+      text-anchor="start"
+      font-family="'Cinzel Decorative', 'Cinzel', Georgia, serif"
+      font-size="56"
+      font-weight="700"
+      fill="url(#gold)"
+      filter="url(#textGlow)"
+      letter-spacing="4"
+    >MARG</text>
+
+    <!-- vertical rule left edge -->
+    <rect x="0" y="-52" width="1.5" height="125" fill="url(#gold)" rx="0.8" opacity="0.35"/>
+
+    <!-- Tagline -->
+    <text x="160" y="82"
+      text-anchor="middle"
+      font-family="'Cinzel', Georgia, serif"
+      font-size="8.5"
+      fill="#C9A84C"
+      opacity="0.6"
+      letter-spacing="5.5"
+    >THE PATH OF MAHADEVA</text>
+
+    <!-- small flanking trishuls around tagline -->
+    <text x="40" y="83" font-size="9" fill="#C9A84C" opacity="0.5" text-anchor="middle">🔱</text>
+    <text x="280" y="83" font-size="9" fill="#C9A84C" opacity="0.5" text-anchor="middle">🔱</text>
+
+    <!-- Bottom ornamental rule -->
+    <line x1="0" y1="95" x2="320" y2="95" stroke="url(#gold)" stroke-width="0.7" opacity="0.4"/>
+    <circle cx="-5"  cy="95" r="2.2" fill="url(#gold)" opacity="0.7"/>
+    <circle cx="325" cy="95" r="2.2" fill="url(#gold)" opacity="0.7"/>
+    <polygon points="160,91 163,95 160,99 157,95" fill="url(#gold)" opacity="0.7"/>
+
+  </g>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- FRAME                              -->
+  <!-- ══════════════════════════════════ -->
+  <rect x="3" y="3" width="534" height="194" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.3" rx="2"/>
+  <rect x="7" y="7" width="526" height="186" fill="none" stroke="#9575CD" stroke-width="0.4" opacity="0.2" rx="1"/>
+
+  <!-- corner ornaments -->
+  <g fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.55">
+    <path d="M14,28 L14,14 L28,14"/><circle cx="14" cy="14" r="2.5" fill="url(#gold)" stroke="none"/>
+    <path d="M526,28 L526,14 L512,14"/><circle cx="526" cy="14" r="2.5" fill="url(#gold)" stroke="none"/>
+    <path d="M14,172 L14,186 L28,186"/><circle cx="14" cy="186" r="2.5" fill="url(#gold)" stroke="none"/>
+    <path d="M526,172 L526,186 L512,186"/><circle cx="526" cy="186" r="2.5" fill="url(#gold)" stroke="none"/>
+  </g>
+
+</svg>
