@@ -890,13 +890,13 @@
 
 <!-- Audio Widget -->
 <div class="audio-widget">
-  <button class="play-btn" onclick="togglePlay(this)">▶</button>
+  <button id="playBtn" class="play-btn">▶</button>
   <div>
     <div class="audio-title">SHIV MAHIMNA STOTRA</div>
     <div class="audio-sub">४३ श्लोक • पुष्पदंत</div>
   </div>
 </div>
-
+<div id="player" style="width:0;height:0;overflow:hidden;"></div>
 <script>
   /* ── Sanskrit ghost text BG ── */
   const sb = document.getElementById('scriptBg');
@@ -945,6 +945,40 @@
   /* ── Like ── */
   document.querySelectorAll('.c-like').forEach(el => {
     el.addEventListener('click', function() { this.style.color = 'var(--wine-soft)'; });
+  });
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+  let isPlaying = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+      videoId: "TDb65Y6lFxg",
+      playerVars: {
+        controls: 0,
+        modestbranding: 1,
+        rel: 0
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("playBtn");
+
+    btn.onclick = function () {
+      if (!player) return;
+
+      if (!isPlaying) {
+        player.playVideo();
+        btn.innerHTML = "⏸";
+        isPlaying = true;
+      } else {
+        player.pauseVideo();
+        btn.innerHTML = "▶";
+        isPlaying = false;
+      }
+    };
   });
 </script>
 </body>
