@@ -674,44 +674,7 @@
 </div>
 
 <!-- COMMENTS -->
-<div class="comments-section">
-  <div class="comments-heading reveal">🌿 भक्तों के विचार</div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar">P</div><div><div class="c-name">Priya Sharma</div><div class="c-date">18 जुलाई 2024 — श्रावण</div></div></div>
-    <div class="c-txt">हर हर महादेव! श्रावण के प्रत्येक सोमवार बेल-पत्र अर्पण करते समय बिल्वाष्टकम् का पाठ करती हूँ। श्लोक १ — "त्रिदलं त्रिगुणाकारं त्रिनेत्रं च त्रयायुधम्" — यह पंक्ति पढ़कर मन में अद्भुत शांति मिलती है। सभी ८ श्लोक यहाँ अर्थ सहित मिले, बहुत आभारी हूँ! 🙏🍃</div>
-    <span class="c-like">🌿 312 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#0A2A0A,#030803);">V</div><div><div class="c-name">Vikram Nair</div><div class="c-date">26 फरवरी 2025 — महाशिवरात्रि</div></div></div>
-    <div class="c-txt">महाशिवरात्रि पर शिवलिंग पर बेल-पत्र अर्पित करते हुए बिल्वाष्टकम् का पाठ किया। श्लोक ३ — "दर्शनं बिल्वपत्रस्य स्पर्शनं पापनाशनम्" — इस पंक्ति का अर्थ समझ आने के बाद से मेरा बेल-वृक्ष के प्रति सम्मान और भी बढ़ गया है। जय भोलेनाथ! 🔱</div>
-    <span class="c-like">🌿 198 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#1A1500,#080500);">A</div><div><div class="c-name">Anita Kulkarni</div><div class="c-date">8 अगस्त 2024</div></div></div>
-    <div class="c-txt">हमारे घर के आँगन में बेल का पेड़ है। दादाजी कहते थे — जिस घर में बेल-वृक्ष हो, वहाँ साक्षात् शिव वास करते हैं। श्लोक ४ — "शिवपूजाविहीनस्य वृथा जन्म गतं भुवि" — यह पंक्ति जीवन का सार है। एकबिल्वं शिवार्पणम्! 🌿🙏</div>
-    <span class="c-like">🌿 175 लाइक्स</span>
-  </div>
-
-  <div class="comment-card reveal">
-    <div class="c-hdr"><div class="avatar" style="background:linear-gradient(135deg,#102010,#050A05);">R</div><div><div class="c-name">Rajan Iyer</div><div class="c-date">3 मार्च 2025</div></div></div>
-    <div class="c-txt">आदि शंकराचार्य ने बिल्वाष्टकम् में प्रत्येक श्लोक में बेल-पत्र के एक नए आयाम को उजागर किया है। "एकबिल्वं शिवार्पणम्" — यह ध्रुवपंक्ति चित्त को एकाग्र करती है। बेल-पत्र की सादगी में ही शिव-भक्ति की गहराई है। ॐ नमः शिवाय! 🍃🏛️</div>
-    <span class="c-like">🌿 142 लाइक्स</span>
-  </div>
-
-  <div class="c-form reveal">
-    <div class="c-form-title">✦ अपना अनुभव साझा करें ✦</div>
-    <div class="form-row">
-      <input type="text" placeholder="आपका नाम">
-      <input type="email" placeholder="ईमेल">
-    </div>
-    <textarea placeholder="बिल्वाष्टकम् के पाठ का अनुभव, बेल-पत्र अर्पण की कथा... एकबिल्वं शिवार्पणम् 🍃"></textarea>
-    <button class="submit-btn"><span>🌿 संदेश भेजें — ॐ नमः शिवाय</span></button>
-  </div>
-</div>
-
+<div id="sm-comments" data-page-id="bilvashtakam"></div>
 <!-- FOOTER -->
 <footer>
   <span class="foot-sym">🍃</span>
@@ -797,5 +760,12 @@
     };
   });
 </script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/s-comments.js"></script>
+  <script>
+    const SM_API = 'https://shiva-marg.onrender.com'; // ← change to your server URL in prod
+    SmAuth.init({ apiBase: SM_API });
+    SmComments.init({ apiBase: SM_API });
+  </script>
 </body>
 </html>
