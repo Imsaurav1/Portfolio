@@ -20,7 +20,7 @@
   'use strict';
 
   const TOKEN_KEY = 'sm_token';
-  let API_BASE    = 'http://localhost:8000';
+  let API_BASE    = 'https://shiva-marg.onrender.com';
   const LIMIT     = 15;
 
   let pageId    = null;
