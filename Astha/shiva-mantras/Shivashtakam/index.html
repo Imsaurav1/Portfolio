@@ -759,40 +759,93 @@
 </footer>
 
 <!-- Audio Widget -->
+<!-- Audio Widget -->
 <div class="audio-widget">
-  <button class="play-btn" onclick="togglePlay(this)">▶</button>
+  <button id="playBtn" class="play-btn">▶</button>
   <div>
     <div class="audio-title">SHIVASHTAKAM</div>
     <div class="audio-sub">8 Stanzas • Moonlit Devotion</div>
   </div>
 </div>
 
+<!-- Hidden YouTube Player -->
+<div id="player" style="width:0;height:0;overflow:hidden;"></div>
+
+
 <script>
   /* Moon dust particles */
   const mc = document.getElementById('moondust');
-  for (let i = 0; i < 55; i++) {
-    const m = document.createElement('div'); m.className = 'mote';
-    const sz = 1 + Math.random() * 2.5;
-    m.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-duration:${10+Math.random()*18}s;animation-delay:${Math.random()*24}s;`;
-    mc.appendChild(m);
+  if (mc) {
+    for (let i = 0; i < 55; i++) {
+      const m = document.createElement('div');
+      m.className = 'mote';
+      const sz = 1 + Math.random() * 2.5;
+      m.style.cssText = `
+        left:${Math.random()*100}%;
+        width:${sz}px;
+        height:${sz}px;
+        animation-duration:${10+Math.random()*18}s;
+        animation-delay:${Math.random()*24}s;
+      `;
+      mc.appendChild(m);
+    }
   }
 
-  /* Reveal */
+  /* Reveal animation */
   const rv = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
-      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 30); obs.unobserve(e.target); }
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('on'), i * 30);
+        obs.unobserve(e.target);
+      }
     });
   }, { threshold: 0.06 });
   rv.forEach(el => obs.observe(el));
 
-  /* Audio */
-  let playing = false;
-  function togglePlay(btn) { playing = !playing; btn.textContent = playing ? '⏸' : '▶'; }
-
   /* Likes */
   document.querySelectorAll('.c-like').forEach(el => {
-    el.addEventListener('click', function() { this.style.color = 'var(--moon-soft)'; });
+    el.addEventListener('click', function() {
+      this.style.color = 'var(--moon-soft)';
+    });
+  });
+</script>
+
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  let player;
+  let isPlaying = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+      videoId: "SPra9UgnS5M",
+      playerVars: {
+        controls: 0,
+        modestbranding: 1,
+        rel: 0
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("playBtn");
+
+    btn.onclick = function () {
+      if (!player) return;
+
+      if (!isPlaying) {
+        player.playVideo();
+        btn.innerHTML = "⏸";
+        isPlaying = true;
+      } else {
+        player.pauseVideo();
+        btn.innerHTML = "▶";
+        isPlaying = false;
+      }
+    };
   });
 </script>
 </body>
