@@ -743,15 +743,9 @@
 
   <div class="c-form reveal">
     <div class="c-form-title">✦ अपना अनुभव साझा करें ✦</div>
-    <div class="form-row">
-      <input type="text" placeholder="आपका नाम">
-      <input type="email" placeholder="ईमेल">
-    </div>
-    <textarea placeholder="माँ दुर्गा की भक्ति में अपने अनुभव, कोई श्लोक पसंदीदा हो तो बताएं... 🌺"></textarea>
-    <button class="submit-btn"><span>🌸 संदेश भेजें — जय माता दी</span></button>
-  </div>
+    <h3>Please login/register for write comments</h3>
 </div>
-
+<div id="sm-comments" data-page-id="aigiri-nandini"></div>
 <footer>
   <span class="footer-sym">🌺</span>
   <div class="footer-txt">॥ जय जय हे महिषासुरमर्दिनि ॥ रम्यकपर्दिनि शैलसुते ॥ © ShivaMarg 2026</div>
@@ -811,5 +805,13 @@
   /* Like */
   document.querySelectorAll('.c-like').forEach(el=>{el.addEventListener('click',function(){this.style.color='#FF4488';});});
 </script>
+  <script src="/js/auth.js"></script>
+    <script src="/js/s-comments.js"></script>
+    <script>
+      const SM_API = 'https://shiva-marg.onrender.com'; // ← change to your server URL in prod
+      SmAuth.init({ apiBase: SM_API });
+      SmComments.init({ apiBase: SM_API });
+    </script>
+
 </body>
 </html>
