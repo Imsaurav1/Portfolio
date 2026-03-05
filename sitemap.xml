@@ -31,11 +31,170 @@
 
 
   <!-- Add more blog URLs here -->
-  <!--
+  
   <url>
-    <loc>https://www.saurabhjha.site/another-blog</loc>
+    <loc>https://www.saurabhjha.live/Astha</loc>
     <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
   </url>
-  -->
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/har-har-mahadev</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+ 
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Namami-samisam-nirvanrupam</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiv-aarti</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiv-chalisa</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiv-kavacham</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-beej-mantra</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-gayatri-mantra</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-jyotirlinga-stotram</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-lingashtakam</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-mahamrityunjaya-mantra</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-mahimna-stotra</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/shiva-manasa-puja</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-panchakshara-stotram</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shiva-sahasranama</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/shiva-tandav-stotram</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/Shivashtakam</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/shiva-mantras/bilvashtakam-बिल्वाष्टकम्</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/Argala-stotram</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/Devi-kavacham</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/Durga-aarti</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/Durga-Chalisha</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/kilaka-stotram</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+
+  <url>
+    <loc>https://www.saurabhjha.live/Astha/durga-mantras/Nav-durga-mantra</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
 </urlset>
