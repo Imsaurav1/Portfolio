@@ -353,6 +353,19 @@
     .widget::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(90deg, transparent, var(--blue-soft), transparent); opacity:0.5; }
     .widget-title { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:4px; color:var(--blue-soft); text-transform:uppercase; margin-bottom:14px; padding-bottom:9px; border-bottom:1px solid rgba(25,118,210,0.14); }
 
+    #notes { position:fixed; inset:0; z-index:0; pointer-events:none; }
+    .note {
+      position:absolute; font-family:'Tiro Devanagari Sanskrit',serif;
+      animation:note-rise linear infinite; opacity:0;
+      color:rgba(92,107,192,0.6);
+    }
+    @keyframes note-rise {
+      0%   { transform:translateY(106vh) rotate(0deg) scale(0.5); opacity:0; }
+      8%   { opacity:0.9; }
+      90%  { opacity:0.3; }
+      100% { transform:translateY(-6vh) rotate(20deg) scale(1.2); opacity:0; }
+    }
+    
     /* big jap counter widget */
     .jap-counter {
       text-align:center; padding:10px 0;
@@ -448,6 +461,7 @@
 <div class="mandala-bg"></div>
 <div class="vishnu-aura"></div>
 <div id="particles"></div>
+<div id="notes"></div>
 
 <!-- HEADER -->
 <header>
