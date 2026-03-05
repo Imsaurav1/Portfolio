@@ -15,7 +15,7 @@
   /* ─── CONFIG ─── */
   const TOKEN_KEY   = 'sm_token';
   const USER_KEY    = 'sm_user';
-  let   API_BASE    = 'https://shiva-marg.onrender.com'; // ← change to your server URL in prod
+  let   API_BASE    = 'https://shivamargbackend.onrender.com'; // ← change to your server URL in prod
 
   /* ─── STATE ─── */
   let _user  = null;
