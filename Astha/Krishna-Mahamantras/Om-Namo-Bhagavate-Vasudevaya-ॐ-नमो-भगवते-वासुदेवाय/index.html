@@ -779,6 +779,16 @@
     pc.appendChild(p);
   }
 
+  const nc = document.getElementById('notes');
+  const noteSyms = ['♪','♫','🎵','ॐ','🪈', 'हरे कृष्ण', 'हरे राम',  'जय श्री कृष्ण', 'ॐ नमो भगवते वासुदेवाय'];
+  for (let i = 0; i < 45; i++) {
+    const n = document.createElement('div'); n.className = 'note';
+    const sz = 0.7 + Math.random() * 1.2;
+    n.style.cssText = `left:${Math.random()*100}%;font-size:${sz}rem;animation-duration:${11+Math.random()*18}s;animation-delay:${Math.random()*22}s;`;
+    n.textContent = noteSyms[Math.floor(Math.random() * noteSyms.length)];
+    nc.appendChild(n);
+  }
+
   /* Reveal */
   const rv = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
