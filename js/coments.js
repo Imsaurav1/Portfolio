@@ -23,25 +23,35 @@ document.getElementById('commentForm').addEventListener('submit', function (e) {
       pageTitle
     })
   })
-    .then(() => {
-      loadComments();
+    .then(res => res.json())
+    .then(data => {
+      console.log('Comment posted:', data);
+      loadComments(); // Reload after posting
       document.getElementById('commentForm').reset();
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error('Error posting comment:', err);
+      alert('Failed to post comment');
+    });
 });
 
 // Load comments (by pageTitle)
 function loadComments() {
-  fetch(
-    `https://commnets.onrender.com/comments?pageTitle=${encodeURIComponent(pageTitle)}`
-  )
-    .then(res => res.json())
+  const queryParam = encodeURIComponent(pageTitle);
+  console.log('Fetching comments for page:', pageTitle);
+  
+  fetch(`https://commnets.onrender.com/comments?pageTitle=${queryParam}`)
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return res.json();
+    })
     .then(comments => {
+      console.log('Comments received:', comments);
       const list = document.getElementById('commentList');
       list.innerHTML = '';
 
-      if (!comments.length) {
-        list.innerHTML = '<p>No comments yet.</p>';
+      if (!comments || comments.length === 0) {
+        list.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
         return;
       }
 
@@ -63,7 +73,17 @@ function loadComments() {
         list.appendChild(div);
       });
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error('Error loading comments:', err);
+      document.getElementById('commentList').innerHTML = 
+        '<p style="color: red;">Error loading comments. Please refresh the page.</p>';
+    });
 }
 
-window.onload = loadComments;
+// Load comments when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  loadComments();
+  
+  // Optional: Auto-refresh comments every 5 seconds
+  // setInterval(loadComments, 5000);
+});
